@@ -1,6 +1,7 @@
 define(TITLE,ggcov Features)dnl
 include(_common.m4)dnl
 BEGINHEAD
+<meta name="keywords" content="ggcov, coverage, gcov, test coverage, line coverage, branch coverage, call coverage">
 include(_styles.html)
 ENDHEAD
 BEGINBODY
