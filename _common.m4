@@ -102,8 +102,8 @@ define(DOWNLOAD,
     <td valign=top><b>$1</b></td>
     <td>
       <a href="_BACKBONE($2)">$2</a><br>
-      esyscmd(find . .. ../.. -maxdepth 1 -name $2 -exec ls -l \{\} \;| head -1 | awk {print`\$'5}) bytes<br>
-      MD5 esyscmd(find . .. ../.. -maxdepth 1 -name $2 -exec md5sum \{\} \;| head -1 | awk {print`\$'1})
+      esyscmd(ls -l RELEASEDIR/$2 | awk {print`\$'5}) bytes<br>
+      MD5 esyscmd(md5sum RELEASEDIR/$2 | awk {print`\$'1})
     </td>
   </tr>'
 )dnl
