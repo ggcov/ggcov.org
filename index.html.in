@@ -79,6 +79,7 @@ should be available on any modern Linux distro or commercial Unix:
     <td>Red Hat Linux 7.3 (Valhalla), on i386</td>
     <td>0.1.6</td>
     <td>
+    I build and test on this platform and supply binary RPMS for it.
     Mostly works, but call coverage data is wrong due to broken data
     files written by gcc 2.96 (gcov also mispreports calls).
     </td>
@@ -86,10 +87,10 @@ should be available on any modern Linux distro or commercial Unix:
 
   <tr valign="top">
     <td>Red Hat Linux 9 (Shrike), on i386</td>
-    <td>-</td>
+    <td>0.2</td>
     <td>
-    Not fully tested, but gcc 3.2.2 package is known to create
-    good data files.
+    I build and test on this platform and supply binary RPMS for it.
+    Gcc 3.2.2 package is known to create good data files.
     </td>
   </tr>
 
