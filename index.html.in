@@ -64,4 +64,15 @@ EMAILME(mail me) the patches (unified diff `format' preferred). I will
 try to incorporate them into the next release.
 </p>
 
+<P>
+Thanks to the following people who have contributed to ggcov.
+</P>
+include(_thanks.m4)
+BEGINTHANKS
+THANKS(Havoc Pennington,GTK2 port)
+THANKS(`(Ani)ruddha Mulay',useful ideas)
+THANKS(`Alan Stein',bug report)
+THANKS(`Jim Bowring',bug report)
+ENDTHANKS
+
 ENDBODY
