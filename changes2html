@@ -1,0 +1,73 @@
+#!/usr/bin/awk -f
+#
+# $Id: changes2html,v 1.1 2001-12-04 12:08:46 gnb Exp $
+#
+# Awk script to convert a GNU ChangeLog into HTML for the Web page
+#
+BEGIN {
+    # \1=date \2=name \3@\4=email
+    header_re = "([A-Z][a-z][a-z] [A-Z][a-z][a-z] [ 0-9][0-9] [0-2][0-9]:[0-5][0-9]:[0-5][0-9] [12][0-9][0-9][0-9]) +([^<]+) +<([^@>]+)@([^@>]+)>";
+    in_item = 0;
+    in_list = 0;
+}
+function end_item () {
+    in_item = 0;
+}
+function end_list () {
+    end_item();
+    if (in_list)
+    {
+	print "</ul>";
+	in_list = 0;
+    }
+}
+function start_list () {
+    if (!in_list)
+    {
+    	print "<ul>";
+    	in_list = 1;
+	in_item = 0;
+    }
+}
+function start_item () {
+    end_item();
+    start_list();
+    print "<li>";
+    in_item = 1;
+}
+function spacer () {
+    if (in_item)
+    	print "<li style=\"list-style-type:none;\">&nbsp;";
+}
+function quote_meta (str) {
+    x = str;
+    x = gensub("&", "\\&amp;", "g", x);
+    x = gensub("<", "\\&lt;", "g", x);
+    x = gensub(">", "\\&gt;", "g", x);
+    return x;
+}
+/^[A-Z]/ {
+    # Header lines
+    end_list();
+    print gensub(header_re, "<p><b>\\1 \\2</b></p>", "g");
+    start_list();
+    next;
+}
+/^[ \t]*$/ {
+    # empty line
+    spacer();
+    next;
+}
+/^[ \t]+\*[ \t]+/ {
+    # first line of record.
+    start_item();
+    print quote_meta(gensub("^[ \t]+\\*[ \t]+", "", "g"));
+    next;
+}
+{
+    # subsequent line of record
+    print quote_meta(gensub("^[ \t]*", "", "g"));
+}
+END {
+    end_list();
+}

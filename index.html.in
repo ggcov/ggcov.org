@@ -1,0 +1,59 @@
+define(TITLE,ggcov Features)dnl
+include(_common.m4)dnl
+BEGINHEAD
+include(_styles.html)
+ENDHEAD
+BEGINBODY
+
+<p>
+<span class="program">Ggcov</span> is a GTK+ GUI for exploring test coverage
+data produced by C programs compiled with
+<a href="">gcc</a>
+<a href="">-fprofile-arcs</a>
+<a href="">-ftest-coverage</a>.
+So it's basically a GUI replacement for the <span class="program">gcov</span>
+program that comes with <span class="program">gcc</span>.
+</p>
+
+<p>
+Apart from presenting graphically and interactively the same information
+as <span class="program">gcov</span>, <span class="program">ggcov</span>
+has one extra feature: <em>call graph analysis</em>.
+<span class="program">Ggcov</span> calculates a call graph of all
+function calls known at compile time (i.e. excluding calls
+made through function pointers) and applies coverage data to this
+call graph.  The result is that you can see how many times a
+function was called from various other functions.
+</p>
+
+<p>
+The downside of call graph analysis is that <span class="program">ggcov</span>
+needs to read and pick apart object files to get the call data.  The
+code exists and works for i386 platforms with ELF format executables
+only.
+</p>
+
+<p>
+<span class="program">Ggcov</span> is in a very early stage of development, but is already
+somewhat useful.  It is known to work on ix86/Linux; other platforms
+should work except that the call graph feature will not work.
+</p>
+
+<p>
+<span class="program">Ggcov</span> is written on Mandrake Linux 7.1 on
+i386 and requires the following, which should be available on any
+modern Linux distro:
+</p>
+<ul>
+  <li><i>libglade</i> library with GNOME support
+  <li>GNOME <i>libgnomeui</i> library
+  <li>GNOME <i>gtk+</i> library
+</ul>
+
+<p>
+If you port <span class="program">ggcov</span> to a new platform, please
+EMAILME(mail me) the patches (unified diff `format' preferred). I will
+try to incorporate them into the next release.
+</p>
+
+ENDBODY

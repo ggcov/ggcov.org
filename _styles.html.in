@@ -1,0 +1,66 @@
+changecom(`/*',`*/')dnl
+define(BACKCOLOR,`#ffffff')dnl
+define(FORECOLOR,`#000000')dnl
+define(HILITECOLOR,`#d0d0f6')dnl
+define(TOCCOLOR,`#afafcf')dnl
+define(FONTFAMILY,`verdana,arial,helvetica,sans-serif')dnl
+define(FIXEDFAMILY,`lucidatypewriter,lucidasanstypewriter,courier,monospace')dnl
+define(FONTSIZE0,`10pt')dnl
+define(FONTSIZE1,`12pt')dnl
+define(FONTSIZE2,`14pt')dnl
+define(FONTSIZE3,`18pt')dnl
+define(FONTSIZE4,`24pt')dnl
+dnl
+<style type="text/css">
+BODY { color: FORECOLOR; background: BACKCOLOR }
+H1 { font: bold FONTSIZE4 FONTFAMILY; }
+H2 { font: bold FONTSIZE3 FONTFAMILY; }
+H3 { font: bold FONTSIZE2 FONTFAMILY; }
+UL { font: FONTSIZE1 FONTFAMILY; }
+P { font: FONTSIZE1 FONTFAMILY; }
+P.small { font: FONTSIZE0 FONTFAMILY; }
+P B { font: bold FONTSIZE1 FONTFAMILY; }
+P EM { font: italic FONTSIZE1 FONTFAMILY; }
+TD { font: FONTSIZE1 FONTFAMILY; }
+TD B { font: bold FONTSIZE1 FONTFAMILY; }
+PRE { font: FONTSIZE1 FIXEDFAMILY; }
+all.program { font: bold FONTSIZE1 FONTFAMILY; }
+all.option { font: bold FONTSIZE1 FONTFAMILY; }
+all.function { font: bold FONTSIZE1 FONTFAMILY; }
+PRE.example {
+  font: FONTSIZE1 FIXEDFAMILY;
+  color: FORECOLOR;
+  background-color: HILITECOLOR;
+  border-style: solid;
+  border-color: BACKCOLOR;
+  border-width: 1pt;
+  padding: FONTSIZE0;
+  white-space: pre;
+}
+PRE.source {
+  font: FONTSIZE1 FIXEDFAMILY;
+  color: FORECOLOR;
+  background-color: HILITECOLOR;
+  border-style: solid;
+  border-color: BACKCOLOR;
+  border-width: 1pt;
+  padding: FONTSIZE0;
+  white-space: pre;
+}
+all.hilite {
+  color: FORECOLOR;
+  background-color: HILITECOLOR;
+}
+all.toc {
+  font: bold FONTSIZE2 FONTFAMILY;
+  color: BACKCOLOR;
+  background-color: TOCCOLOR;
+  text-align: center;
+}
+all.tocsmall {
+  font: bold FONTSIZE0 FONTFAMILY;
+  color: BACKCOLOR;
+  background-color: TOCCOLOR;
+  text-align: center;
+}
+</style>

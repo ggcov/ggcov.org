@@ -1,0 +1,85 @@
+
+define(NAVLINK,
+<tr>
+  <td class="toc">
+    `ifelse($1,HTMLFILE,<img width="100" height="25" src="b`'$2`'d.gif">,<a href="$1"><img width="100" height="25" src="b$2.gif" border="0"></a>)'<br>
+  </td>
+</tr>
+)
+
+define(SPACER,
+<tr>
+  <td height="$1">_NBSPX(1,1)</td>
+</tr>
+)
+
+
+<table border=0 cellspacing=0 cellpadding=0>
+  <tr>
+    <td style="background-image:url(borderl.gif);">_NBSPX(10,10)</td>
+    <td width=100 class="toc" >
+      <table border=0 width=100 border=0 cellspacing=0 cellpadding=0>
+	<tr>
+	  <td height=60 style="background-image:url(cornerb.gif);">_NBSPX(1,1)</td>
+	</tr>
+	<tr>
+	  <td height=15 style="background-image:url(ribbingh.gif);">_NBSPX(1,1)</td>
+	</tr>
+
+    	SPACER(5)	
+	NAVLINK(index.html,features)
+    	SPACER(5)	
+	NAVLINK(download.html,download)
+    	SPACER(5)	
+	NAVLINK(screenshots.html,screenshots)
+    	SPACER(5)	
+	NAVLINK(changelog.html,changelog)
+    	SPACER(5)	
+	
+	<tr>
+	  <td height=15 style="background-image:url(ribbingh.gif);">_NBSPX(1,1)</td>
+	</tr>
+	
+    	SPACER(5)	
+
+	<tr>
+	  <td class="tocsmall">
+	    Watch for new<br>releases on:<br>
+	    <a href="http://www.freshmeat.net/"><img width=90 height=36 src="fm.mini.jpg" alt="freshmeat" border=0></a>
+	  </td>
+	</tr>
+
+    	SPACER(5)	
+
+	<tr>
+	  <td>
+	    <a href="http://www.gimp.org/"><img width=90 height=36 border=0 src="gimp.gif" alt="[gimp]"></a>
+	  </td>
+	</tr>
+
+    	SPACER(5)	
+
+	<tr>
+	  <td>
+	    <a href="http://validator.w3.org/check/referer"><img width=88 height=31 border=0 src="valid-html40.gif" alt="Valid HTML 4.0"></a>
+	  </td>
+	</tr>
+
+    	SPACER(5)	
+
+	<tr>
+	  <td height=30 style="background-image:url(ribbingh.gif);">_NBSPX(1,1)</td>
+	</tr>
+	
+      </table>
+    </td>
+    <td style="background-image:url(borderr.gif);">_NBSPX(10,10)</td>
+  </tr>
+  <tr>
+    <td><img src="borderbl.gif" width=10 height=10></td>
+    <td><img src="borderb.gif" width=100 height=10></td>
+    <td><img src="borderbr.gif" width=10 height=10></td>
+  </tr>
+</table>
+
+

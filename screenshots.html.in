@@ -1,0 +1,82 @@
+define(TITLE,ggcov Screenshots)dnl
+include(_common.m4)dnl
+BEGINHEAD
+include(_styles.html)
+ENDHEAD
+BEGINBODY
+
+<p>
+This page has some screenshots of <span class="program">ggcov</span>
+in action.  All the screenshots show the same simple set of coverage data
+based on <a href="shotdata.html">this program</a>
+</p>
+
+<p>
+Click on the thumbnail images to see larger images.
+</p>
+
+<table cellpadding=10 cellspacing=0 border=0>
+  <tr>
+    <td align="center" class="hilite">THUMBNAIL(summarywin,gif,96,68,`Summary Window')</td>
+    <td align="center">THUMBNAIL(filelistwin,gif,96,40,`File List Window')</td>
+    <td align="center" class="hilite">THUMBNAIL(funclistwin,gif,96,50,`Function List Window')</td>
+  </tr>
+  <tr>
+    <td valign="top" align="center" class="hilite">
+    <b>Summary Window</b><br>
+    Shows summaries of line, call and branch coverage statistics, as
+    percentages, counts and colour coded bars.  Scope of summary can
+    be chosen from: overall, filename, function, or a range of lines
+    within a file.
+    </td>
+    <td valign="top" align="center">
+    <b>File List Window</b><br>
+    Shows all the source files, with line, call and branch coverage
+    statistics.  The list can be sorted on any of the columns by
+    clicking on the column title.  Double-clicking on a row pops
+    up a new Source Window displaying the corresponding file.
+    </td>
+    <td valign="top" align="center" class="hilite">
+    <b>Function List Window</b><br>
+    Shows all the covered functions, with line, call and branch coverage
+    statistics.  The list can be sorted on any of the columns by
+    clicking on the column title.  Double-clicking on a row pops
+    up a new Source Window displaying the corresponding function.
+    </td>
+  </tr>
+  <tr>
+    <td align="center">THUMBNAIL(callslistwin,gif,96,51,`Call List Window')</td>
+    <td align="center" class="hilite">THUMBNAIL(callgraphwin,gif,96,61,`Call Graph Window')</td>
+    <td align="center">THUMBNAIL(sourcewin,gif,96,68,`Source Window')</td>
+  </tr>
+  <tr>
+    <td valign="top" align="center">
+    <b>Calls List Window</b><br>
+    Shows, for a particular covered function, all the function calls
+    made within that function and the number of times the call was
+    executed.
+    </td>
+    <td valign="top" align="center" class="hilite">
+    <b>Call Graph Window</b><br>
+    Shows, for a particular function, all the functions that call it
+    and how many times they called it, and all the functions that it
+    calls and how many times it called them.  Double-clicking on a
+    function name in either list navigates the window to that function.
+    Handles covered functions and external library functions
+    (e.g. <span class="function">printf</span>) called directly from
+    covered functions.
+    </td>
+    <td valign="top" align="center">
+    <b>Source Window</b><br>
+    Shows a particular source file, with line numbers and execution
+    counts for each line.  Lines are colour coded:
+    <ul>
+    <li><span style="color:green">green</span> - executed at least once
+    <li><span style="color:red">red</span> - never executed
+    <li><span style="color:black">black</span> - no executable code
+    </ul>
+    </td>
+  </tr>
+</table>
+
+ENDBODY

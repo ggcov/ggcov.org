@@ -1,0 +1,84 @@
+define(TITLE,ggcov Screenshot Data)dnl
+include(_common.m4)dnl
+BEGINHEAD
+include(_styles.html)
+ENDHEAD
+BEGINBODY
+
+<p>
+The <span class="program">ggcov</span>
+<a href="screenshots.html">screenshots</a> show coverage data based on
+the following program:
+</p>
+
+<pre class="source">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int function_one(int x);
+
+int
+function_two(int x)
+{
+    return function_one(x&gt;&gt;1);
+}
+
+int
+function_three(int x)
+{
+    x += 4;
+    x -= 5;
+    x++;
+    return x&gt;&gt;1;
+}
+
+int
+function_one(int x)
+{
+    if (x & 1)
+    	x += function_two(x);
+    else
+    	x += function_three(x);
+    return x;
+}
+
+int
+unused_function(int x)
+{
+    x += 24;
+    x -= 56;
+    return x;
+}
+
+int
+main(int argc, char **argv)
+{
+    int x, y;
+    int i;
+    
+    for (i = 1 ; i &lt; argc ; i++)
+    {
+    	x = atoi(argv[i]);
+    	y = function_one(x);
+	printf("%d -&gt; %d\n", x, y);
+    }
+    return 0;
+}
+</pre>
+
+<p>
+This program was compiled to the executable <span class="program">foo</span>
+using the
+<span class="option">-fprofile-arcs -ftest-coverage</span> options 
+ and run with the
+following arguments:
+</p>
+
+<pre class="source">
+./foo 1
+./foo 2
+./foo 23 423
+</pre>
+
+
+ENDBODY
