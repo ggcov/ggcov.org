@@ -17,6 +17,12 @@ program that comes with <span class="program">gcc</span>.
 </p>
 
 <p>
+<span class="program">Ggcov</span> is released under the GNU General
+Public License (GPL) version 2 with <b>no warranty</b>.  See the file COPYING
+in the distribution or <a href="http://www.gnu.org/licenses/gpl.html">here</a>
+</p>
+
+<p>
 Apart from presenting graphically and interactively the same information
 as <span class="program">gcov</span>, <span class="program">ggcov</span>
 has one extra feature: <em>call graph analysis</em>.
