@@ -6,3 +6,5 @@ ggcov-*.tar.gz
 ggcov-*.rpm
 _styles.html
 *.xcf
+screenshots.html
+shotdata.html
