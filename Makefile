@@ -65,5 +65,8 @@ $(htmldir)/%: %
 
 ############################################################
 
+RSYNC_VERBOSE=		-v
+#RSYNC_PATH_FLAGS=	--rsync-path=/home/g/gnb/inst/bin/rsync
+
 upload:
-	rsync -v -r --delete -e ssh --rsync-path=/home/g/gnb/inst/bin/rsync $(htmldir) $(uploaddir)
+	rsync $(RSYNC_VERBOSE) -r --delete -e ssh $(RSYNC_PATH_FLAGS) $(htmldir) $(uploaddir)
