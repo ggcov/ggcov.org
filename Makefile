@@ -33,7 +33,7 @@ all:: $(PAGES)
 
 changelog.html: _changelist.html
 $(PAGES): _styles.html _common.m4 _copyright.txt toc.html.in
-download.html: ../version.m4
+download.html: ../version.m4 downloadables.m4
 index.html: _thanks.m4
 
 _changelist.html: ../ChangeLog changes2html
