@@ -24,7 +24,7 @@ IMAGES=		1x1t.gif \
 		sourcewin.gif sourcewin_t.gif \
 		summarywin.gif summarywin_t.gif \
 		callgraph2win.gif callgraph2win_t.gif \
-		favicon.ico
+		favicon.ico icon32.png
 
 DELIVERABLES=	$(PAGES) $(IMAGES)
 
