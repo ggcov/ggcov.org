@@ -31,7 +31,7 @@ ENABLE_COUNT=	1
 all:: $(PAGES)
 
 changelog.html: _changelist.html
-$(PAGES): _styles.html _common.m4 _copyright.html toc.html.in
+$(PAGES): _styles.html _common.m4 _copyright.txt toc.html.in
 download.html: ../version.m4
 
 _changelist.html: ../ChangeLog changes2html

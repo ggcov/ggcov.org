@@ -5,7 +5,7 @@ define(`_forloop',`$4`'ifelse($1, `$3', ,`define(`$1', incr($1))_forloop(`$1', `
 define(BEGINHEAD,
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html><head>
-include(_copyright.html)
+<!-- Copyright (c) include(_copyright.txt) -->
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title>TITLE</title>
 )dnl
@@ -76,7 +76,7 @@ define(ENDBODY,
 <center>
 <p class="small">
 Last updated: DATE.<br>
-&copy; 2001 Greg Banks. All Rights Reserved.<br>
+Copyright &copy; include(_copyright.txt)<br>
 Magnifying glass clipart from <a href="http://www.arttoday.com/">ArtToday.com</a>
 </p>
 </center>
