@@ -15,19 +15,19 @@ Click on the thumbnail images to see larger images.
 
 <table cellpadding=10 cellspacing=0 border=0>
   <tr>
-    <td align="center" class="hilite">THUMBNAIL(summarywin,gif,96,68,`Summary Window')</td>
-    <td align="center">THUMBNAIL(filelistwin,gif,96,93,`File List Window')</td>
-    <td align="center" class="hilite">THUMBNAIL(funclistwin,gif,96,50,`Function List Window')</td>
+    <td width="33%" align="center" class="hilite">THUMBNAIL(summarywin,gif,96,68,`Summary Window')</td>
+    <td width="33%" align="center">THUMBNAIL(filelistwin,gif,96,93,`File List Window')</td>
+    <td width="33%" align="center" class="hilite">THUMBNAIL(funclistwin,gif,96,50,`Function List Window')</td>
   </tr>
   <tr>
-    <td valign="top" align="center" class="hilite">
+    <td width="33%" valign="top" align="center" class="hilite">
     <b>Summary Window</b><br>
     Shows summaries of line, call and branch coverage statistics, as
     percentages, counts and colour coded bars.  Scope of summary can
     be chosen from: overall, filename, function, or a range of lines
     within a file.
     </td>
-    <td valign="top" align="center">
+    <td width="33%" valign="top" align="center">
     <b>File List Window</b><br>
     Shows all the source files, with line, call and branch coverage
     statistics.  Directories are shown as a tree, with summarised
@@ -35,7 +35,7 @@ Click on the thumbnail images to see larger images.
     clicking on the column title.  Double-clicking on a row pops
     up a new Source Window displaying the corresponding file.
     </td>
-    <td valign="top" align="center" class="hilite">
+    <td width="33%" valign="top" align="center" class="hilite">
     <b>Function List Window</b><br>
     Shows all the covered functions, with line, call and branch coverage
     statistics.  The list can be sorted on any of the columns by
@@ -44,18 +44,21 @@ Click on the thumbnail images to see larger images.
     </td>
   </tr>
   <tr>
-    <td align="center">THUMBNAIL(callslistwin,gif,96,51,`Call List Window')</td>
-    <td align="center" class="hilite">THUMBNAIL(callgraphwin,gif,96,61,`Call Butterfly Window')</td>
-    <td align="center">THUMBNAIL(sourcewin,gif,96,76,`Source Window')</td>
+    <td width="33%" align="center">THUMBNAIL(callslistwin,gif,96,51,`Call List Window')</td>
+    <td width="33%" align="center" class="hilite">THUMBNAIL(callgraphwin,gif,96,61,`Call Butterfly Window')</td>
+    <td width="33%" align="center">THUMBNAIL(sourcewin,gif,96,76,`Source Window')</td>
   </tr>
   <tr>
-    <td valign="top" align="center">
+    <td width="33%" valign="top" align="center">
     <b>Calls List Window</b><br>
     Shows, for a particular covered function, all the function calls
     made within that function and the number of times the call was
     executed.
+    <br>
+    <b>Note:</b>This window depends in part on data scanned from object files,
+    which will not work on all platforms.
     </td>
-    <td valign="top" align="center" class="hilite">
+    <td width="33%" valign="top" align="center" class="hilite">
     <b>Call Butterfly Window</b><br>
     Shows, for a particular function, all the functions that call it
     and how many times they called it, and all the functions that it
@@ -64,8 +67,11 @@ Click on the thumbnail images to see larger images.
     Handles covered functions and external library functions
     (e.g. <span class="function">printf</span>) called directly from
     covered functions.
+    <br>
+    <b>Note:</b>This window depends on data scanned from object files,
+    which will not work on all platforms.
     </td>
-    <td valign="top">
+    <td width="33%" valign="top">
     <center>
     <b>Source Window</b><br>
     Shows a particular source file, with line numbers and execution
@@ -80,19 +86,26 @@ Click on the thumbnail images to see larger images.
     </td>
   </tr>
   <tr>
-    <td align="center" class="hilite">THUMBNAIL(callgraph2win,gif,96,72,`Call Graph Window')</td>
-    <td align="center"></td>
-    <td align="center" class="hilite"></td>
+    <td width="33%" align="center" class="hilite">THUMBNAIL(callgraph2win,gif,96,72,`Call Graph Window')</td>
+    <td width="33%" align="center"></td>
+    <td width="33%" align="center" class="hilite"></td>
   </tr>
   <tr>
-    <td valign="top" align="center" class="hilite">
+    <td width="33%" valign="top" align="center" class="hilite">
     <b>Call Graph Window</b><br>
     Shows the graph of calls between functions graphically, with colour
     coding for each function and calls between functions.
+    <br>
+    <b>Note:</b>This window depends on data scanned from object files,
+    which will not work on all platforms.
+    <br>
+    <b>Note:</b> the graph layout code for this window is in an early stage of
+    development and will respond badly (looping or crashing) to some
+    data sets.
     </td>
-    <td valign="top" align="center">
+    <td width="33%" valign="top" align="center">
     </td>
-    <td valign="top" align="center" class="hilite">
+    <td width="33%" valign="top" align="center" class="hilite">
     </td>
   </tr>
 </table>
