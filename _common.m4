@@ -34,7 +34,7 @@ define(BEGINBODY,
 	  <td><img width="100" height="30" src="cornert.gif"></td>
 	  <td style="background-image:url(ribbingv.gif);">_NBSPX(10,30)</td>
 	  <td style="background-image:url(ribbingv.gif);">
-	    <span style="line-height: 1px;">forloop(`i',1,100,`&nbsp; ')</span>
+	    <span style="line-height: 1px;">forloop(`i',1,115,`&nbsp; ')</span>
 	  </td>
 	  <td><img width="152" height="30" src="ggcov_banner4t.gif" alt="ggcov"></td>
 	  <td style="background-image:url(ribbingv.gif);">_NBSPX(30,30)</td>
@@ -77,7 +77,7 @@ define(ENDBODY,
 <p class="small">
 Last updated: DATE.<br>
 &copy; 2001 Greg Banks. All Rights Reserved.<br>
-Ant theme clipart from <a href="http://www.arttoday.com/">ArtToday.com</a>
+Magnifying glass clipart from <a href="http://www.arttoday.com/">ArtToday.com</a>
 </p>
 </center>
 </body></html>
