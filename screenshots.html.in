@@ -88,7 +88,7 @@ Click on the thumbnail images to see larger images.
     <td valign="top" align="center" class="hilite">
     <b>Call Graph Window</b><br>
     Shows the graph of calls between functions graphically, with colour
-    coding for each function's and calls between functions.
+    coding for each function and calls between functions.
     </td>
     <td valign="top" align="center">
     </td>
