@@ -137,7 +137,8 @@ Thanks to the following people who have contributed to
 
 include(_thanks.m4)
 BEGINTHANKS
-THANKS(Havoc Pennington,GTK2 port)
+THANKS(`Alastair McKinstry',`Debian package')
+THANKS(`Havoc Pennington',`GTK2 port')
 THANKS(`(Ani)ruddha Mulay',useful ideas)
 THANKS(`Zach Frey',bug report)
 THANKS(`Alan Stein',bug report)
