@@ -50,6 +50,14 @@ files produced by gcc 2.96 are broken).
 </p>
 
 <p>
+<span style="color:red">
+<b>Note for SuSE users:</b> the gcc 3.2 compiler on SuSE 8.2 produces
+a completely different .bbg file format; <span class="program">ggcov</span>
+will fail to read it in various dramatically bad ways.  I'm working on a fix.
+</span>
+</p>
+
+<p>
 <span class="program">Ggcov</span> is written on RedHat Linux 7.3 on
 i386 and requires the following, which should be available on any
 modern Linux distro:
