@@ -29,7 +29,7 @@ define(SPACER,
     	SPACER(5)	
 	NAVLINK(index.html,features,Features)
     	SPACER(5)	
-	NAVLINK(download.html,download,Download)
+	NAVLINK(http://sourceforge.net/project/showfiles.php?group_id=107843,download,Download)
     	SPACER(5)	
 	NAVLINK(screenshots.html,screenshots,Screenshots)
     	SPACER(5)	
@@ -40,6 +40,15 @@ define(SPACER,
 	  <td height=15 style="background-image:url(ribbingh.gif);">_NBSPX(1,1)</td>
 	</tr>
 	
+    	SPACER(5)	
+
+	<tr>
+	  <td class="tocsmall">
+	    Hosted by:<br>
+    	    <a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=107843&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+	  </td>
+	</tr>
+
     	SPACER(5)	
 
 	<tr>

@@ -83,26 +83,9 @@ Magnifying glass clipart from <a href="http://www.arttoday.com/">ArtToday.com</a
 </body></html>
 )dnl
 define(EMAILME,
-$1 <a href="mailto:gnb@alphalink.com.au?Subject=ggcov">gnb@alphalink.com.au</a>
+$1 <a href="mailto:gnb@users.sourceforge.com?Subject=ggcov">gnb@users.sourceforge.com</a>
 )dnl
 dnl Usage: THUMBNAIL(some/dir/fred,gif,width,height,[alternate text])
 define(THUMBNAIL,
 <a href="$1.$2"><img src="$1_t.$2" width="$3" height="$4" alt="$5" border=0></a>
-)dnl
-dnl Usage: BEGINDOWNLOAD ( DOWNLOAD(description,filename) )* ENDDOWNLOAD
-define(BEGINDOWNLOAD,
-<table>
-)dnl
-define(ENDDOWNLOAD,
-</table>
-)dnl
-define(DOWNLOAD,
-`  <tr>
-    <td valign=top><b>$1</b></td>
-    <td>
-      <a href="$2">$2</a><br>
-      esyscmd(ls -l RELEASEDIR/$2 | awk {print`\$'5}) bytes<br>
-      MD5 esyscmd(md5sum RELEASEDIR/$2 | awk {print`\$'1})
-    </td>
-  </tr>'
 )dnl

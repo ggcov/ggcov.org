@@ -1,21 +1,9 @@
 
-# whether release is from maintenance or development branch
-ifeq ($(RELEASE),maint)
-  # maintenance release
-else
-  ifeq ($(RELEASE),dev)
-    # development release
-  else
-    # none of the above
-    _discard:=$(error Please set the RELEASE environment variable to either `maint' or `dev')
-  endif
-endif
-
-# relative path to release directory containing tarballs, changelog etc
-RELEASEDIR=	../ggcov-$(RELEASE)
+# relative path to release directory containing ChangeLog
+RELEASEDIR=	../ggcov
 
 # Pages which provide backwards compatibility for old URLs
-PAGES=		index.html download.html screenshots.html shotdata.html \
+PAGES=		index.html screenshots.html shotdata.html \
 		changelog.html
 IMAGES=		1x1t.gif \
 		ggcov_banner4t.gif ggcov_banner4b.gif \
@@ -36,17 +24,8 @@ IMAGES=		1x1t.gif \
 		sourcewin.gif sourcewin_t.gif \
 		summarywin.gif summarywin_t.gif \
 		callgraph2win.gif callgraph2win_t.gif
-BINARIES:=	$(addprefix $(RELEASEDIR)/,$(shell m4 -I$(RELEASEDIR) list-binaries.m4))
-SCRIPTS=	backbone.php
-DOTFILES=	.htaccess downloads/.htaccess
 
-DELIVERABLES=	$(PAGES) $(IMAGES) $(SCRIPTS) $(DOTFILES) \
-		$(addprefix downloads/,$(notdir $(BINARIES)))
-
-# 0=disable all counters
-# 1=old broken CGI counter
-# 2=experimental Backbone PHP counter
-ENABLE_COUNT=	2
+DELIVERABLES=	$(PAGES) $(IMAGES)
 
 ############################################################
 
@@ -54,69 +33,53 @@ all:: $(PAGES) $(SCRIPTS)
 
 changelog.html: _changelist.html
 $(PAGES): _styles.html _common.m4 _copyright.txt toc.html.in
-download.html: $(RELEASEDIR)/version.m4 downloadables.m4
 index.html: _thanks.m4
 
 _changelist.html: $(RELEASEDIR)/ChangeLog changes2html
 	./changes2html < $< > $@
 
-HTMLINCDIRS=	-I$(RELEASEDIR)
+HTMLINCDIRS=	
 HTMLDEFINES=	-DHTMLFILE=$@ \
-		-DENABLE_COUNT=$(ENABLE_COUNT) \
-		-DRELEASEDIR=$(RELEASEDIR)
+		-DENABLE_COUNT=$(ENABLE_COUNT)
 	
 %.html: %.html.in
 	m4 $(M4FLAGS) $(HTMLINCDIRS) $(HTMLDEFINES) $< > $@
 
-ALPHAHOME=	/home/g/gnb
-LOGAPO= 	$(ALPHAHOME)/inst/etc/log.apo
-backbone.php: backbone.php.in
-	m4 $(M4FLAGS) -I$(RELEASEDIR) -DLOGAPO=$(LOGAPO) $< > $@
-
 clean::
 	$(RM) $(patsubst %.html.in,%.html,$(wildcard $(patsubst %.html,%.html.in,$(PAGES))))
 	$(RM) _changelist.html
-	$(RM) backbone.php
 			
 ############################################################
 
+#GGTEST=	/test/
+
 INSTALL=	install -c
-htmldir=	$(HOME)/public_html/alphalink/ggcov
-uploadhost=	shell.alphalink.com.au
-uploaddir=	$(uploadhost):public_html
+htmldir=	html-install/
+uploadhost=	shell.sourceforge.net
+uploaddir=	$(uploadhost):/home/groups/g/gg/ggcov/htdocs$(GGTEST)
 
 install:: installdirs $(addprefix $(htmldir)/,$(DELIVERABLES))
 
 installdirs:
 	@OLD=OLD`date +%Y%m%d` ;\
-	if [ -d $(htmldir).$$OLD ]; then \
-	    echo "/bin/rm -rf $(htmldir)" ;\
-	    /bin/rm -rf $(htmldir) ;\
-	else \
-	    echo "/bin/mv $(htmldir) $(htmldir).$$OLD" ;\
-	    /bin/mv $(htmldir) $(htmldir).$$OLD ;\
+	if [ -d $(htmldir) ] ; then \
+	    if [ -d $(htmldir).$$OLD ]; then \
+		echo "/bin/rm -rf $(htmldir)" ;\
+		/bin/rm -rf $(htmldir) ;\
+	    else \
+		echo "/bin/mv $(htmldir) $(htmldir).$$OLD" ;\
+		/bin/mv $(htmldir) $(htmldir).$$OLD ;\
+	    fi ;\
 	fi
 	$(INSTALL) -m 755 -d $(htmldir)
-	$(INSTALL) -m 755 -d $(htmldir)/downloads
 	
 $(htmldir)/%: %
-	$(INSTALL) -m 644 $< $@
-
-$(htmldir)/.%: %
-	$(INSTALL) -m 644 $< $@
-
-$(htmldir)/downloads/%: $(RELEASEDIR)/%
-	$(INSTALL) -m 644 $< $@
-	ln -sf backbone.php $(htmldir)/$*
-
-$(htmldir)/downloads/.%: downloads/%
 	$(INSTALL) -m 644 $< $@
 
 ############################################################
 
 SSH=			ssh
 RSYNC_VERBOSE=		-v
-#RSYNC_PATH_FLAGS=	--rsync-path=/home/g/gnb/inst/bin/rsync
 
 upload: upload.$(shell uname -n | cut -d. -f1)
 
