@@ -1,13 +1,12 @@
 define(BEGINTHANKS,
-<HTML><HEAD>
-<TABLE>
+<table>
 )dnl
 define(ENDTHANKS,
-</TABLE>
+</table>
 )dnl
 define(THANKS,
-`  <TR>
-    <TD><I>$1</I></TD>
-    <TD>$2</TD>
-  </TR>'
+`  <tr>
+    <td><i>$1</i></td>
+    <td>$2</td>
+  </tr>'
 )dnl
