@@ -23,7 +23,8 @@ IMAGES=		1x1t.gif \
 		funclistwin.gif funclistwin_t.gif \
 		sourcewin.gif sourcewin_t.gif \
 		summarywin.gif summarywin_t.gif \
-		callgraph2win.gif callgraph2win_t.gif
+		callgraph2win.gif callgraph2win_t.gif \
+		favicon.ico
 
 DELIVERABLES=	$(PAGES) $(IMAGES)
 
@@ -54,7 +55,7 @@ clean::
 #GGTEST=	/test/
 
 INSTALL=	install -c
-htmldir=	html-install/
+htmldir=	html-install
 uploadhost=	shell.sourceforge.net
 uploaddir=	$(uploadhost):/home/groups/g/gg/ggcov/htdocs$(GGTEST)
 
@@ -85,11 +86,11 @@ upload: upload.$(shell uname -n | cut -d. -f1)
 
 # Upload via SSH-in-SSH tunnel.
 upload.ocelot:
-	$(MAKE) uploadhost=localhost SSH="ssh -p 1022" upload.generic
+	$(MAKE) SSH="ssh -p 322" upload.generic
 
 # Upload via direct connection
 upload.marduk: upload.generic
 
 upload.generic:
-	rsync $(RSYNC_VERBOSE) -r --delete --links -e "$(SSH)" $(RSYNC_PATH_FLAGS) $(htmldir) $(uploaddir)
+	rsync $(RSYNC_VERBOSE) -r --delete --links -e "$(SSH)" $(RSYNC_PATH_FLAGS) $(htmldir)/ $(uploaddir)
 
