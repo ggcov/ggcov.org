@@ -2,18 +2,24 @@
 # Pages which provide backwards compatibility for old URLs
 PAGES=		index.html download.html screenshots.html shotdata.html \
 		changelog.html
-IMAGES=		ggcov_banner.gif ggcov_banner2.gif \
-		fm.mini.jpg gimp.gif \
-		valid-html40.gif \
-		borderl.gif borderr.gif bordert.gif borderb.gif \
-		bordertl.gif bordertr.gif borderbl.gif borderbr.gif \
-		borderm.gif 1x1t.gif \
-		summarywin.gif summarywin_t.gif \
+IMAGES=		1x1t.gif \
+		ggcov_banner4t.gif ggcov_banner4b.gif \
+		fm.mini.jpg gimp.gif valid-html40.gif \
+		bchangelogd.gif bchangelog.gif \
+		bdownloadd.gif bdownload.gif \
+		bfeaturesd.gif bfeatures.gif \
+		bscreenshotsd.gif bscreenshots.gif \
+		bordert.gif borderb.gif borderl.gif borderr.gif \
+		borderbl.gif borderbr.gif bordertl.gif bordertr.gif \
+		borderm.gif borderitl.gif \
+		cornerb.gif cornerm.gif cornert.gif \
+		ribbingh.gif ribbingv.gif \
+		callgraphwin.gif callgraphwin_t.gif \
+		callslistwin.gif callslistwin_t.gif \
 		filelistwin.gif filelistwin_t.gif \
 		funclistwin.gif funclistwin_t.gif \
-		callslistwin.gif callslistwin_t.gif \
-		callgraphwin.gif callgraphwin_t.gif \
-		sourcewin.gif sourcewin_t.gif
+		sourcewin.gif sourcewin_t.gif \
+		summarywin.gif summarywin_t.gif
 BINARIES:=	$(shell m4 -I.. list-binaries.m4)	
 
 DELIVERABLES=	$(PAGES) $(IMAGES) $(BINARIES)
