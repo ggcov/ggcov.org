@@ -44,7 +44,9 @@ only.
 <p>
 <span class="program">Ggcov</span> is in a very early stage of development, but is already
 somewhat useful.  It is known to work on ix86/Linux; other platforms
-should work except that the call graph feature will not work.
+should work except that the call graph feature will not work.  The call
+graph feature does not work with gcc 2.96 (neither does gcov's, the data
+files produced by gcc 2.96 are broken).
 </p>
 
 <p>
