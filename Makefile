@@ -60,7 +60,15 @@ uploaddir=	$(uploadhost):public_html
 install:: installdirs $(addprefix $(htmldir)/,$(notdir $(DELIVERABLES)))
 
 installdirs:
-	test -d $(htmldir) || $(INSTALL) -d $(htmldir)
+	@OLD=OLD`date +%Y%m%d` ;\
+	if [ -d $(htmldir).$$OLD ]; then \
+	    echo "/bin/rm -rf $(htmldir)" ;\
+	    /bin/rm -rf $(htmldir) ;\
+	else \
+	    echo "/bin/mv $(htmldir) $(htmldir).$$OLD" ;\
+	    /bin/mv $(htmldir) $(htmldir).$$OLD ;\
+	fi
+	$(INSTALL) -d $(htmldir)
 	
 $(htmldir)/%: %
 	$(INSTALL) -m 644 $< $@
