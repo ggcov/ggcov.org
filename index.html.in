@@ -77,7 +77,7 @@ should be available on any modern Linux distro or commercial Unix:
 
   <tr valign="top" class="hilite">
     <td>Red Hat Linux 7.3 (Valhalla), on i386</td>
-    <td>0.1.5</td>
+    <td>0.1.6</td>
     <td>
     Mostly works, but call coverage data is wrong due to broken data
     files written by gcc 2.96 (gcov also mispreports calls).
@@ -95,15 +95,14 @@ should be available on any modern Linux distro or commercial Unix:
 
   <tr valign="top" class="hilite">
     <td>SuSE Linux 8.2, on i386</td>
-    <td>0.1.5</td>
+    <td>0.1.6</td>
     <td>
     SuSE provide a gcc which claims to be version 3.2 but contains
     early 3.3 features, in particular it writes completely different
     new .bbg and .da file formats.
     <span style="color:red"><b>DO NOT USE</b></span>
-    <span class="program">ggcov</span> on SuSE 8.2, the new file `format'
-    causes it to eat all your RAM and crash on startup.  I am working
-    on new code to deal with this, expect it in 0.1.6.
+    <span class="program">version 0.1.5</span> on SuSE 8.2, the new file `format'
+    causes it to eat all your RAM and crash on startup.  Try version 0.1.6.
     </td>
   </tr>
 
