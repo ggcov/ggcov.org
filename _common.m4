@@ -96,12 +96,11 @@ define(BEGINDOWNLOAD,
 define(ENDDOWNLOAD,
 </table>
 )dnl
-define(_BACKBONE,ifelse(ENABLE_COUNT,2,backbone.php?what=$1,$1))
 define(DOWNLOAD,
 `  <tr>
     <td valign=top><b>$1</b></td>
     <td>
-      <a href="_BACKBONE($2)">$2</a><br>
+      <a href="$2">$2</a><br>
       esyscmd(ls -l RELEASEDIR/$2 | awk {print`\$'5}) bytes<br>
       MD5 esyscmd(md5sum RELEASEDIR/$2 | awk {print`\$'1})
     </td>

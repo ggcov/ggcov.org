@@ -38,8 +38,10 @@ IMAGES=		1x1t.gif \
 		callgraph2win.gif callgraph2win_t.gif
 BINARIES:=	$(addprefix $(RELEASEDIR)/,$(shell m4 -I$(RELEASEDIR) list-binaries.m4))
 SCRIPTS=	backbone.php
+DOTFILES=	.htaccess downloads/.htaccess
 
-DELIVERABLES=	$(PAGES) $(IMAGES) $(BINARIES) $(SCRIPTS)
+DELIVERABLES=	$(PAGES) $(IMAGES) $(SCRIPTS) $(DOTFILES) \
+		$(addprefix downloads/,$(notdir $(BINARIES)))
 
 # 0=disable all counters
 # 1=old broken CGI counter
@@ -83,7 +85,7 @@ htmldir=	$(HOME)/public_html/alphalink/ggcov
 uploadhost=	shell.alphalink.com.au
 uploaddir=	$(uploadhost):public_html
 
-install:: installdirs $(addprefix $(htmldir)/,$(notdir $(DELIVERABLES)))
+install:: installdirs $(addprefix $(htmldir)/,$(DELIVERABLES))
 
 installdirs:
 	@OLD=OLD`date +%Y%m%d` ;\
@@ -94,12 +96,20 @@ installdirs:
 	    echo "/bin/mv $(htmldir) $(htmldir).$$OLD" ;\
 	    /bin/mv $(htmldir) $(htmldir).$$OLD ;\
 	fi
-	$(INSTALL) -d $(htmldir)
+	$(INSTALL) -m 755 -d $(htmldir)
+	$(INSTALL) -m 755 -d $(htmldir)/downloads
 	
 $(htmldir)/%: %
 	$(INSTALL) -m 644 $< $@
 
-$(htmldir)/%: $(RELEASEDIR)/%
+$(htmldir)/.%: %
+	$(INSTALL) -m 644 $< $@
+
+$(htmldir)/downloads/%: $(RELEASEDIR)/%
+	$(INSTALL) -m 644 $< $@
+	ln -sf backbone.php $(htmldir)/$*
+
+$(htmldir)/downloads/.%: downloads/%
 	$(INSTALL) -m 644 $< $@
 
 ############################################################
