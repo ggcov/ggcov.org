@@ -8,10 +8,11 @@ BEGINBODY
 <p>
 <span class="program">Ggcov</span> is a GTK+ GUI for exploring test coverage
 data produced by C programs compiled with
-<a href="">gcc</a>
-<a href="">-fprofile-arcs</a>
-<a href="">-ftest-coverage</a>.
-So it's basically a GUI replacement for the <span class="program">gcov</span>
+<a href="http://www.gnu.org/software/gcc/gcc.html">gcc</a>
+<a href="http://gcc.gnu.org/onlinedocs/gcc-3.0/gcc_3.html#IDX233">-fprofile-arcs</a>
+<a href="http://gcc.gnu.org/onlinedocs/gcc-3.0/gcc_3.html#IDX234">-ftest-coverage</a>.
+So it's basically a GUI replacement for the
+<a href="http://gcc.gnu.org/onlinedocs/gcc-3.0/gcc_8.html#SEC132">gcov</a>
 program that comes with <span class="program">gcc</span>.
 </p>
 
