@@ -1,4 +1,19 @@
 
+# whether release is from maintenance or development branch
+ifeq ($(RELEASE),maint)
+  # maintenance release
+else
+  ifeq ($(RELEASE),dev)
+    # development release
+  else
+    # none of the above
+    _discard:=$(error Please set the RELEASE environment variable to either `maint' or `dev')
+  endif
+endif
+
+# relative path to release directory containing tarballs, changelog etc
+RELEASEDIR=	../ggcov-$(RELEASE)
+
 # Pages which provide backwards compatibility for old URLs
 PAGES=		index.html download.html screenshots.html shotdata.html \
 		changelog.html
@@ -21,7 +36,7 @@ IMAGES=		1x1t.gif \
 		sourcewin.gif sourcewin_t.gif \
 		summarywin.gif summarywin_t.gif \
 		callgraph2win.gif callgraph2win_t.gif
-BINARIES:=	$(shell m4 -I.. list-binaries.m4)	
+BINARIES:=	$(addprefix $(RELEASEDIR)/,$(shell m4 -I$(RELEASEDIR) list-binaries.m4))
 SCRIPTS=	backbone.php
 
 DELIVERABLES=	$(PAGES) $(IMAGES) $(BINARIES) $(SCRIPTS)
@@ -37,29 +52,29 @@ all:: $(PAGES) $(SCRIPTS)
 
 changelog.html: _changelist.html
 $(PAGES): _styles.html _common.m4 _copyright.txt toc.html.in
-download.html: ../version.m4 downloadables.m4
+download.html: $(RELEASEDIR)/version.m4 downloadables.m4
 index.html: _thanks.m4
 
-_changelist.html: ../ChangeLog changes2html
+_changelist.html: $(RELEASEDIR)/ChangeLog changes2html
 	./changes2html < $< > $@
 
+HTMLINCDIRS=	-I$(RELEASEDIR)
+HTMLDEFINES=	-DHTMLFILE=$@ \
+		-DENABLE_COUNT=$(ENABLE_COUNT) \
+		-DRELEASEDIR=$(RELEASEDIR)
+	
 %.html: %.html.in
-	m4 $(M4FLAGS) -I.. -DHTMLFILE=$@ -DENABLE_COUNT=$(ENABLE_COUNT) $< > $@
+	m4 $(M4FLAGS) $(HTMLINCDIRS) $(HTMLDEFINES) $< > $@
 
 ALPHAHOME=	/home/g/gnb
 LOGAPO= 	$(ALPHAHOME)/inst/etc/log.apo
 backbone.php: backbone.php.in
-	m4 $(M4FLAGS) -I.. -DLOGAPO=$(LOGAPO) $< > $@
+	m4 $(M4FLAGS) -I$(RELEASEDIR) -DLOGAPO=$(LOGAPO) $< > $@
 
 clean::
 	$(RM) $(patsubst %.html.in,%.html,$(wildcard $(patsubst %.html,%.html.in,$(PAGES))))
 	$(RM) _changelist.html
 	$(RM) backbone.php
-	
-# Look for deliverables in top_srcdir and one above top_srcdir
-vpath %.tar.gz ../ ../../
-vpath %.rpm ../ ../../
-
 			
 ############################################################
 
@@ -84,16 +99,24 @@ installdirs:
 $(htmldir)/%: %
 	$(INSTALL) -m 644 $< $@
 
+$(htmldir)/%: $(RELEASEDIR)/%
+	$(INSTALL) -m 644 $< $@
+
 ############################################################
 
 SSH=			ssh
 RSYNC_VERBOSE=		-v
 #RSYNC_PATH_FLAGS=	--rsync-path=/home/g/gnb/inst/bin/rsync
 
-upload:
-	rsync $(RSYNC_VERBOSE) -r --delete -e "$(SSH)" $(RSYNC_PATH_FLAGS) $(htmldir) $(uploaddir)
+upload: upload.$(shell uname -n | cut -d. -f1)
 
 # Upload via SSH-in-SSH tunnel.
 upload.ocelot:
-	$(MAKE) uploadhost=localhost SSH="ssh -p 1022" upload
+	$(MAKE) uploadhost=localhost SSH="ssh -p 1022" upload.generic
+
+# Upload via direct connection
+upload.marduk: upload.generic
+
+upload.generic:
+	rsync $(RSYNC_VERBOSE) -r --delete -e "$(SSH)" $(RSYNC_PATH_FLAGS) $(htmldir) $(uploaddir)
 
