@@ -45,7 +45,7 @@ define(SPACER,
 	<tr>
 	  <td class="tocsmall">
 	    Watch for new<br>releases on:<br>
-	    <a href="http://www.freshmeat.net/"><img width=90 height=36 src="fm.mini.jpg" alt="freshmeat" border=0></a>
+	    <a href="http://www.freshmeat.net/"><img width=77 height=51 src="fm-logo.gif" alt="freshmeat" border=0></a>
 	  </td>
 	</tr>
 

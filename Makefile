@@ -4,7 +4,7 @@ PAGES=		index.html download.html screenshots.html shotdata.html \
 		changelog.html
 IMAGES=		1x1t.gif \
 		ggcov_banner4t.gif ggcov_banner4b.gif \
-		fm.mini.jpg gimp.gif valid-html40.gif \
+		fm-logo.gif gimp.gif valid-html40.gif \
 		bchangelogd.gif bchangelog.gif \
 		bdownloadd.gif bdownload.gif \
 		bfeaturesd.gif bfeatures.gif \
