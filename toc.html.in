@@ -9,7 +9,7 @@ define(NAVLINK,
 
 define(SPACER,
 <tr>
-  <td height="$1">_NBSPX(1,1)</td>
+  <td class="toc" height="$1">_NBSPX(1,1)</td>
 </tr>
 )
 

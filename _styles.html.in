@@ -51,13 +51,13 @@ all.hilite {
   color: FORECOLOR;
   background-color: HILITECOLOR;
 }
-all.toc {
+TD.toc {
   font: bold FONTSIZE2 FONTFAMILY;
   color: BACKCOLOR;
   background-color: TOCCOLOR;
   text-align: center;
 }
-all.tocsmall {
+TD.tocsmall {
   font: bold FONTSIZE0 FONTFAMILY;
   color: BACKCOLOR;
   background-color: TOCCOLOR;
