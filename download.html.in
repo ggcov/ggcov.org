@@ -18,11 +18,6 @@ versions on this website; EMAILME(contact me)
 if you really need an older version.
 </p>
 
-<p>
-<b>NOTICE</b>: the 0.1.2 tarball uploaded here on 29 May was short.
-The problem has been fixed, please try downloading again.
-</p>
-
 BEGINDOWNLOAD
 DOWNLOAD(source tarball,ggcov-VERSION.tar.gz)
 DOWNLOAD(i386 RPM,ggcov-VERSION-1.i386.rpm)
