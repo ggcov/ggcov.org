@@ -22,14 +22,18 @@ IMAGES=		1x1t.gif \
 		summarywin.gif summarywin_t.gif \
 		callgraph2win.gif callgraph2win_t.gif
 BINARIES:=	$(shell m4 -I.. list-binaries.m4)	
+SCRIPTS=	backbone.php
 
-DELIVERABLES=	$(PAGES) $(IMAGES) $(BINARIES)
+DELIVERABLES=	$(PAGES) $(IMAGES) $(BINARIES) $(SCRIPTS)
 
-ENABLE_COUNT=	0
+# 0=disable all counters
+# 1=old broken CGI counter
+# 2=experimental Backbone PHP counter
+ENABLE_COUNT=	2
 
 ############################################################
 
-all:: $(PAGES)
+all:: $(PAGES) $(SCRIPTS)
 
 changelog.html: _changelist.html
 $(PAGES): _styles.html _common.m4 _copyright.txt toc.html.in
@@ -41,10 +45,16 @@ _changelist.html: ../ChangeLog changes2html
 
 %.html: %.html.in
 	m4 $(M4FLAGS) -I.. -DHTMLFILE=$@ -DENABLE_COUNT=$(ENABLE_COUNT) $< > $@
-	
+
+ALPHAHOME=	/home/g/gnb
+LOGAPO= 	$(ALPHAHOME)/inst/etc/log.apo
+backbone.php: backbone.php.in
+	m4 $(M4FLAGS) -I.. -DLOGAPO=$(LOGAPO) $< > $@
+
 clean::
 	$(RM) $(patsubst %.html.in,%.html,$(wildcard $(patsubst %.html,%.html.in,$(PAGES))))
 	$(RM) _changelist.html
+	$(RM) backbone.php
 	
 # Look for deliverables in top_srcdir and one above top_srcdir
 vpath %.tar.gz ../ ../../
@@ -85,5 +95,5 @@ upload:
 
 # Upload via SSH-in-SSH tunnel.
 upload.ocelot:
-	$(MAKE) uploadhost=localhost upload
+	$(MAKE) uploadhost=localhost SSH="ssh -p 1022" upload
 
