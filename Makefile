@@ -25,7 +25,7 @@ BINARIES:=	$(shell m4 -I.. list-binaries.m4)
 
 DELIVERABLES=	$(PAGES) $(IMAGES) $(BINARIES)
 
-ENABLE_COUNT=	1
+ENABLE_COUNT=	0
 
 ############################################################
 
