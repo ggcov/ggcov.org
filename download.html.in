@@ -20,7 +20,8 @@ if you really need an older version.
 
 BEGINDOWNLOAD
 DOWNLOAD(source tarball,ggcov-VERSION.tar.gz)
-DOWNLOAD(i386 RPM<br>for RedHat 7.3,ggcov-VERSION-1.i386.rpm)
+DOWNLOAD(i386 RPM<br>for RedHat 7.3,ggcov-rh7.3-VERSION-1.i386.rpm)
+DOWNLOAD(i386 RPM<br>for RedHat 9,ggcov-rh9-VERSION-1.i386.rpm)
 ENDDOWNLOAD
 
 ifelse(ENABLE_COUNT,1,`
