@@ -7,18 +7,16 @@ BEGINBODY
 
 <p>
 This page has some screenshots of <span class="program">ggcov</span>
-in action.  All the screenshots show the same simple set of coverage data
-based on <a href="shotdata.html">this program</a>
-</p>
-
-<p>
+in action.
+<!-- All the screenshots show the same simple set of coverage data
+based on <a href="shotdata.html">this program</a> -->
 Click on the thumbnail images to see larger images.
 </p>
 
 <table cellpadding=10 cellspacing=0 border=0>
   <tr>
     <td align="center" class="hilite">THUMBNAIL(summarywin,gif,96,68,`Summary Window')</td>
-    <td align="center">THUMBNAIL(filelistwin,gif,96,40,`File List Window')</td>
+    <td align="center">THUMBNAIL(filelistwin,gif,96,93,`File List Window')</td>
     <td align="center" class="hilite">THUMBNAIL(funclistwin,gif,96,50,`Function List Window')</td>
   </tr>
   <tr>
@@ -32,6 +30,7 @@ Click on the thumbnail images to see larger images.
     <td valign="top" align="center">
     <b>File List Window</b><br>
     Shows all the source files, with line, call and branch coverage
+    statistics.  Directories are shown as a tree, with summarised
     statistics.  The list can be sorted on any of the columns by
     clicking on the column title.  Double-clicking on a row pops
     up a new Source Window displaying the corresponding file.
@@ -46,8 +45,8 @@ Click on the thumbnail images to see larger images.
   </tr>
   <tr>
     <td align="center">THUMBNAIL(callslistwin,gif,96,51,`Call List Window')</td>
-    <td align="center" class="hilite">THUMBNAIL(callgraphwin,gif,96,61,`Call Graph Window')</td>
-    <td align="center">THUMBNAIL(sourcewin,gif,96,68,`Source Window')</td>
+    <td align="center" class="hilite">THUMBNAIL(callgraphwin,gif,96,61,`Call Butterfly Window')</td>
+    <td align="center">THUMBNAIL(sourcewin,gif,96,76,`Source Window')</td>
   </tr>
   <tr>
     <td valign="top" align="center">
@@ -57,7 +56,7 @@ Click on the thumbnail images to see larger images.
     executed.
     </td>
     <td valign="top" align="center" class="hilite">
-    <b>Call Graph Window</b><br>
+    <b>Call Butterfly Window</b><br>
     Shows, for a particular function, all the functions that call it
     and how many times they called it, and all the functions that it
     calls and how many times it called them.  Double-clicking on a
@@ -66,15 +65,34 @@ Click on the thumbnail images to see larger images.
     (e.g. <span class="function">printf</span>) called directly from
     covered functions.
     </td>
-    <td valign="top" align="center">
+    <td valign="top">
+    <center>
     <b>Source Window</b><br>
     Shows a particular source file, with line numbers and execution
     counts for each line.  Lines are colour coded:
+    </center>
     <ul>
     <li><span style="color:green">green</span> - executed at least once
+    <li><span style="color:yellow">yellow</span> - part of the line executed
     <li><span style="color:red">red</span> - never executed
     <li><span style="color:black">black</span> - no executable code
     </ul>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" class="hilite">THUMBNAIL(callgraph2win,gif,96,72,`Call Graph Window')</td>
+    <td align="center"></td>
+    <td align="center" class="hilite"></td>
+  </tr>
+  <tr>
+    <td valign="top" align="center" class="hilite">
+    <b>Call Graph Window</b><br>
+    Shows the graph of calls between functions graphically, with colour
+    coding for each function's and calls between functions.
+    </td>
+    <td valign="top" align="center">
+    </td>
+    <td valign="top" align="center" class="hilite">
     </td>
   </tr>
 </table>

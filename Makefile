@@ -19,7 +19,8 @@ IMAGES=		1x1t.gif \
 		filelistwin.gif filelistwin_t.gif \
 		funclistwin.gif funclistwin_t.gif \
 		sourcewin.gif sourcewin_t.gif \
-		summarywin.gif summarywin_t.gif
+		summarywin.gif summarywin_t.gif \
+		callgraph2win.gif callgraph2win_t.gif
 BINARIES:=	$(shell m4 -I.. list-binaries.m4)	
 
 DELIVERABLES=	$(PAGES) $(IMAGES) $(BINARIES)
@@ -53,7 +54,8 @@ vpath %.rpm ../ ../../
 
 INSTALL=	install -c
 htmldir=	$(HOME)/public_html/alphalink/ggcov
-uploaddir=	shell.alphalink.com.au:public_html
+uploadhost=	shell.alphalink.com.au
+uploaddir=	$(uploadhost):public_html
 
 install:: installdirs $(addprefix $(htmldir)/,$(notdir $(DELIVERABLES)))
 
@@ -65,8 +67,14 @@ $(htmldir)/%: %
 
 ############################################################
 
+SSH=			ssh
 RSYNC_VERBOSE=		-v
 #RSYNC_PATH_FLAGS=	--rsync-path=/home/g/gnb/inst/bin/rsync
 
 upload:
-	rsync $(RSYNC_VERBOSE) -r --delete -e ssh $(RSYNC_PATH_FLAGS) $(htmldir) $(uploaddir)
+	rsync $(RSYNC_VERBOSE) -r --delete -e "$(SSH)" $(RSYNC_PATH_FLAGS) $(htmldir) $(uploaddir)
+
+# Upload via SSH-in-SSH tunnel.
+upload.ocelot:
+	$(MAKE) uploadhost=localhost upload
+
