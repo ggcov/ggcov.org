@@ -47,7 +47,11 @@ PRE.source {
   padding: FONTSIZE0;
   white-space: pre;
 }
-td.hilite {
+TD.hilite {
+  color: FORECOLOR;
+  background-color: HILITECOLOR;
+}
+TR.hilite {
   color: FORECOLOR;
   background-color: HILITECOLOR;
 }
