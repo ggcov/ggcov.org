@@ -48,7 +48,7 @@ should work except that the call graph feature will not work.
 </p>
 
 <p>
-<span class="program">Ggcov</span> is written on Mandrake Linux 7.1 on
+<span class="program">Ggcov</span> is written on RedHat Linux 7.3 on
 i386 and requires the following, which should be available on any
 modern Linux distro:
 </p>
