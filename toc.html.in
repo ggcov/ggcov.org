@@ -2,7 +2,7 @@
 define(NAVLINK,
 <tr>
   <td class="toc">
-    `ifelse($1,HTMLFILE,<img width="100" height="25" src="b`'$2`'d.gif">,<a href="$1"><img width="100" height="25" src="b$2.gif" border="0"></a>)'<br>
+    `ifelse($1,HTMLFILE,<img width="100" height="25" src="b`'$2`'d.gif" alt="$3">,<a href="$1"><img width="100" height="25" src="b$2.gif" border="0" alt="$3"></a>)'<br>
   </td>
 </tr>
 )
@@ -18,7 +18,7 @@ define(SPACER,
   <tr>
     <td style="background-image:url(borderl.gif);">_NBSPX(10,10)</td>
     <td width=100 class="toc" >
-      <table border=0 width=100 border=0 cellspacing=0 cellpadding=0>
+      <table border=0 width=100 cellspacing=0 cellpadding=0>
 	<tr>
 	  <td height=60 style="background-image:url(cornerb.gif);">_NBSPX(1,1)</td>
 	</tr>
@@ -27,13 +27,13 @@ define(SPACER,
 	</tr>
 
     	SPACER(5)	
-	NAVLINK(index.html,features)
+	NAVLINK(index.html,features,Features)
     	SPACER(5)	
-	NAVLINK(download.html,download)
+	NAVLINK(download.html,download,Download)
     	SPACER(5)	
-	NAVLINK(screenshots.html,screenshots)
+	NAVLINK(screenshots.html,screenshots,Screenshots)
     	SPACER(5)	
-	NAVLINK(changelog.html,changelog)
+	NAVLINK(changelog.html,changelog,Change Log)
     	SPACER(5)	
 	
 	<tr>
@@ -76,9 +76,9 @@ define(SPACER,
     <td style="background-image:url(borderr.gif);">_NBSPX(10,10)</td>
   </tr>
   <tr>
-    <td><img src="borderbl.gif" width=10 height=10></td>
-    <td><img src="borderb.gif" width=100 height=10></td>
-    <td><img src="borderbr.gif" width=10 height=10></td>
+    <td><img src="borderbl.gif" width=10 height=10 alt=""></td>
+    <td><img src="borderb.gif" width=100 height=10 alt=""></td>
+    <td><img src="borderbr.gif" width=10 height=10 alt=""></td>
   </tr>
 </table>
 

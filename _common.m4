@@ -12,7 +12,7 @@ include(_copyright.html)
 define(ENDHEAD,
 </head>
 )dnl
-define(_NBSPX,<img width="$1" height="$2" src="1x1t.gif">)
+define(_NBSPX,<img width="$1" height="$2" src="1x1t.gif" alt="">)
 define(BEGINBODY,
 <body>
 <table border="0" cellspacing="0" cellpadding="0">
@@ -21,33 +21,33 @@ define(BEGINBODY,
       <!-- BANNER -->
       <table width="100%" border="0" cellspacing="0" cellpadding="0" class="toc">
 	<tr>
-	  <td><img width="10" height="10" src="bordertl.gif"></td>
-	  <td><img width="100" height="10" src="bordert.gif"></td>
-	  <td><img width="10" height="10" src="bordert.gif"></td>
+	  <td><img width="10" height="10" src="bordertl.gif" alt=""></td>
+	  <td><img width="100" height="10" src="bordert.gif" alt=""></td>
+	  <td><img width="10" height="10" src="bordert.gif" alt=""></td>
 	  <td style="background-image:url(bordert.gif);">_NBSPX(1,1)</td>
-	  <td><img width="152" height="10" src="bordert.gif"></td>
-	  <td><img width="30" height="10" src="bordert.gif"></td>
-	  <td><img width="10" height="10" src="bordertr.gif"></td>
+	  <td><img width="152" height="10" src="bordert.gif" alt=""></td>
+	  <td><img width="30" height="10" src="bordert.gif" alt=""></td>
+	  <td><img width="10" height="10" src="bordertr.gif" alt=""></td>
 	</tr>
 	<tr>
-	  <td><img width="10" height="30" src="borderl.gif"></td>
-	  <td><img width="100" height="30" src="cornert.gif"></td>
+	  <td><img width="10" height="30" src="borderl.gif" alt=""></td>
+	  <td><img width="100" height="30" src="cornert.gif" alt=""></td>
 	  <td style="background-image:url(ribbingv.gif);">_NBSPX(10,30)</td>
 	  <td style="background-image:url(ribbingv.gif);">
 	    <span style="line-height: 1px;">forloop(`i',1,115,`&nbsp; ')</span>
 	  </td>
 	  <td><img width="152" height="30" src="ggcov_banner4t.gif" alt="ggcov"></td>
 	  <td style="background-image:url(ribbingv.gif);">_NBSPX(30,30)</td>
-	  <td><img width="10" height="30" src="borderr.gif"></td>
+	  <td><img width="10" height="30" src="borderr.gif" alt=""></td>
 	</tr>
 	<tr>
-	  <td><img width="10" height="10" src="borderl.gif"></td>
-	  <td><img width="100" height="10" src="cornerm.gif"></td>
-	  <td><img width="10" height="10" src="borderitl.gif"></td>
+	  <td><img width="10" height="10" src="borderl.gif" alt=""></td>
+	  <td><img width="100" height="10" src="cornerm.gif" alt=""></td>
+	  <td><img width="10" height="10" src="borderitl.gif" alt=""></td>
 	  <td style="background-image:url(borderb.gif);">_NBSPX(1,1)</td>
-	  <td><img width="152" height="10" src="ggcov_banner4b.gif"></td>
-	  <td><img width="30" height="10" src="borderb.gif"></td>
-	  <td><img width="10" height="10" src="borderbr.gif"></td>
+	  <td><img width="152" height="10" src="ggcov_banner4b.gif" alt=""></td>
+	  <td><img width="30" height="10" src="borderb.gif" alt=""></td>
+	  <td><img width="10" height="10" src="borderbr.gif" alt=""></td>
 	</tr>
       </table>
     </td>
