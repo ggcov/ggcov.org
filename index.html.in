@@ -77,7 +77,7 @@ should be available on any modern Linux distro or commercial Unix:
 
   <tr valign="top" class="hilite">
     <td>Red Hat Linux 7.3 (Valhalla), on i386</td>
-    <td>0.1.6</td>
+    <td>0.2</td>
     <td>
     I build and test on this platform and supply binary RPMS for it.
     Mostly works, but call coverage data is wrong due to broken data
