@@ -13,11 +13,13 @@ based on <a href="shotdata.html">this program</a> -->
 Click on the thumbnail images to see larger images.
 </p>
 
+
+
 <table cellpadding=10 cellspacing=0 border=0>
   <tr>
-    <td width="33%" align="center" class="hilite">THUMBNAIL(summarywin,gif,96,68,`Summary Window')</td>
-    <td width="33%" align="center">THUMBNAIL(filelistwin,gif,96,93,`File List Window')</td>
-    <td width="33%" align="center" class="hilite">THUMBNAIL(funclistwin,gif,96,50,`Function List Window')</td>
+    <td width="33%" align="center" class="hilite">THUMBNAIL(summarywin,gif,96,89,`Summary Window')</td>
+    <td width="33%" align="center">THUMBNAIL(filelistwin,gif,96,102,`File List Window')</td>
+    <td width="33%" align="center" class="hilite">THUMBNAIL(funclistwin,gif,96,62,`Function List Window')</td>
   </tr>
   <tr>
     <td width="33%" valign="top" align="center" class="hilite">
@@ -30,7 +32,7 @@ Click on the thumbnail images to see larger images.
     <td width="33%" valign="top" align="center">
     <b>File List Window</b><br>
     Shows all the source files, with line, call and branch coverage
-    statistics.  Directories are shown as a tree, with summarised
+    statistics.  Directories are optionally shown as a tree, with summarised
     statistics.  The list can be sorted on any of the columns by
     clicking on the column title.  Double-clicking on a row pops
     up a new Source Window displaying the corresponding file.
@@ -44,16 +46,16 @@ Click on the thumbnail images to see larger images.
     </td>
   </tr>
   <tr>
-    <td width="33%" align="center">THUMBNAIL(callslistwin,gif,96,51,`Call List Window')</td>
-    <td width="33%" align="center" class="hilite">THUMBNAIL(callgraphwin,gif,96,61,`Call Butterfly Window')</td>
-    <td width="33%" align="center">THUMBNAIL(sourcewin,gif,96,76,`Source Window')</td>
+    <td width="33%" align="center">THUMBNAIL(callslistwin,gif,96,70,`Call List Window')</td>
+    <td width="33%" align="center" class="hilite">THUMBNAIL(callgraphwin,gif,96,62,`Call Butterfly Window')</td>
+    <td width="33%" align="center">THUMBNAIL(sourcewin,gif,96,88,`Source Window')</td>
   </tr>
   <tr>
     <td width="33%" valign="top" align="center">
     <b>Calls List Window</b><br>
-    Shows, for a particular covered function, all the function calls
-    made within that function and the number of times the call was
-    executed.
+    Shows function calls between any coveraged functions, and the number of
+    times each call was made.  Combo boxes allow filtering on calling
+    function or called function.
     <br>
     <b>Note:</b>This window depends in part on data scanned from object files,
     which will not work on all platforms.
@@ -81,13 +83,14 @@ Click on the thumbnail images to see larger images.
     <li><span style="color:green">green</span> - executed at least once
     <li><span style="color:yellow">yellow</span> - part of the line executed
     <li><span style="color:red">red</span> - never executed
+    <li><span style="color:blue">blue</span> - suppressed
     <li><span style="color:black">black</span> - no executable code
     </ul>
     </td>
   </tr>
   <tr>
-    <td width="33%" align="center" class="hilite">THUMBNAIL(callgraph2win,gif,96,72,`Call Graph Window')</td>
-    <td width="33%" align="center"></td>
+    <td width="33%" align="center" class="hilite">THUMBNAIL(callgraph2win,gif,96,102,`Call Graph Window')</td>
+    <td width="33%" align="center">THUMBNAIL(reportwin,gif,96,80,`Report Window')</td>
     <td width="33%" align="center" class="hilite"></td>
   </tr>
   <tr>
@@ -100,10 +103,14 @@ Click on the thumbnail images to see larger images.
     which will not work on all platforms.
     <br>
     <b>Note:</b> the graph layout code for this window is in an early stage of
-    development and will respond badly (looping or crashing) to some
+    development and may respond badly (looping or crashing) to some
     data sets.
     </td>
     <td width="33%" valign="top" align="center">
+    <b>Report Window</b><br>
+    Shows textual reports which give various interesting summaries of
+    coverage data.  These same reports are available in text mode
+    by using <i>tggcov --report</i>.
     </td>
     <td width="33%" valign="top" align="center" class="hilite">
     </td>
