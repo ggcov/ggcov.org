@@ -6,10 +6,10 @@ include(_styles.html)
 ENDHEAD
 BEGINBODY
 
-<h2>What is gcov?</h2>
+<h2>What is ggcov?</h2>
 
 <p>
-<span class="program">Ggcov</span> is a GTK+ GUI for exploring test coverage
+<span class="program">ggcov</span> is a GTK+ GUI for exploring test coverage
 data produced by C and C++ programs compiled with
 <a href="http://www.gnu.org/software/gcc/gcc.html">gcc</a>
 <a href="http://gcc.gnu.org/onlinedocs/gcc-3.0/gcc_3.html#IDX233">-fprofile-arcs</a>
@@ -17,53 +17,181 @@ data produced by C and C++ programs compiled with
 So it's basically a GUI replacement for the
 <a href="http://gcc.gnu.org/onlinedocs/gcc-3.0/gcc_8.html#SEC132">gcov</a>
 program that comes with <span class="program">gcc</span>.
+Please note: <span class="program">ggcov</span> is not a frontend for
+<span class="program">gcov</span>; instead it reads the same data
+files directly and does various extra processing on them.
 </p>
 
+<h2>Licence</h2>
+
 <p>
-<span class="program">Ggcov</span> is released under the
+<span class="program">ggcov</span> is released under the
 <a href="http://www.gnu.org/">GNU</a> General Public License (GPL) version 2
 with <b>no warranty</b>.  See the file COPYING in the distribution or
 <a href="http://www.gnu.org/licenses/gpl.html">here</a>
 </p>
 
 
-<h2>Call Graph Analysis</h2>
+<h2>Features</h2>
 
-<p>
-Apart from presenting graphically and interactively the same information
-as <span class="program">gcov</span>, <span class="program">ggcov</span>
-has one extra feature: <em>call graph analysis</em>.
-<span class="program">Ggcov</span> calculates a call graph of all
-function calls known at compile time (i.e. excluding calls
-made through function pointers or C++ virtual function tables) and
-applies coverage data to this call graph.  The result is that you can
-see how many times a function was called from various other functions.
+<dl>
+
+<dt>Graphical</dt>
+<dd>
+<p>Presents coverage information as graphically as possible, using
+<a href="summarywin.gif">bar graphs</a>,
+<a href="sourcewin.gif">colour coding</a>, and a
+<a href="callgraphwin.gif">call graph display</a>.
 </p>
+</dd>
 
+<dt>Interactive</dt>
+<dd>
 <p>
+Information is linked together, e.g. double-clicking on a row in the
+<a href="filelistwin.gif">File List window</a> displays the source
+for that file in a <a href="sourcewin.gif">Source window</a>.
+Information in tabular form is sortable by any column, and all
+columns can be selectively shown or hidden.
+</p>
+</dd>
+
+<dt>Arbitrary Subsets</dt>
+<dd>
+<p>
+Coverage summaries for various subsets of the source (All the source,
+a particular source file, a particular function, a range of lines
+in a file) are only a few clicks away.  The summary is presented
+in <a href="summarywin.gif">a window</a> with both textual and graphical
+representation.
+</p>
+</dd>
+
+<dt>Multiple Directories</dt>
+<dd>
+<p>
+Source files spread over multiple directories are handled.  The
+<a href="filelistwin.gif">File List window</a> can display source
+files either in a flat list or a tree.  Lists of source files
+show filenames with minimum pathnames from the common ancestor
+directory.
+</p>
+</dd>
+
+<dt>Suppress by Pre-processor Symbol</dt>
+<dd>
+<p>
+The <i>--suppress-ifdef</i> flag can be used to suppress source lines
+inside <i>#ifdef</i> or <i>#if</i> blocks which depend on particular
+pre-processor symbols.  For example <i>--suppress-ifdef TEST,DEBUG</i>
+will suppress source lines inside <i>#if DEBUG</i> or inside
+<i>#ifdef TEST</i>.  Suppressed lines are not reported in summaries.
+This feature is useful to avoid having test infrastructure or debugging
+code spuriously reduce the reported coverage level.
+</p>
+</dd>
+
+<dt>Flexibility in Specifying Source</dt>
+<dd>
+Source files can be specified by any combination of:
+<ul>
+<li>Directory: all coveraged source files in the directory
+    and sub-directories.
+<li>Executable: all the coveraged source files used
+    to build the object file and any shared libraries
+    on which the executable depends.
+<li>Object file: all the coveraged source files used
+    to build the object file.
+<li>Shared library: all the coveraged source files used
+    to build the shared library.
+<li>Source file: exactly the specified source file.
+</ul>
+<p>
+</p>
+</dd>
+
+<dt>C++ Function Names Demangled</dt>
+<dd>
+C++ function names are presented in readable demangled form.
+<p>
+</p>
+</dd>
+
+<dt>Non-local Control Transfer</dt>
+<dd>
+<p>
+Handles non-local control transfers, e.g. C++ exceptions or C <i>longjmp</i>.
+</p>
+</dd>
+
+<dt>GNOME Integration</dt>
+<dd>
+<p>
+A <i>.desktop</i> file is provided so that ggcov appears
+in the GNOME menu structure.  New source files (or 
+object files, or executables) can be dragged-n-dropped
+onto <span class="program">ggcov</span> from Nautilus.
+In GNOME 2.x, configuration parameters are stored in
+the <i>gconf</i> database.
+</p>
+</dd>
+
+<dt>Text Mode</dt>
+<dd>
+<p>
+<span class="program">ggcov</span> comes with a text mode program
+<span class="program">tggcov</span> which can be used to provide
+coverage reports for individual source files or entire programs.
+<span class="program">tggcov</span> is designed for non-interactive 
+use, e.g. as part of a build process or test suite.
+</p>
+</dd>
+
+<dt>Call Graph Analysis</dt>
+
+<dd>
+<p>
+Calculates a call graph of all function calls known at compile time
+(i.e. excluding calls made through function pointers or C++ virtual
+function tables) and applies coverage data to this call graph.  The
+result is that you can <a href="callslistwin.gif">see</a> how many
+times a function was called from various other functions.
 The downside of call graph analysis is that <span class="program">ggcov</span>
 needs to read and pick apart object files to get the call data.  The
 code exists and works for i386 platforms with ELF format executables
 only.
 </p>
+</dd>
+
+</dl>
+
 
 <p>
-<span class="program">Ggcov</span> is in a very early stage of development, but is already
+<span class="program">ggcov</span> isn't finished, but is already
 somewhat useful.  It is known to work on i386/Linux; other platforms
-should work except that the call graph feature will not work..
+should work except that the call graph feature will not work.
 </p>
 
 <h2>Requirements</h2>
 
 <p>
-<span class="program">Ggcov</span> requires the following, which
+<span class="program">ggcov</span> requires the following, which
 should be available on any modern Linux distro or commercial Unix:
 </p>
 <ul>
   <li><i>libglade</i> library with GNOME support
   <li>GNOME <i>libgnomeui</i> library
   <li>GNOME <i>gtk+</i> library
+  <li>Optionally, the <i>popt</i> library
+  <li>GNU <i>libbfd</i> from the <i>binutils</i> package
 </ul>
+
+<p>
+<span class="program">ggcov</span> uses GTK 2.x but will fall back to
+using GTK 1.2 for older platforms.  A configure-time option can be
+used to disable the GUI entirely and only build the text mode program,
+which requires only <i>glib</i> and <i>libbfd</i>.
+</p>
 
 <h2>Compatibility Matrix</h2>
 
