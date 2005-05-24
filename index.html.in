@@ -265,6 +265,7 @@ Thanks to the following people who have contributed to
 
 include(_thanks.m4)
 BEGINTHANKS
+THANKS(`Xavier Otazu',`bug report')
 THANKS(`Alastair McKinstry',`Debian package')
 THANKS(`Havoc Pennington',`GTK2 port')
 THANKS(`(Ani)ruddha Mulay',useful ideas)
