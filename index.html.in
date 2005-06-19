@@ -231,7 +231,7 @@ which requires only <i>glib</i> and <i>libbfd</i>.
     <td>Red Hat Linux 7.3 (Valhalla), on i386</td>
     <td>0.2</td>
     <td>
-    I build and test on this platform and supply binary RPMS for it.
+    I occasionally build and test on this platform.
     Mostly works, but call coverage data is wrong due to broken data
     files written by gcc 2.96 (gcov also mispreports calls).
     </td>
@@ -241,7 +241,7 @@ which requires only <i>glib</i> and <i>libbfd</i>.
     <td>Red Hat Linux 9 (Shrike), on i386</td>
     <td>0.2</td>
     <td>
-    I build and test on this platform and supply binary RPMS for it.
+    I occasionally build and test on this platform.
     Gcc 3.2.2 package is known to create good data files.
     </td>
   </tr>
