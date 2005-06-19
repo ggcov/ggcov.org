@@ -203,6 +203,30 @@ which requires only <i>glib</i> and <i>libbfd</i>.
     <td><b>Notes</b></td>
   </tr>
 
+  <tr valign="top">
+    <td>Fedora Core 3, on i386</td>
+    <td>0.4</td>
+    <td>
+    I build and test on this platform and supply binary RPMS for it.  Works.
+    </td>
+  </tr>
+
+  <tr valign="top" class="hilite">
+    <td>SLES 9, on ia64</td>
+    <td>0.4</td>
+    <td>
+    Works, with the exception of call graph data.
+    </td>
+  </tr>
+
+  <tr valign="top">
+    <td>Mandrake 10.0 on i386</td>
+    <td>0.4</td>
+    <td>
+    Mostly works.  Some call coverage data appears to be wrong, still investigating.
+    </td>
+  </tr>
+
   <tr valign="top" class="hilite">
     <td>Red Hat Linux 7.3 (Valhalla), on i386</td>
     <td>0.2</td>
