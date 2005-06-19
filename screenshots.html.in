@@ -91,7 +91,7 @@ Click on the thumbnail images to see larger images.
   <tr>
     <td width="33%" align="center" class="hilite">THUMBNAIL(callgraph2win,gif,96,102,`Call Graph Window')</td>
     <td width="33%" align="center">THUMBNAIL(reportwin,gif,96,80,`Report Window')</td>
-    <td width="33%" align="center" class="hilite"></td>
+    <td width="33%" align="center" class="hilite">THUMBNAIL(legowin,gif,96,103,`Lego Diagram Window')</td>
   </tr>
   <tr>
     <td width="33%" valign="top" align="center" class="hilite">
@@ -113,6 +113,9 @@ Click on the thumbnail images to see larger images.
     by using <i>tggcov --report</i>.
     </td>
     <td width="33%" valign="top" align="center" class="hilite">
+    <b>Lego Diagram Window</b><br>
+    Shows the proportions of covered vs uncovered code code for
+    projects with multiple files and directories.
     </td>
   </tr>
 </table>
