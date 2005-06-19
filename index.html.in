@@ -193,6 +193,19 @@ used to disable the GUI entirely and only build the text mode program,
 which requires only <i>glib</i> and <i>libbfd</i>.
 </p>
 
+<p>
+The <span class="program">ggcov-web</span> package doesn't require
+GNOME but does require the following:
+</p>
+
+<ul>
+  <li>Apache 2.0 or 1.3 (tested on 2.0.52)
+  <li>PHP 4.3 or 5.x (tested on 4.3.9)
+  <li>the dba PHP extension with the db4 provider (this
+      is built into most PHP packages)
+  <li>the gd PHP extension
+</ul>
+
 <h2>Compatibility Matrix</h2>
 
 <table border="0" cellspacing="0" cellpadding="5">
