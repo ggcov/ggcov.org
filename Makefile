@@ -98,5 +98,5 @@ upload.ocelot:
 upload.marduk: upload.generic
 
 upload.generic:
-	rsync $(RSYNC_VERBOSE) -r --delete --links -e "$(SSH)" $(RSYNC_PATH_FLAGS) $(htmldir)/ $(uploaddir)
+	rsync $(RSYNC_VERBOSE) -r --delete --links --exclude=example -e "$(SSH)" $(RSYNC_PATH_FLAGS) $(htmldir)/ $(uploaddir)
 
