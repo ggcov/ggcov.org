@@ -24,6 +24,7 @@ IMAGES=		1x1t.gif \
 		sourcewin.gif sourcewin_t.gif \
 		summarywin.gif summarywin_t.gif \
 		callgraph2win.gif callgraph2win_t.gif \
+		reportwin.gif reportwin_t.gif \
 		favicon.ico icon32.png
 
 DELIVERABLES=	$(PAGES) $(IMAGES)
@@ -76,6 +77,10 @@ installdirs:
 	
 $(htmldir)/%: %
 	$(INSTALL) -m 644 $< $@
+
+# Local test
+test:
+	$(MAKE) htmldir=$(HOME)/public_html/alphalink/ggcov install
 
 ############################################################
 
