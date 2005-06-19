@@ -163,6 +163,26 @@ only.
 </p>
 </dd>
 
+<dt>PHP Web Interface</dt>
+
+<dd>
+<p>
+New in version 0.6 is a PHP edition of ggcov, which allows you to
+provide code coverage information on the web.  The web edition
+has all the navigation and visualisation features of the GNOME
+program, but available in any graphical browser (no Java or
+Javascript required).
+</p>
+<p>
+An <a href="example/">online example</a> is available.
+</p>
+<p>
+To learn how to install the web edition and use it to provide
+coverage data, download the <span class="program">ggcov-web</span>
+package and read the <i>HOWTO.web</i> file.
+</p>
+</dd>
+
 </dl>
 
 
