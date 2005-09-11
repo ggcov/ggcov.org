@@ -236,6 +236,14 @@ GNOME but does require the following:
     <td><b>Notes</b></td>
   </tr>
 
+  <tr valign="top" class="hilite">
+    <td>Fedora Core 4, on i386</td>
+    <td>0.7</td>
+    <td>
+    Tested, works.
+    </td>
+  </tr>
+
   <tr valign="top">
     <td>Fedora Core 3, on i386</td>
     <td>0.4</td>
@@ -322,6 +330,7 @@ Thanks to the following people who have contributed to
 
 include(_thanks.m4)
 BEGINTHANKS
+THANKS(`Andrew Bartlett',`bug reports')
 THANKS(`Xavier Otazu',`bug report')
 THANKS(`Alastair McKinstry',`Debian package')
 THANKS(`Havoc Pennington',`GTK2 port')
