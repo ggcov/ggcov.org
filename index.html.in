@@ -330,6 +330,7 @@ Thanks to the following people who have contributed to
 
 include(_thanks.m4)
 BEGINTHANKS
+THANKS(`Jim Huang',`bug reports, patch')
 THANKS(`Andrew Bartlett',`bug reports')
 THANKS(`Xavier Otazu',`bug report')
 THANKS(`Alastair McKinstry',`Debian package')
