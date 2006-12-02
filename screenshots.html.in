@@ -1,7 +1,6 @@
-define(TITLE,ggcov Screenshots)dnl
+define(TITLE,Screenshots)dnl
 include(_common.m4)dnl
 BEGINHEAD
-include(_styles.html)
 ENDHEAD
 BEGINBODY
 
@@ -14,7 +13,7 @@ Click on the thumbnail images to see larger images.
 </p>
 
 <p>
-An <a href="example/">online example</a> of the Web edition 
+An <a href="/example/">online example</a> of the Web edition 
 of ggcov is available.
 </p>
 

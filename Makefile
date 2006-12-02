@@ -3,55 +3,44 @@
 RELEASEDIR=	../ggcov
 
 # Pages which provide backwards compatibility for old URLs
-PAGES=		index.html screenshots.html shotdata.html \
-		changelog.html
+PAGES=		index.html features.html licence.html requirements.html \
+		compatibility.html screenshots.html shotdata.html \
+		credits.html changelog.html
 IMAGES=		1x1t.gif \
-		ggcov_banner4t.gif ggcov_banner4b.gif \
-		fm-logo.gif gimp.gif valid-html40.gif \
-		bchangelogd.gif bchangelog.gif \
-		bdownloadd.gif bdownload.gif \
-		bfeaturesd.gif bfeatures.gif \
-		bscreenshotsd.gif bscreenshots.gif \
-		bordert.gif borderb.gif borderl.gif borderr.gif \
-		borderbl.gif borderbr.gif bordertl.gif bordertr.gif \
-		borderm.gif borderitl.gif \
-		cornerb.gif cornerm.gif cornert.gif \
-		ribbingh.gif ribbingv.gif \
-		callgraphwin.gif callgraphwin_t.gif \
-		callslistwin.gif callslistwin_t.gif \
-		filelistwin.gif filelistwin_t.gif \
-		funclistwin.gif funclistwin_t.gif \
-		sourcewin.gif sourcewin_t.gif \
-		summarywin.gif summarywin_t.gif \
-		callgraph2win.gif callgraph2win_t.gif \
+		callgraph2win.gif callgraph2win_t.gif callgraphwin.gif \
+		callgraphwin_t.gif callslistwin.gif callslistwin_t.gif \
+		filelistwin.gif filelistwin_t.gif funclistwin.gif \
+		funclistwin_t.gif legowin.gif legowin_t.gif \
 		reportwin.gif reportwin_t.gif \
-		legowin.gif legowin_t.gif \
-		favicon.ico icon32.png
+		sourcewin.gif sourcewin_t.gif summarywin.gif \
+		summarywin_t.gif favicon.ico icon32.png
+CSS=		ggcov.css
 
-DELIVERABLES=	$(PAGES) $(IMAGES)
+DELIVERABLES=	$(PAGES) $(IMAGES) $(CSS)
 
 ############################################################
 
-all:: $(PAGES) $(SCRIPTS)
+all:: $(PAGES) $(SCRIPTS) $(CSS)
 
 changelog.html: _changelist.html
-$(PAGES): _styles.html _common.m4 _copyright.txt toc.html.in
-index.html: _thanks.m4
+$(PAGES): _common.m4 _copyright.txt toc.html.in
 
 _changelist.html: $(RELEASEDIR)/ChangeLog changes2html
 	./changes2html < $< > $@
 
-HTMLINCDIRS=	
-HTMLDEFINES=	-DHTMLFILE=$@ \
-		-DENABLE_COUNT=$(ENABLE_COUNT)
-	
+HTMLDEFINES=	-DHTMLFILE=$@
+
 %.html: %.html.in
-	m4 $(M4FLAGS) $(HTMLINCDIRS) $(HTMLDEFINES) $< > $@
+	m4 $(M4FLAGS) $(HTMLDEFINES) $< > $@
+
+%.css: %.css.in
+	m4 $(M4FLAGS) $< > $@
 
 clean::
 	$(RM) $(patsubst %.html.in,%.html,$(wildcard $(patsubst %.html,%.html.in,$(PAGES))))
+	$(RM) $(patsubst %.css.in,%.css,$(wildcard $(patsubst %.css,%.css.in,$(CSS))))
 	$(RM) _changelist.html
-			
+
 ############################################################
 
 #GGTEST=	/test/
@@ -75,13 +64,18 @@ installdirs:
 	    fi ;\
 	fi
 	$(INSTALL) -m 755 -d $(htmldir)
-	
+
 $(htmldir)/%: %
 	$(INSTALL) -m 644 $< $@
 
 # Local test
-test:
+test local-test:
 	$(MAKE) htmldir=$(HOME)/public_html/alphalink/ggcov install
+
+# Remote test
+remote-test:
+	$(MAKE) install
+	$(MAKE) GGTEST=/test/ upload
 
 ############################################################
 
@@ -95,7 +89,7 @@ upload.ocelot:
 	$(MAKE) SSH="ssh -p 322" upload.generic
 
 # Upload via direct connection
-upload.marduk: upload.generic
+upload.marduk upload.inara: upload.generic
 
 upload.generic:
 	rsync $(RSYNC_VERBOSE) -r --delete --links --exclude=example -e "$(SSH)" $(RSYNC_PATH_FLAGS) $(htmldir)/ $(uploaddir)

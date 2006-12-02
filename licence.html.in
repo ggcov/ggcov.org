@@ -1,0 +1,15 @@
+define(TITLE,Licence)dnl
+include(_common.m4)dnl
+BEGINHEAD
+<meta name="keywords" content="ggcov, coverage, gcov, test coverage, line coverage, branch coverage, call coverage">
+ENDHEAD
+BEGINBODY
+
+<p>
+GGCOV is released under the
+<a href="http://www.gnu.org/">GNU</a> General Public License (GPL) version 2
+with <b>no warranty</b>.  See the file COPYING in the distribution or
+<a href="http://www.gnu.org/licenses/gpl.html">here</a>
+</p>
+
+ENDBODY

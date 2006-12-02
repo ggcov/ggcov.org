@@ -1,7 +1,6 @@
-define(TITLE,ggcov Change Log)dnl
+define(TITLE,Change Log)dnl
 include(_common.m4)dnl
 BEGINHEAD
-include(_styles.html)
 ENDHEAD
 BEGINBODY
 

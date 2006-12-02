@@ -9,66 +9,29 @@ define(BEGINHEAD,
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title>TITLE</title>
 <link REL="SHORTCUT ICON" HREF="favicon.ico">
+<LINK href="ggcov.css" rel="stylesheet" type="text/css">
 )dnl
 define(ENDHEAD,
 </head>
 )dnl
 define(_NBSPX,<img width="$1" height="$2" src="1x1t.gif" alt="">)
-define(BEGINBODY,
+define(BEGINBODY,`
 <body>
-<table border="0" cellspacing="0" cellpadding="0">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5" style="background:#afafcf;">
   <tr>
-    <td colspan="2">
-      <!-- BANNER -->
-      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="toc">
-	<tr>
-	  <td><img width="10" height="10" src="bordertl.gif" alt=""></td>
-	  <td><img width="100" height="10" src="bordert.gif" alt=""></td>
-	  <td><img width="10" height="10" src="bordert.gif" alt=""></td>
-	  <td style="background-image:url(bordert.gif);">_NBSPX(1,1)</td>
-	  <td><img width="152" height="10" src="bordert.gif" alt=""></td>
-	  <td><img width="30" height="10" src="bordert.gif" alt=""></td>
-	  <td><img width="10" height="10" src="bordertr.gif" alt=""></td>
-	</tr>
-	<tr>
-	  <td><img width="10" height="30" src="borderl.gif" alt=""></td>
-	  <td><img width="100" height="30" src="cornert.gif" alt=""></td>
-	  <td style="background-image:url(ribbingv.gif);">_NBSPX(10,30)</td>
-	  <td style="background-image:url(ribbingv.gif);">
-	    <span style="line-height: 1px;">forloop(`i',1,115,`&nbsp; ')</span>
-	  </td>
-	  <td><img width="152" height="30" src="ggcov_banner4t.gif" alt="ggcov"></td>
-	  <td style="background-image:url(ribbingv.gif);">_NBSPX(30,30)</td>
-	  <td><img width="10" height="30" src="borderr.gif" alt=""></td>
-	</tr>
-	<tr>
-	  <td><img width="10" height="10" src="borderl.gif" alt=""></td>
-	  <td><img width="100" height="10" src="cornerm.gif" alt=""></td>
-	  <td><img width="10" height="10" src="borderitl.gif" alt=""></td>
-	  <td style="background-image:url(borderb.gif);">_NBSPX(1,1)</td>
-	  <td><img width="152" height="10" src="ggcov_banner4b.gif" alt=""></td>
-	  <td><img width="30" height="10" src="borderb.gif" alt=""></td>
-	  <td><img width="10" height="10" src="borderbr.gif" alt=""></td>
-	</tr>
-      </table>
-    </td>
+    <td colspan="2" align="right" valign="top" class="logo">ggcov</td>
   </tr>
   <tr>
-    <td valign="top">
+    <td align="center" valign="top" width="1">
       <!-- TOC -->
 include(toc.html.in)
     </td>
-    <td valign="top">
-      <table width="100%" cellspacing="0" cellpadding="10">
-        <tr>
-	  <td>
-	    <!-- MAIN BODY -->
-	    <h1>TITLE</h1>
-)dnl
+    <td style="background:#ffffff;" valign="top" align="left">
+      <!-- MAIN BODY -->
+      <h1>TITLE</h1>
+')dnl
 define(ENDBODY,
-	  </td>
-	</tr>
-      </table>
     </td>
   </tr>
 </table>
@@ -90,3 +53,6 @@ dnl Usage: THUMBNAIL(some/dir/fred,gif,width,height,[alternate text])
 define(THUMBNAIL,
 <a href="$1.$2"><img src="$1_t.$2" width="$3" height="$4" alt="$5" border=0></a>
 )dnl
+define(GGCOV,<span class="program">ggcov</span>)
+define(TGGCOV,<span class="program">tggcov</span>)
+define(GGCOV_WEB,<span class="program">ggcov-web</span>)

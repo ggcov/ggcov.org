@@ -11,7 +11,6 @@ define(FONTSIZE2,`14pt')dnl
 define(FONTSIZE3,`18pt')dnl
 define(FONTSIZE4,`24pt')dnl
 dnl
-<style type="text/css">
 BODY { color: FORECOLOR; background: BACKCOLOR }
 H1 { font: bold FONTSIZE4 FONTFAMILY; }
 H2 { font: bold FONTSIZE3 FONTFAMILY; }
@@ -55,16 +54,29 @@ TR.hilite {
   color: FORECOLOR;
   background-color: HILITECOLOR;
 }
-TD.toc {
+TD.tocthis {
   font: bold FONTSIZE2 FONTFAMILY;
-  color: BACKCOLOR;
+  color: FORECOLOR;
+  background-color: TOCCOLOR;
+  text-align: center;
+}
+TD.tocother {
+  font: bold FONTSIZE2 FONTFAMILY;
+  color: FORECOLOR;
   background-color: TOCCOLOR;
   text-align: center;
 }
 TD.tocsmall {
-  font: bold FONTSIZE0 FONTFAMILY;
-  color: BACKCOLOR;
+  font: FONTSIZE0 FONTFAMILY;
+  color: FORECOLOR;
   background-color: TOCCOLOR;
   text-align: center;
 }
-</style>
+TD.tocimg {
+  background-color: TOCCOLOR;
+  text-align: center;
+}
+TD.logo {
+  font: 32pt FONTFAMILY;
+}
+/* vim:set ft=css: */

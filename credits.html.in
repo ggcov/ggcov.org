@@ -1,0 +1,34 @@
+define(TITLE,Credits)dnl
+include(_common.m4)dnl
+BEGINHEAD
+<meta name="keywords" content="ggcov, coverage, gcov, test coverage, line coverage, branch coverage, call coverage">
+ENDHEAD
+BEGINBODY
+
+<p>
+The primary developer is EMAILME(Greg Banks).
+Thanks to the following people who have contributed to GGCOV.
+</p>
+
+define(THANKS,
+`  <tr>
+    <td><i>$1</i></td>
+    <td>$2</td>
+  </tr>'
+)dnl
+<table>
+THANKS(`Jim Huang',`bug reports, patch')
+THANKS(`Andrew Bartlett',`bug reports')
+THANKS(`Xavier Otazu',`bug report')
+THANKS(`Alastair McKinstry',`Debian package')
+THANKS(`Havoc Pennington',`GTK2 port')
+THANKS(`(Ani)ruddha Mulay',useful ideas)
+THANKS(`Zach Frey',bug report)
+THANKS(`Alan Stein',bug report)
+THANKS(`Jim Bowring',bug report)
+THANKS(`Walter Harms',bug report)
+THANKS(`Stephan Hegel',bug report)
+THANKS(`Jeremy Linton',bug report)
+</table>
+
+ENDBODY

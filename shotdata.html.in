@@ -1,12 +1,11 @@
 define(TITLE,ggcov Screenshot Data)dnl
 include(_common.m4)dnl
 BEGINHEAD
-include(_styles.html)
 ENDHEAD
 BEGINBODY
 
 <p>
-The <span class="program">ggcov</span>
+The GGCOV
 <a href="screenshots.html">screenshots</a> show coverage data based on
 the following program:
 </p>

@@ -8,4 +8,10 @@ _styles.html
 *.xcf
 screenshots.html
 shotdata.html
-backbone.php
+compatibility.html
+credits.html
+features.html
+licence.html
+requirements.html
+html-install*
+ggcov.css
