@@ -1,0 +1,22 @@
+define(TITLE,Documents)dnl
+include(_common.m4)dnl
+BEGINHEAD
+ENDHEAD
+BEGINBODY
+
+<p>
+This page has some documents about GGCOV.
+</p>
+
+<table cellpadding="10" cellspacing="0" border="0">
+
+  <tr>
+    <td><a href="/docs/ggcov-osdc-200612-paper-draft4.pdf">ggcov-osdc-200612-paper-draft4.pdf</a></td>
+    <td>Paper on ggcov given at
+        <a href="http://www.osdc.com.au">Open Source Developers Conference</a>,
+        Melbourne, Australia, December 2006.</td>
+  </tr>
+
+</table>
+
+ENDBODY

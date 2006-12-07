@@ -5,7 +5,7 @@ RELEASEDIR=	../ggcov
 # Pages which provide backwards compatibility for old URLs
 PAGES=		index.html features.html licence.html requirements.html \
 		compatibility.html screenshots.html shotdata.html \
-		credits.html changelog.html
+		credits.html changelog.html documents.html
 IMAGES=		1x1t.gif \
 		callgraph2win.gif callgraph2win_t.gif callgraphwin.gif \
 		callgraphwin_t.gif callslistwin.gif callslistwin_t.gif \
@@ -92,5 +92,5 @@ upload.ocelot:
 upload.marduk upload.inara: upload.generic
 
 upload.generic:
-	rsync $(RSYNC_VERBOSE) -r --delete --links --exclude=example -e "$(SSH)" $(RSYNC_PATH_FLAGS) $(htmldir)/ $(uploaddir)
+	rsync $(RSYNC_VERBOSE) -r --delete --links --exclude=example --exclude=docs -e "$(SSH)" $(RSYNC_PATH_FLAGS) $(htmldir)/ $(uploaddir)
 
