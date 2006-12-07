@@ -1,7 +1,7 @@
 define(TITLE,ggcov)dnl
 include(_common.m4)dnl
 BEGINHEAD
-<meta name="keywords" content="ggcov, coverage, gcov, test coverage, line coverage, branch coverage, call coverage">
+<meta name="keywords" content="ggcov, coverage, gcov, test coverage, line coverage, branch coverage, call coverage, greg banks">
 ENDHEAD
 BEGINBODY
 
