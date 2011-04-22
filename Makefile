@@ -82,15 +82,6 @@ remote-test:
 SSH=			ssh
 RSYNC_VERBOSE=		-v
 
-upload: upload.$(shell uname -n | cut -d. -f1)
-
-# Upload via SSH-in-SSH tunnel.
-upload.ocelot:
-	$(MAKE) SSH="ssh -p 322" upload.generic
-
-# Upload via direct connection
-upload.marduk upload.inara: upload.generic
-
-upload.generic:
+upload:
 	rsync $(RSYNC_VERBOSE) -r --delete --links --exclude=example --exclude=docs -e "$(SSH)" $(RSYNC_PATH_FLAGS) $(htmldir)/ $(uploaddir)
 
