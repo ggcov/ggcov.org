@@ -47,8 +47,8 @@ clean::
 
 INSTALL=	install -c
 htmldir=	html-install
-uploadhost=	shell.sourceforge.net
-uploaddir=	$(uploadhost):/home/groups/g/gg/ggcov/htdocs$(GGTEST)
+uploadhost=	gnb,ggcov@web.sourceforge.net
+uploaddir=	$(uploadhost):htdocs/$(GGTEST)
 
 install:: installdirs $(addprefix $(htmldir)/,$(DELIVERABLES))
 
@@ -75,7 +75,7 @@ test local-test:
 # Remote test
 remote-test:
 	$(MAKE) install
-	$(MAKE) GGTEST=/test/ upload
+	$(MAKE) GGTEST=test/ upload
 
 ############################################################
 
