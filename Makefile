@@ -3,7 +3,7 @@
 RELEASEDIR=	../ggcov
 
 # Pages which provide backwards compatibility for old URLs
-PAGES=		index.html features.html licence.html requirements.html \
+PAGES=		index.html features.html requirements.html \
 		compatibility.html screenshots.html shotdata.html \
 		credits.html changelog.html documents.html
 IMAGES=		1x1t.gif \

@@ -33,7 +33,6 @@ SPACER(5)
   NAVLINK(http://www.sourceforge.net/projects/ggcov/,Project&nbsp;Page)
   NAVLINK(https://sourceforge.net/scm/?type=git&group_id=107843,Git)
   NAVLINK(changelog.html,Change Log)
-  NAVLINK(licence.html,Licence)
   NAVLINK(credits.html,Credits)
 
   <tr>
