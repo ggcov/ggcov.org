@@ -17,6 +17,8 @@ define(THANKS,
   </tr>'
 )dnl
 <table>
+THANKS(`Ken McDonell',`patches')
+THANKS(`James Peach',`patches')
 THANKS(`Jim Huang',`bug reports, patch')
 THANKS(`Andrew Bartlett',`bug reports')
 THANKS(`Xavier Otazu',`bug report')
