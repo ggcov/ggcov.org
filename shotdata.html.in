@@ -68,7 +68,7 @@ main(int argc, char **argv)
 <p>
 This program was compiled to the executable <span class="program">foo</span>
 using the
-<span class="option">-fprofile-arcs -ftest-coverage</span> options 
+<span class="option">--coverage</span> options 
  and run with the
 following arguments:
 </p>
