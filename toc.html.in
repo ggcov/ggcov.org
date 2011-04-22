@@ -46,19 +46,6 @@ SPACER(5)
   SPACER(5)
 
   <tr>
-    <td class="tocsmall">
-      Watch for new<br>releases on:<br>
-
-      <!-- HTML copied from http://freshmeat.net/about/ 20061202 -->
-      <a href="http://freshmeat.net/"><img
-       src="http://images.freshmeat.net/img/link_button_4.gif" width="88" height="31"
-	border="0" alt="freshmeat.net"></a>
-    </td>
-  </tr>
-
-  SPACER(5)
-
-  <tr>
     <td class="tocimg">
       <!-- HTML copied from http://www.gimp.org/about/linking.html 20061202 -->
       <a href="http://www.gimp.org/"><img alt="Graphics by GIMP"
