@@ -24,6 +24,11 @@ of the functionality of the GTK+ GUI.  <a href="/example/">Try it out</a>.
 </p>
 
 <p>
+GGCOV also has a commandline interface which is useful for nightly
+builds and Continuous Integration servers.
+</p>
+
+<p>
 GGCOV is released under the
 <a href="http://www.gnu.org/">GNU</a> General Public License (GPL) version 2
 with <b>no warranty</b>.  See the file COPYING in the distribution or
