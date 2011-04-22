@@ -34,7 +34,7 @@ function_three(int x)
 int
 function_one(int x)
 {
-    if (x & 1)
+    if (x &amp; 1)
     	x += function_two(x);
     else
     	x += function_three(x);
@@ -54,7 +54,7 @@ main(int argc, char **argv)
 {
     int x, y;
     int i;
-    
+
     for (i = 1 ; i &lt; argc ; i++)
     {
     	x = atoi(argv[i]);
