@@ -28,6 +28,27 @@ define(COMPAT,
   </tr>
 
   COMPAT(
+    `Ubuntu Maverick',
+    `i386,x86_64',
+    `4.5.2',
+    `0.8.3',
+    `Works.')
+
+  COMPAT(
+    `Ubuntu Karmic',
+    `i386,x86_64',
+    `4.4.1',
+    `0.8.2',
+    `Works.')
+
+  COMPAT(
+    `Ubuntu Jaunty',
+    `i386',
+    `4.3',
+    `0.8.1',
+    `Works.')
+
+  COMPAT(
     `Ubuntu Dapper',
     `i386',
     `4.1',
