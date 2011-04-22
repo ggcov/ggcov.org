@@ -31,7 +31,7 @@ SPACER(5)
   NAVLINK(/example/,Online&nbsp;Example)
   NAVLINK(http://sourceforge.net/project/showfiles.php?group_id=107843,Download)
   NAVLINK(http://www.sourceforge.net/projects/ggcov/,Project&nbsp;Page)
-  NAVLINK(https://sourceforge.net/scm/?type=git&group_id=107843,Git)
+  NAVLINK(https://sourceforge.net/scm/?type=git&amp;group_id=107843,Git)
   NAVLINK(changelog.html,Change Log)
   NAVLINK(credits.html,Credits)
 
@@ -40,7 +40,7 @@ SPACER(5)
 	<a href="http://sourceforge.net/projects/ggcov"><img
 	src="http://sflogo.sourceforge.net/sflogo.php?group_id=107843&amp;type=13"
 	width="120" height="30"
-	alt="Get ggcov at SourceForge.net. Fast, secure and Free Open Source software downloads"/></a>
+	alt="Get ggcov at SourceForge.net. Fast, secure and Free Open Source software downloads"></a>
     </td>
   </tr>
 
@@ -51,7 +51,7 @@ SPACER(5)
       <!-- HTML copied from http://www.gimp.org/about/linking.html 20061202 -->
       <a href="http://www.gimp.org/"><img alt="Graphics by GIMP"
       src="http://www.gimp.org/images/gfx_by_gimp.png" border="0"
-      width="90" height="36" /></a>
+      width="90" height="36"></a>
     </td>
   </tr>
 
