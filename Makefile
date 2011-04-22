@@ -70,7 +70,7 @@ $(htmldir)/%: %
 
 # Local test
 test local-test:
-	$(MAKE) htmldir=$(HOME)/public_html/alphalink/ggcov install
+	$(MAKE) htmldir=$(HOME)/public_html/ggcov.sf.net install
 
 # Remote test
 remote-test:
