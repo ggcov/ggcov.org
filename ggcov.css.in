@@ -55,25 +55,25 @@ TR.hilite {
   background-color: HILITECOLOR;
 }
 TD.tocthis {
-  font: bold FONTSIZE2 FONTFAMILY;
+  font: bold FONTSIZE1 FONTFAMILY;
   color: FORECOLOR;
-  background-color: TOCCOLOR;
-  text-align: center;
+  background-color: HILITECOLOR;
+  text-align: right;
 }
 TD.tocother {
-  font: bold FONTSIZE2 FONTFAMILY;
+  text-align: right;
+}
+TD.tocother A {
+  font: bold FONTSIZE1 FONTFAMILY;
   color: FORECOLOR;
-  background-color: TOCCOLOR;
-  text-align: center;
+  text-decoration: none;
 }
 TD.tocsmall {
   font: FONTSIZE0 FONTFAMILY;
   color: FORECOLOR;
-  background-color: TOCCOLOR;
-  text-align: center;
+  text-align: right;
 }
 TD.tocimg {
-  background-color: TOCCOLOR;
   text-align: center;
 }
 TD.logo {

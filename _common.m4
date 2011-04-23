@@ -18,9 +18,9 @@ define(_NBSPX,<img width="$1" height="$2" src="1x1t.gif" alt="">)
 define(BEGINBODY,`
 <body>
 
-<table width="100%" border="0" cellspacing="0" cellpadding="5" style="background:#afafcf;">
-  <tr>
-    <td colspan="2" align="right" valign="top" class="logo">ggcov</td>
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr style="background:#afafcf;">
+    <td colspan="2" valign="top" class="logo">ggcov</td>
   </tr>
   <tr>
     <td align="center" valign="top" width="1">
