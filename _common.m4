@@ -2,12 +2,13 @@ define(DATE,esyscmd(date +"%d %b %Y"))dnl
 define(YEAR,esyscmd(date +"%Y"))dnl
 define(`forloop',`pushdef(`$1', `$2')_forloop(`$1', `$2', `$3', `$4')popdef(`$1')')dnl
 define(`_forloop',`$4`'ifelse($1, `$3', ,`define(`$1', incr($1))_forloop(`$1', `$2', `$3', `$4')')')dnl
+define(_TITLE,`ggcov'ifdef(`TITLE',` - 'TITLE))
 define(BEGINHEAD,
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html><head>
 <!-- Copyright (c) include(_copyright.txt) -->
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>TITLE</title>
+<title>_TITLE</title>
 <link REL="SHORTCUT ICON" HREF="favicon.ico">
 <LINK href="ggcov.css" rel="stylesheet" type="text/css">
 )dnl
@@ -20,7 +21,7 @@ define(BEGINBODY,`
 
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr style="background:#afafcf;">
-    <td colspan="2" valign="top" class="logo">ggcov</td>
+    <td colspan="2" valign="top" class="logo">_TITLE</td>
   </tr>
   <tr>
     <td align="center" valign="top" width="1">
@@ -29,7 +30,6 @@ include(toc.html.in)
     </td>
     <td style="background:#ffffff;" valign="top" align="left">
       <!-- MAIN BODY -->
-      <h1>TITLE</h1>
 ')dnl
 define(ENDBODY,
     </td>
