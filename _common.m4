@@ -38,11 +38,7 @@ define(ENDBODY,
 <!-- <HR NOSHADE SIZE=4> -->
 <br><br>
 <center>
-<p class="small">
-Last updated: DATE.<br>
-Copyright &copy; include(_copyright.txt)<br>
-Magnifying glass clipart from <a href="http://www.arttoday.com/">ArtToday.com</a>
-</p>
+<p class="small">Updated: DATE. Copyright &copy; include(_copyright.txt).</p>
 </center>
 </body></html>
 )dnl

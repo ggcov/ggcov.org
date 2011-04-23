@@ -5,7 +5,7 @@ define(HILITECOLOR,`#d0d0f6')dnl
 define(TOCCOLOR,`#afafcf')dnl
 define(FONTFAMILY,`verdana,arial,helvetica,sans-serif')dnl
 define(FIXEDFAMILY,`lucidatypewriter,lucidasanstypewriter,courier,monospace')dnl
-define(FONTSIZE0,`10pt')dnl
+define(FONTSIZE0,`8pt')dnl
 define(FONTSIZE1,`12pt')dnl
 define(FONTSIZE2,`14pt')dnl
 define(FONTSIZE3,`18pt')dnl
