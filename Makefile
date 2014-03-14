@@ -70,7 +70,7 @@ $(htmldir)/%: %
 
 # Local test
 test local-test:
-	$(MAKE) htmldir=$(HOME)/public_html/ggcov.sf.net install
+	$(MAKE) htmldir=/var/www-test/ggcov install
 
 # Remote test
 remote-test:
