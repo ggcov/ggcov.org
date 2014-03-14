@@ -35,36 +35,5 @@ SPACER(5)
   NAVLINK(changelog.html,Change Log)
   NAVLINK(credits.html,Credits)
 
-  <tr>
-    <td class="tocsmall">
-	<a href="http://sourceforge.net/projects/ggcov"><img
-	src="http://sflogo.sourceforge.net/sflogo.php?group_id=107843&amp;type=13"
-	width="120" height="30" border="0"
-	alt="Get ggcov at SourceForge.net. Fast, secure and Free Open Source software downloads"></a>
-    </td>
-  </tr>
-
-  SPACER(5)
-
-  <tr>
-    <td class="tocimg">
-      <!-- HTML copied from http://www.gimp.org/about/linking.html 20061202 -->
-      <a href="http://www.gimp.org/"><img alt="Graphics by GIMP"
-      src="http://www.gimp.org/images/gfx_by_gimp.png" border="0"
-      width="90" height="36"></a>
-    </td>
-  </tr>
-
-  SPACER(5)
-
-  <tr>
-    <td class="tocimg">
-      <!-- HTML copied from http://validator.w3.org/ 20061202 -->
-      <!-- and added border="0" -->
-      <a href="http://validator.w3.org/check?uri=referer"><img
-      src="http://www.w3.org/Icons/valid-html40" border="0"
-      alt="Valid HTML 4.0 Transitional" height="31" width="88"></a>
-    </td>
-  </tr>
 </table>
 

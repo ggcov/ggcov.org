@@ -39,6 +39,13 @@ define(ENDBODY,
 <br><br>
 <center>
 <p class="small">Updated: DATE. Copyright &copy; include(_copyright.txt).</p>
+<p>
+      <!-- HTML copied from http://validator.w3.org/ 20061202 -->
+      <!-- and added border="0" -->
+      <a href="http://validator.w3.org/check?uri=referer"><img
+      src="http://www.w3.org/Icons/valid-html40" border="0"
+      alt="Valid HTML 4.0 Transitional" height="31" width="88"></a>
+</p>
 </center>
 </body></html>
 )dnl
