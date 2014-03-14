@@ -3,7 +3,7 @@
 RELEASEDIR=	../ggcov
 
 # Pages which provide backwards compatibility for old URLs
-PAGES=		index.html features.html requirements.html \
+PAGES=		index.html features.html \
 		compatibility.html screenshots.html shotdata.html \
 		credits.html changelog.html documents.html
 IMAGES=		callgraph2win.gif callgraph2win_t.gif callgraphwin.gif \
