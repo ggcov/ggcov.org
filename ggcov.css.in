@@ -54,6 +54,35 @@ body {
 }
 #nav a:link { color: FORECOLOR; }
 #nav a:visited { color: FORECOLOR; }
+.column {
+    padding: 0px;
+    font: 12pt FONTFAMILY;
+}
+#column1 {
+    width: 50%;
+    margin: 0px;
+    float: left;
+}
+#column2 {
+    border-left: 1px solid TOCCOLOR;
+    width: 50%;
+    margin: 0px 0px 0px 50%;
+}
+.column p {
+    margin: 6px;
+}
+.column dl {
+    margin: 6px;
+}
+.column table {
+    margin: 6px;
+}
+.column li {
+    margin: 6px;
+}
+.column a:link, .column a:visited {
+    color: #808080;
+}
 #footer {
     background: BACKCOLOR;
     border-top: 3px solid TOCCOLOR;
