@@ -10,8 +10,62 @@ define(FONTSIZE1,`12pt')dnl
 define(FONTSIZE2,`14pt')dnl
 define(FONTSIZE3,`18pt')dnl
 define(FONTSIZE4,`24pt')dnl
-dnl
-BODY { color: FORECOLOR; background: BACKCOLOR }
+
+body {
+    color: FORECOLOR;
+    margin: 0px;
+    padding: 0px;
+    background: BACKCOLOR;
+}
+#header {
+    background: BACKCOLOR;
+    height: 253px;
+    padding: 0px;
+    margin: 0px;
+    background-image: url("stock-photo-4529201-magnifying-glass.jpg");
+    background-position: right;
+    background-repeat: no-repeat;
+}
+#header h1 {
+    text-align: left;
+    font: 72px FONTFAMILY;
+    margin: 0px;
+}
+#header p {
+    text-align: left;
+    margin-left: 30px;
+    font: italic 16px FONTFAMILY;
+}
+#nav {
+    background: TOCCOLOR;
+    color: FORECOLOR;
+}
+#nav li {
+    display: inline-block;
+    text-align: left;
+    padding: 5px 20px 5px 20px;
+    font: 12pt FONTFAMILY;
+}
+/* getting Webkit to actually display the hover property
+ * is surprisingly unobvious... */
+#nav li:hover a, #nav li a:hover {
+    color: #ffffff;
+    text-shadow: #404040 1px 1px 1px;
+}
+#nav a:link { color: FORECOLOR; }
+#nav a:visited { color: FORECOLOR; }
+#footer {
+    background: BACKCOLOR;
+    border-top: 3px solid TOCCOLOR;
+    padding: 4px;
+    margin: 0px;
+    width: 100%;
+    clear: left;
+}
+#footer p {
+    font: 8pt FONTFAMILY;
+    text-align: center;
+}
 H1 { font: bold FONTSIZE4 FONTFAMILY; }
 H2 { font: bold FONTSIZE3 FONTFAMILY; }
 H3 { font: bold FONTSIZE2 FONTFAMILY; }
@@ -53,30 +107,5 @@ TD.hilite {
 TR.hilite {
   color: FORECOLOR;
   background-color: HILITECOLOR;
-}
-TD.tocthis {
-  font: bold FONTSIZE1 FONTFAMILY;
-  color: FORECOLOR;
-  background-color: HILITECOLOR;
-  text-align: right;
-}
-TD.tocother {
-  text-align: right;
-}
-TD.tocother A {
-  font: bold FONTSIZE1 FONTFAMILY;
-  color: FORECOLOR;
-  text-decoration: none;
-}
-TD.tocsmall {
-  font: FONTSIZE0 FONTFAMILY;
-  color: FORECOLOR;
-  text-align: right;
-}
-TD.tocimg {
-  text-align: center;
-}
-TD.logo {
-  font: 32pt FONTFAMILY;
 }
 /* vim:set ft=css: */

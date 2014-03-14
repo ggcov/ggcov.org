@@ -6,82 +6,59 @@ RELEASEDIR=	../ggcov
 PAGES=		index.html features.html requirements.html \
 		compatibility.html screenshots.html shotdata.html \
 		credits.html changelog.html documents.html
-IMAGES=		1x1t.gif \
-		callgraph2win.gif callgraph2win_t.gif callgraphwin.gif \
+IMAGES=		callgraph2win.gif callgraph2win_t.gif callgraphwin.gif \
 		callgraphwin_t.gif callslistwin.gif callslistwin_t.gif \
 		filelistwin.gif filelistwin_t.gif funclistwin.gif \
 		funclistwin_t.gif legowin.gif legowin_t.gif \
 		reportwin.gif reportwin_t.gif \
 		sourcewin.gif sourcewin_t.gif summarywin.gif \
-		summarywin_t.gif favicon.ico icon32.png
+		summarywin_t.gif favicon.ico icon32.png \
+		stock-photo-4529201-magnifying-glass.jpg
 CSS=		ggcov.css
 
-DELIVERABLES=	$(PAGES) $(IMAGES) $(CSS)
-
 ############################################################
 
-all:: $(PAGES) $(SCRIPTS) $(CSS)
+all:: $(addprefix build/,$(PAGES) $(IMAGES) $(CSS))
 
-changelog.html: _changelist.html
-$(PAGES): _common.m4 _copyright.txt toc.html.in
+_versions_yaml= [ "0.9" ]
 
-_changelist.html: $(RELEASEDIR)/ChangeLog changes2html
-	./changes2html < $< > $@
+$(addprefix build/,$(PAGES)) : build/%.html : %.html head.html foot.html
+	@echo '    [MUSTACHE] $<'
+	@mkdir -p $(@D)
+	@( \
+	    sed -n -e '1p' < $< ;\
+	    echo 'versions: $(_versions_yaml)' ;\
+	    sed -n -e '2,/^---/p' < $< ;\
+	    cat head.html ;\
+	    $(if $(PREPEND_$*),$(PREPEND_$*);) \
+	    sed -e '1,/^---/d' < $< ;\
+	    $(if $(APPEND_$*),$(APPEND_$*);) \
+	    cat foot.html ;\
+	) | mustache > $@.new && mv -f $@.new $@ || (rm -f $@.new ; exit 1)
 
-HTMLDEFINES=	-DHTMLFILE=$@
+$(addprefix build/,$(IMAGES)) : build/% : %
+	@echo '    [CP] $<'
+	@mkdir -p $(@D)
+	@cp $< $@
 
-%.html: %.html.in
-	m4 $(M4FLAGS) $(HTMLDEFINES) $< > $@
+$(addprefix build/,$(CSS)) : build/% : %.in
+	@echo '    [M4] $<'
+	@mkdir -p $(@D)
+	@m4 $(M4FLAGS) $< > $@
 
-%.css: %.css.in
-	m4 $(M4FLAGS) $< > $@
+APPEND_changelog =  ./changes2html < $(RELEASEDIR)/ChangeLog
 
 clean::
-	$(RM) $(patsubst %.html.in,%.html,$(wildcard $(patsubst %.html,%.html.in,$(PAGES))))
-	$(RM) $(patsubst %.css.in,%.css,$(wildcard $(patsubst %.css,%.css.in,$(CSS))))
-	$(RM) _changelist.html
+	$(RM) -r build
 
 ############################################################
 
-#GGTEST=	/test/
+DESTINATION_install = gnb,ggcov@web.sourceforge.net:/home/project-web/ggcov/htdocs
+DESTINATION_rtest = $(DESTINATION_install)/test
+DESTINATION_ltest = /var/www-test/ggcov
 
-INSTALL=	install -c
-htmldir=	html-install
-uploadhost=	gnb,ggcov@web.sourceforge.net
-uploaddir=	$(uploadhost):htdocs/$(GGTEST)
-
-install:: installdirs $(addprefix $(htmldir)/,$(DELIVERABLES))
-
-installdirs:
-	@OLD=OLD`date +%Y%m%d` ;\
-	if [ -d $(htmldir) ] ; then \
-	    if [ -d $(htmldir).$$OLD ]; then \
-		echo "/bin/rm -rf $(htmldir)" ;\
-		/bin/rm -rf $(htmldir) ;\
-	    else \
-		echo "/bin/mv $(htmldir) $(htmldir).$$OLD" ;\
-		/bin/mv $(htmldir) $(htmldir).$$OLD ;\
-	    fi ;\
-	fi
-	$(INSTALL) -m 755 -d $(htmldir)
-
-$(htmldir)/%: %
-	$(INSTALL) -m 644 $< $@
-
-# Local test
-test local-test:
-	$(MAKE) htmldir=/var/www-test/ggcov install
-
-# Remote test
-remote-test:
-	$(MAKE) install
-	$(MAKE) GGTEST=test/ upload
-
-############################################################
-
-SSH=			ssh
-RSYNC_VERBOSE=		-v
-
-upload:
-	rsync $(RSYNC_VERBOSE) -r --delete --links --exclude=example --exclude=docs -e "$(SSH)" $(RSYNC_PATH_FLAGS) $(htmldir)/ $(uploaddir)
+local-test: ltest
+remote-test: rtest
+install ltest rtest: all
+	rsync -v -r --delete --links --exclude=example --exclude=docs -e ssh build/ $(DESTINATION_$@)
 

@@ -1,9 +1,6 @@
-define(TITLE,Features)dnl
-include(_common.m4)dnl
-BEGINHEAD
-<meta name="keywords" content="ggcov, coverage, gcov, test coverage, line coverage, branch coverage, call coverage">
-ENDHEAD
-BEGINBODY
+---
+title: ggcov Features
+---
 
 <dl>
 
@@ -101,7 +98,7 @@ Handles non-local control transfers, e.g. C++ exceptions or C <i>longjmp</i>.
 A <i>.desktop</i> file is provided so that ggcov appears
 in the GNOME menu structure.  New source files (or 
 object files, or executables) can be dragged-n-dropped
-onto GGCOV from Nautilus.
+onto <span class="program">ggcov</span> from Nautilus.
 In GNOME 2.x, configuration parameters are stored in
 the <i>gconf</i> database.
 </p>
@@ -110,10 +107,10 @@ the <i>gconf</i> database.
 <dt>Text Mode</dt>
 <dd>
 <p>
-GGCOV comes with a text mode program
-TGGCOV which can be used to provide
+<span class="program">ggcov</span> comes with a text mode program
+<span class="program">tggcov</span> which can be used to provide
 coverage reports for individual source files or entire programs.
-TGGCOV is designed for non-interactive
+<span class="program">tggcov</span> is designed for non-interactive
 use, e.g. as part of a build process or test suite.
 </p>
 </dd>
@@ -121,14 +118,14 @@ use, e.g. as part of a build process or test suite.
 <dt>Jenkins Support</dt>
 <dd>
 <p>
-The text mode TGGCOV program has an option to generate an XML report in
+The text mode <span class="program">tggcov</span> program has an option to generate an XML report in
 the format used by the <a href="http://cobertura.sourceforge.net/">Cobertura</a>
 tool.  This makes it really easy to use in the
 <a href="http://jenkins-ci.org/">Jenkins</a> Continuous Integration server, with the
 <a href="https://wiki.jenkins-ci.org/display/JENKINS/Cobertura+Plugin">Cobertura Plugin</a>.
 </p>
 <p>
-GGCOV also comes with a script git-history-coverage which correlates test
+<span class="program">ggcov</span> also comes with a script git-history-coverage which correlates test
 coverage data to git commits, printing a coverage summary which shows
 how well tested recent code changes have been.  This is useful for
 nightly builds and Continuous Integration systems such as Jenkins.
@@ -144,7 +141,7 @@ Calculates a call graph of all function calls known at compile time
 function tables) and applies coverage data to this call graph.  The
 result is that you can <a href="callslistwin.gif">see</a> how many
 times a function was called from various other functions.
-The downside of call graph analysis is that GGCOV
+The downside of call graph analysis is that <span class="program">ggcov</span>
 needs to read and pick apart object files to get the call data.  The
 code exists and works for i386 platforms with ELF format executables
 only.
@@ -166,7 +163,7 @@ An <a href="example/">online example</a> is available.
 </p>
 <p>
 To learn how to install the web edition and use it to provide
-coverage data, download the GGCOV_WEB
+coverage data, download the <span class="program">ggcov-web</span>
 package and read the <i>HOWTO.web</i> file.
 </p>
 </dd>
@@ -175,9 +172,7 @@ package and read the <i>HOWTO.web</i> file.
 
 
 <p>
-GGCOV isn't finished, but is already
+<span class="program">ggcov</span> isn't finished, but is already
 somewhat useful.  It is known to work on i386/Linux; other platforms
 should work except that the call graph feature will not work.
 </p>
-
-ENDBODY
