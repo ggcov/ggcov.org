@@ -1,6 +1,7 @@
 
 # relative path to release directory containing ChangeLog
 RELEASEDIR=	../ggcov
+RELEASE=	$(shell sed -nr -e 's/^AM_INIT_AUTOMAKE\(.*, *([0-9.]+)\).*$$/\1/p' < $(RELEASEDIR)/configure.in)
 
 # where to find jQuery
 JQUERY_DIR=	../js/jQuery-1.7.2
@@ -30,11 +31,15 @@ ADD_CSS=	$(notdir $(wildcard $(MAGNIFIC_DIR)/*.css))
 vpath %.css $(MAGNIFIC_DIR)
 vpath %.min.js $(MAGNIFIC_DIR)
 vpath %.min.js $(JQUERY_DIR)
-DOCS=		$(addsuffix .html,$(DOCS_text) $(DOCS_man))
 
 ############################################################
 
-all:: $(addprefix build/,$(PAGES) $(IMAGES) $(SCRIPTS) $(OUR_CSS) $(ADD_CSS) $(DOCS))
+docdir=	build/docs/$(RELEASE)/en
+DELIVERABLES= \
+	$(addprefix build/,$(PAGES) $(IMAGES) $(SCRIPTS) $(OUR_CSS) $(ADD_CSS)) \
+	$(patsubst %,build/docs/$(RELEASE)/en/%.html,$(DOCS_text) $(DOCS_man))
+
+all:: $(DELIVERABLES)
 
 _versions_yaml= [ "0.9" ]
 
@@ -62,13 +67,14 @@ $(addprefix build/,$(OUR_CSS)) : build/% : %.in
 	@mkdir -p $(@D)
 	@m4 $(M4FLAGS) $< > $@
 
-$(addprefix build/,$(addsuffix .html,$(DOCS_text))) : build/%.html : $(RELEASEDIR)/doc/%
+$(patsubst %,$(docdir)/%.html,$(DOCS_text)) : $(docdir)/%.html : $(RELEASEDIR)/doc/%
 	@echo '    [TEXT2HTML] $<'
 	@mkdir -p $(@D)
 	@( \
 	    echo '---' ;\
 	    echo 'versions: $(_versions_yaml)' ;\
 	    echo "title: $(basename $(@F) .html)" ;\
+	    echo 'pathup: '`echo $@ | sed -e 's|[^/][^/]*|..|g'`/ ;\
 	    echo '---' ;\
 	    cat head.html ;\
 	    echo '<div id="columnpad" class="column">' ;\
@@ -78,13 +84,14 @@ $(addprefix build/,$(addsuffix .html,$(DOCS_text))) : build/%.html : $(RELEASEDI
 	    cat foot.html ;\
 	) | mustache > $@.new && mv -f $@.new $@ || (rm -f $@.new ; exit 1)
 
-$(addprefix build/,$(addsuffix .html,$(DOCS_man))) : build/%.html : $(RELEASEDIR)/doc/%
+$(patsubst %,$(docdir)/%.html,$(DOCS_man)) : $(docdir)/%.html : $(RELEASEDIR)/doc/%
 	@echo '    [MAN2HTML] $<'
 	@mkdir -p $(@D)
 	@( \
 	    echo '---' ;\
 	    echo 'versions: $(_versions_yaml)' ;\
 	    echo "title: $(basename $(@F) .html)" ;\
+	    echo 'pathup: '`echo $@ | sed -e 's|[^/][^/]*|..|g'`/ ;\
 	    echo '---' ;\
 	    cat head.html ;\
 	    echo '<div id="columnpad" class="column">' ;\
@@ -119,5 +126,5 @@ DESTINATION_ltest = /var/www-test/ggcov
 local-test: ltest
 remote-test: rtest
 install ltest rtest: all
-	rsync -v -r --delete --links --exclude=example --exclude=docs -e ssh build/ $(DESTINATION_$@)
+	rsync -v -r --delete --links --exclude=example -e ssh build/ $(DESTINATION_$@)
 
