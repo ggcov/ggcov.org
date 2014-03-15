@@ -125,6 +125,9 @@ body {
 .gallery-popup .h2 {
     color: FORECOLOR;
 }
+#features dt {
+    font: 16pt bold FONTFAMILY;
+}
 H1 { font: bold FONTSIZE4 FONTFAMILY; }
 H2 { font: bold FONTSIZE3 FONTFAMILY; }
 H3 { font: bold FONTSIZE2 FONTFAMILY; }
