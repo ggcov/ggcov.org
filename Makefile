@@ -10,7 +10,7 @@ MAGNIFIC_DIR=	../js/dimsemenov-Magnific-Popup-2ff1692/dist
 
 # Pages which provide backwards compatibility for old URLs
 PAGES=		index.html features.html \
-		compatibility.html shotdata.html \
+		compatibility.html \
 		credits.html changelog.html documents.html
 # Note the order of this variable defines the order
 # in which the images appear in the gallery
