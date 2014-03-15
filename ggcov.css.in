@@ -58,6 +58,10 @@ body {
     padding: 0px;
     font: 12pt FONTFAMILY;
 }
+.columnpad {
+    padding: 6px;
+    font: 12pt FONTFAMILY;
+}
 #column1 {
     width: 50%;
     margin: 0px;
@@ -78,6 +82,9 @@ body {
     margin: 6px;
 }
 .column li {
+    margin: 6px;
+}
+.column h2 {
     margin: 6px;
 }
 .column a:link, .column a:visited {

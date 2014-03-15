@@ -12,6 +12,8 @@ MAGNIFIC_DIR=	../js/dimsemenov-Magnific-Popup-2ff1692/dist
 PAGES=		index.html features.html \
 		compatibility.html \
 		credits.html changelog.html documents.html
+DOCS_text=	HOWTO.web
+DOCS_man=	ggcov-webdb.1 ggcov.1 ggcov-run.1
 # Note the order of this variable defines the order
 # in which the images appear in the gallery
 GALLERY_IMAGES= summarywin.gif filelistwin.gif funclistwin.gif \
@@ -28,10 +30,11 @@ ADD_CSS=	$(notdir $(wildcard $(MAGNIFIC_DIR)/*.css))
 vpath %.css $(MAGNIFIC_DIR)
 vpath %.min.js $(MAGNIFIC_DIR)
 vpath %.min.js $(JQUERY_DIR)
+DOCS=		$(addsuffix .html,$(DOCS_text) $(DOCS_man))
 
 ############################################################
 
-all:: $(addprefix build/,$(PAGES) $(IMAGES) $(SCRIPTS) $(OUR_CSS) $(ADD_CSS))
+all:: $(addprefix build/,$(PAGES) $(IMAGES) $(SCRIPTS) $(OUR_CSS) $(ADD_CSS) $(DOCS))
 
 _versions_yaml= [ "0.9" ]
 
@@ -58,6 +61,43 @@ $(addprefix build/,$(OUR_CSS)) : build/% : %.in
 	@echo '    [M4] $<'
 	@mkdir -p $(@D)
 	@m4 $(M4FLAGS) $< > $@
+
+$(addprefix build/,$(addsuffix .html,$(DOCS_text))) : build/%.html : $(RELEASEDIR)/doc/%
+	@echo '    [TEXT2HTML] $<'
+	@mkdir -p $(@D)
+	@( \
+	    echo '---' ;\
+	    echo 'versions: $(_versions_yaml)' ;\
+	    echo "title: $(basename $(@F) .html)" ;\
+	    echo '---' ;\
+	    cat head.html ;\
+	    echo '<div id="columnpad" class="column">' ;\
+	    markdown_py $< | \
+		sed -e '/vim:/d' ;\
+	    echo '</div>' ;\
+	    cat foot.html ;\
+	) | mustache > $@.new && mv -f $@.new $@ || (rm -f $@.new ; exit 1)
+
+$(addprefix build/,$(addsuffix .html,$(DOCS_man))) : build/%.html : $(RELEASEDIR)/doc/%
+	@echo '    [MAN2HTML] $<'
+	@mkdir -p $(@D)
+	@( \
+	    echo '---' ;\
+	    echo 'versions: $(_versions_yaml)' ;\
+	    echo "title: $(basename $(@F) .html)" ;\
+	    echo '---' ;\
+	    cat head.html ;\
+	    echo '<div id="columnpad" class="column">' ;\
+	    groff -man -Thtml $< | \
+		sed -e '1,/<body>/d' \
+		    -e '/<\/body>/,$$d' \
+		    -e 's/margin-left:11%/margin-left:4em/g' \
+		    -e 's/margin-left:22%/margin-left:8em/g' \
+		    -e 's/<hr>//' \
+		    ;\
+	    echo '</div>' ;\
+	    cat foot.html ;\
+	) | mustache > $@.new && mv -f $@.new $@ || (rm -f $@.new ; exit 1)
 
 PREPEND_features = \
     echo '<script type="text/javascript">' ;\
