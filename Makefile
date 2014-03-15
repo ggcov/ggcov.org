@@ -10,7 +10,7 @@ MAGNIFIC_DIR=	../js/dimsemenov-Magnific-Popup-2ff1692/dist
 
 # Pages which provide backwards compatibility for old URLs
 PAGES=		index.html features.html \
-		compatibility.html screenshots.html shotdata.html \
+		compatibility.html shotdata.html \
 		credits.html changelog.html documents.html
 # Note the order of this variable defines the order
 # in which the images appear in the gallery
@@ -59,7 +59,7 @@ $(addprefix build/,$(OUR_CSS)) : build/% : %.in
 	@mkdir -p $(@D)
 	@m4 $(M4FLAGS) $< > $@
 
-PREPEND_screenshots = \
+PREPEND_features = \
     echo '<script type="text/javascript">' ;\
     ./mkgallery gallery_text.html $(GALLERY_IMAGES) ;\
     cat gallery.js ;\
