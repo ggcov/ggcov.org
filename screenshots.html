@@ -1,5 +1,7 @@
 ---
 title: ggcov Screenshots
+css: [ "magnific-popup.css" ]
+scripts: [ "jquery-1.7.2.min.js", "jquery.magnific-popup.min.js" ]
 ---
 
 <div id="column" class="column">
@@ -7,6 +9,11 @@ title: ggcov Screenshots
 <p>
 This page has some screenshots of <span class="program">ggcov</span>
 in action.
+</p>
+
+<div><ul id="gallery"/></div>
+
+<p>
 <!-- All the screenshots show the same simple set of coverage data
 based on <a href="shotdata.html">this program</a> -->
 Click on the thumbnail images to see larger images.
@@ -17,119 +24,5 @@ An <a href="/example/">online example</a> of the Web edition
 of ggcov is available.
 </p>
 
-
-<table cellpadding=10 cellspacing=0 border=0>
-  <tr>
-    <td width="33%" align="center" class="hilite"><a href="summarywin.gif"><img src="summarywin_t.gif" width="96" height="89" alt="Summary Window" border=0></a>
-</td>
-    <td width="33%" align="center"><a href="filelistwin.gif"><img src="filelistwin_t.gif" width="96" height="102" alt="File List Window" border=0></a>
-</td>
-    <td width="33%" align="center" class="hilite"><a href="funclistwin.gif"><img src="funclistwin_t.gif" width="96" height="62" alt="Function List Window" border=0></a>
-</td>
-  </tr>
-  <tr>
-    <td width="33%" valign="top" align="center" class="hilite">
-    <b>Summary Window</b><br>
-    Shows summaries of line, call and branch coverage statistics, as
-    percentages, counts and colour coded bars.  Scope of summary can
-    be chosen from: overall, filename, function, or a range of lines
-    within a file.
-    </td>
-    <td width="33%" valign="top" align="center">
-    <b>File List Window</b><br>
-    Shows all the source files, with line, call and branch coverage
-    statistics.  Directories are optionally shown as a tree, with summarised
-    statistics.  The list can be sorted on any of the columns by
-    clicking on the column title.  Double-clicking on a row pops
-    up a new Source Window displaying the corresponding file.
-    </td>
-    <td width="33%" valign="top" align="center" class="hilite">
-    <b>Function List Window</b><br>
-    Shows all the covered functions, with line, call and branch coverage
-    statistics.  The list can be sorted on any of the columns by
-    clicking on the column title.  Double-clicking on a row pops
-    up a new Source Window displaying the corresponding function.
-    </td>
-  </tr>
-  <tr>
-    <td width="33%" align="center"><a href="callslistwin.gif"><img src="callslistwin_t.gif" width="96" height="70" alt="Call List Window" border=0></a>
-</td>
-    <td width="33%" align="center" class="hilite"><a href="callgraphwin.gif"><img src="callgraphwin_t.gif" width="96" height="62" alt="Call Butterfly Window" border=0></a>
-</td>
-    <td width="33%" align="center"><a href="sourcewin.gif"><img src="sourcewin_t.gif" width="96" height="88" alt="Source Window" border=0></a>
-</td>
-  </tr>
-  <tr>
-    <td width="33%" valign="top" align="center">
-    <b>Calls List Window</b><br>
-    Shows function calls between any coveraged functions, and the number of
-    times each call was made.  Combo boxes allow filtering on calling
-    function or called function.
-    <br>
-    <b>Note:</b>This window depends in part on data scanned from object files,
-    which will not work on all platforms.
-    </td>
-    <td width="33%" valign="top" align="center" class="hilite">
-    <b>Call Butterfly Window</b><br>
-    Shows, for a particular function, all the functions that call it
-    and how many times they called it, and all the functions that it
-    calls and how many times it called them.  Double-clicking on a
-    function name in either list navigates the window to that function.
-    Handles covered functions and external library functions
-    (e.g. <span class="function">printf</span>) called directly from
-    covered functions.
-    <br>
-    <b>Note:</b>This window depends on data scanned from object files,
-    which will not work on all platforms.
-    </td>
-    <td width="33%" valign="top">
-    <center>
-    <b>Source Window</b><br>
-    Shows a particular source file, with line numbers and execution
-    counts for each line.  Lines are colour coded:
-    </center>
-    <ul>
-    <li><span style="color:green">green</span> - executed at least once
-    <li><span style="color:yellow">yellow</span> - part of the line executed
-    <li><span style="color:red">red</span> - never executed
-    <li><span style="color:blue">blue</span> - suppressed
-    <li><span style="color:black">black</span> - no executable code
-    </ul>
-    </td>
-  </tr>
-  <tr>
-    <td width="33%" align="center" class="hilite"><a href="callgraph2win.gif"><img src="callgraph2win_t.gif" width="96" height="102" alt="Call Graph Window" border=0></a>
-</td>
-    <td width="33%" align="center"><a href="reportwin.gif"><img src="reportwin_t.gif" width="96" height="80" alt="Report Window" border=0></a>
-</td>
-    <td width="33%" align="center" class="hilite"><a href="legowin.gif"><img src="legowin_t.gif" width="96" height="103" alt="Lego Diagram Window" border=0></a>
-</td>
-  </tr>
-  <tr>
-    <td width="33%" valign="top" align="center" class="hilite">
-    <b>Call Graph Window</b><br>
-    Shows the graph of calls between functions graphically, with colour
-    coding for each function and calls between functions.
-    <br>
-    <b>Note:</b>This window depends on data scanned from object files,
-    which will not work on all platforms.
-    <br>
-    <b>Note:</b> the graph layout code for this window is in an early stage of
-    development and may respond badly (looping or crashing) to some
-    data sets.
-    </td>
-    <td width="33%" valign="top" align="center">
-    <b>Report Window</b><br>
-    Shows textual reports which give various interesting summaries of
-    coverage data.  These same reports are available in text mode
-    by using <i>tggcov --report</i>.
-    </td>
-    <td width="33%" valign="top" align="center" class="hilite">
-    <b>Lego Diagram Window</b><br>
-    Shows the proportions of covered vs uncovered code code for
-    projects with multiple files and directories.
-    </td>
-  </tr>
-</table>
 
 </div>

@@ -2,23 +2,36 @@
 # relative path to release directory containing ChangeLog
 RELEASEDIR=	../ggcov
 
+# where to find jQuery
+JQUERY_DIR=	../js/jQuery-1.7.2
+
+# where to find the Magnific Popup extension
+MAGNIFIC_DIR=	../js/dimsemenov-Magnific-Popup-2ff1692/dist
+
 # Pages which provide backwards compatibility for old URLs
 PAGES=		index.html features.html \
 		compatibility.html screenshots.html shotdata.html \
 		credits.html changelog.html documents.html
-IMAGES=		callgraph2win.gif callgraph2win_t.gif callgraphwin.gif \
-		callgraphwin_t.gif callslistwin.gif callslistwin_t.gif \
-		filelistwin.gif filelistwin_t.gif funclistwin.gif \
-		funclistwin_t.gif legowin.gif legowin_t.gif \
-		reportwin.gif reportwin_t.gif \
-		sourcewin.gif sourcewin_t.gif summarywin.gif \
-		summarywin_t.gif favicon.ico icon32.png \
+# Note the order of this variable defines the order
+# in which the images appear in the gallery
+GALLERY_IMAGES= summarywin.gif filelistwin.gif funclistwin.gif \
+		callslistwin.gif callgraphwin.gif sourcewin.gif \
+		callgraph2win.gif reportwin.gif legowin.gif
+IMAGES=		$(GALLERY_IMAGES) $(patsubst %.gif,%_t.gif,$(GALLERY_IMAGES)) \
+		favicon.ico icon32.png \
 		stock-photo-4529201-magnifying-glass.jpg
-CSS=		ggcov.css
+SCRIPTS=	$(notdir $(wildcard $(MAGNIFIC_DIR)/*.min.js)) \
+		$(notdir $(wildcard $(JQUERY_DIR)/*.min.js))
+OUR_CSS=	ggcov.css
+ADD_CSS=	$(notdir $(wildcard $(MAGNIFIC_DIR)/*.css))
+
+vpath %.css $(MAGNIFIC_DIR)
+vpath %.min.js $(MAGNIFIC_DIR)
+vpath %.min.js $(JQUERY_DIR)
 
 ############################################################
 
-all:: $(addprefix build/,$(PAGES) $(IMAGES) $(CSS))
+all:: $(addprefix build/,$(PAGES) $(IMAGES) $(SCRIPTS) $(OUR_CSS) $(ADD_CSS))
 
 _versions_yaml= [ "0.9" ]
 
@@ -36,15 +49,21 @@ $(addprefix build/,$(PAGES)) : build/%.html : %.html head.html foot.html
 	    cat foot.html ;\
 	) | mustache > $@.new && mv -f $@.new $@ || (rm -f $@.new ; exit 1)
 
-$(addprefix build/,$(IMAGES)) : build/% : %
+$(addprefix build/,$(IMAGES) $(ADD_CSS) $(SCRIPTS)) : build/% : %
 	@echo '    [CP] $<'
 	@mkdir -p $(@D)
 	@cp $< $@
 
-$(addprefix build/,$(CSS)) : build/% : %.in
+$(addprefix build/,$(OUR_CSS)) : build/% : %.in
 	@echo '    [M4] $<'
 	@mkdir -p $(@D)
 	@m4 $(M4FLAGS) $< > $@
+
+PREPEND_screenshots = \
+    echo '<script type="text/javascript">' ;\
+    ./mkgallery gallery_text.html $(GALLERY_IMAGES) ;\
+    cat gallery.js ;\
+    echo '</script>'
 
 APPEND_changelog =  ./changes2html < $(RELEASEDIR)/ChangeLog
 

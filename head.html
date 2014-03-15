@@ -6,11 +6,13 @@
   <title>{{title}}</title>
   <link REL="SHORTCUT ICON" HREF="favicon.ico">
   <link href="{{pathup}}ggcov.css" rel="stylesheet" type="text/css">
-{{#addcss}}
-  <link href="{{path}}" rel="stylesheet" type="text/css">
-{{/addcss}}
+{{#css}}
+  <link href="{{.}}" rel="stylesheet" type="text/css">
+{{/css}}
   <meta name="keywords" content="ggcov, coverage, gcov, test coverage, line coverage, branch coverage, call coverage, gcov, greg banks">
-  <!-- <script type="text/javascript" src="{{pathup}}jquery-1.7.2.min.js"></script> -->
+{{#scripts}}
+  <script type="text/javascript" src="{{pathup}}{{.}}"></script>
+{{/scripts}}
 </head>
 <body>
 

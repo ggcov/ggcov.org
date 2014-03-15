@@ -1,0 +1,99 @@
+<!-- summarywin.gif -->
+<h2>Summary Window</h2>
+<p>
+Show summaries of line, call and branch coverage statistics, as
+percentages, counts and colour coded bars.  Scope of summary can
+be chosen from: overall, filename, function, or a range of lines
+within a file.
+</p>
+
+
+<!-- filelistwin.gif -->
+<h2>File List Window</h2>
+<p>
+Shows all the source files, with line, call and branch coverage
+statistics.  Directories are optionally shown as a tree, with summarised
+statistics.  The list can be sorted on any of the columns by
+clicking on the column title.  Double-clicking on a row pops
+up a new Source Window displaying the corresponding file.
+</p>
+
+
+<!-- funclistwin.gif -->
+<h2>Function List Window</h2>
+<p>
+Shows all the covered functions, with line, call and branch coverage
+statistics.  The list can be sorted on any of the columns by
+clicking on the column title.  Double-clicking on a row pops
+up a new Source Window displaying the corresponding function.
+</p>
+
+
+<!-- callslistwin.gif -->
+<h2>Call List Window</h2>
+<p>
+Shows function calls between any coveraged functions, and the number of
+times each call was made.  Combo boxes allow filtering on calling
+function or called function." +
+<b>Note:</b>This window depends in part on data scanned from object files,
+which will not work on all platforms.
+</p>
+
+
+<!-- callgraphwin.gif -->
+<h2>Call Butterfly Window</h2>
+<p>
+Shows, for a particular function, all the functions that call it
+and how many times they called it, and all the functions that it
+calls and how many times it called them.  Double-clicking on a
+function name in either list navigates the window to that function.
+Handles covered functions and external library functions
+(e.g. <span class="function">printf</span>) called directly from
+covered functions.
+<b>Note:</b>This window depends on data scanned from object files,
+which will not work on all platforms.
+</p>
+
+
+<!-- sourcewin.gif -->
+<h2>Source Window</h2>
+<p>
+Shows a particular source file, with line numbers and execution
+counts for each line.  Lines are colour coded:
+<br>
+<br><span style="color:#00c000">green</span> - executed at least once
+<br><span style="color:#a0a000">yellow</span> - part of the line executed
+<br><span style="color:#c00000">red</span> - never executed
+<br><span style="color:#000080">blue</span> - suppressed
+<br><span style="color:#000000">black</span> - no executable code
+</p>
+
+
+<!-- callgraph2win.gif -->
+<h2>Call Graph Window</h2>
+<p>
+Shows the graph of calls between functions graphically, with colour
+coding for each function and calls between functions.
+<b>Note:</b>This window depends on data scanned from object files,
+which will not work on all platforms.
+<b>Note:</b> the graph layout code for this window is in an early stage of
+development and may respond badly (looping or crashing) to some
+data sets.
+</p>
+
+
+<!-- reportwin.gif -->
+<h2>Report Window</h2>
+<p>
+Shows textual reports which give various interesting summaries of
+coverage data.  These same reports are available in text mode
+by using <i>tggcov --report</i>.
+</p>
+
+
+<!-- legowin.gif -->
+<h2>Lego Diagram Window</h2>
+<p>
+Shows the proportions of covered vs uncovered code code for
+projects with multiple files and directories.
+</p>

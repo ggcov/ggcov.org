@@ -95,6 +95,29 @@ body {
     font: 8pt FONTFAMILY;
     text-align: center;
 }
+#gallery {
+    margin: 20px;
+}
+.gallery-thumb {
+    display: inline-block;
+    text-align: left;
+    vertical-align: center;
+    width: 105;
+    height: 105;
+}
+.gallery-popup {
+    position: relative;
+    color: FORECOLOR;
+    background: BACKCOLOR;
+    padding: 20px;
+    width: auto;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+.gallery-popup .h2 {
+    color: FORECOLOR;
+}
 H1 { font: bold FONTSIZE4 FONTFAMILY; }
 H2 { font: bold FONTSIZE3 FONTFAMILY; }
 H3 { font: bold FONTSIZE2 FONTFAMILY; }

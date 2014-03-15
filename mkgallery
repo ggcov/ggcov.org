@@ -1,0 +1,55 @@
+#!/usr/bin/perl
+
+my $text_file = shift
+    or die "Usage: mkgallery texts.html image.gif [...]";
+my %texts;
+open TEXT, '<', $text_file
+    or die "Cannot open $text_file for reading: $!";
+my $key = 'whatever';
+my $sep = '';
+while (<TEXT>)
+{
+    chomp;
+
+    # HTML comments indicate the image
+    if (m/^<!--/) {
+	my @a = split;
+	$key = $a[1];
+	$texts{$key} = '';
+	$sep = '';
+	next;
+    }
+
+    # skip anything before the first key
+    next if !defined $key;
+
+    # Skip empty lines
+    next if m/^\s*$/;
+
+    # Escape double-quotes
+    s/"/\\"/g;
+
+    $texts{$key} .= "$sep\"$_ \"\n";
+    $sep = '+';
+}
+close TEXT;
+
+print "var gallery = [\n";
+
+my $sep = "";
+foreach my $image (@ARGV)
+{
+    my ($base, $ext) = ($image =~ m/^(.*)\.([^.]+)$/);
+    my $thumb = $base . "_t." . $ext;
+
+    print $sep;
+    $sep = ",";
+
+    print "{\n";
+    print "\timage_img: \"$image\",\n";
+    print "\tthumb: \"$thumb\",\n";
+    print "\ttext: " . $texts{$image};
+    print "}";
+}
+
+print "\n];\n";
