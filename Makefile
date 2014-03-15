@@ -15,6 +15,8 @@ PAGES=		index.html features.html \
 		credits.html changelog.html documents.html
 DOCS_text=	HOWTO.web
 DOCS_man=	ggcov-webdb.1 ggcov.1 ggcov-run.1
+DOCS_pdf=	docs/ggcov-osdc-200612-draft6.pdf \
+		docs/ggcov-osdc-200612-paper-draft4.pdf
 # Note the order of this variable defines the order
 # in which the images appear in the gallery
 GALLERY_IMAGES= summarywin.gif filelistwin.gif funclistwin.gif \
@@ -36,7 +38,7 @@ vpath %.min.js $(JQUERY_DIR)
 
 docdir=	build/docs/$(RELEASE)/en
 DELIVERABLES= \
-	$(addprefix build/,$(PAGES) $(IMAGES) $(SCRIPTS) $(OUR_CSS) $(ADD_CSS)) \
+	$(addprefix build/,$(PAGES) $(IMAGES) $(SCRIPTS) $(OUR_CSS) $(ADD_CSS) $(DOCS_pdf)) \
 	$(patsubst %,build/docs/$(RELEASE)/en/%.html,$(DOCS_text) $(DOCS_man))
 
 all:: $(DELIVERABLES)
@@ -57,7 +59,7 @@ $(addprefix build/,$(PAGES)) : build/%.html : %.html head.html foot.html
 	    cat foot.html ;\
 	) | mustache > $@.new && mv -f $@.new $@ || (rm -f $@.new ; exit 1)
 
-$(addprefix build/,$(IMAGES) $(ADD_CSS) $(SCRIPTS)) : build/% : %
+$(addprefix build/,$(IMAGES) $(ADD_CSS) $(SCRIPTS) $(DOCS_pdf)) : build/% : %
 	@echo '    [CP] $<'
 	@mkdir -p $(@D)
 	@cp $< $@
