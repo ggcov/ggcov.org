@@ -10,6 +10,19 @@ define(FONTSIZE1,`12pt')dnl
 define(FONTSIZE2,`14pt')dnl
 define(FONTSIZE3,`18pt')dnl
 define(FONTSIZE4,`24pt')dnl
+define(LINEAR_GRADIENT,
+    $1: -webkit-linear-gradient($2, $3);
+    $1: -moz-linear-gradient($2, $3);
+    $1: -ms-linear-gradient($2, $3);
+    $1: linear-gradient($2, $3))
+define(BOX_SHADOW,
+    -webkit-box-shadow: $1;
+    -moz-box-shadow: $1;
+    box-shadow: $1)
+define(BORDER_RADIUS,
+    -webkit-border-radius: $1;
+    -moz-border-radius: $1;
+    border-radius: $1)
 
 body {
     color: FORECOLOR;
@@ -89,6 +102,80 @@ body {
 }
 .column a:link, .column a:visited {
     color: #808080;
+}
+#front .cloud {
+    text-align: center;
+    background: #eeeeee;
+    padding: 20px;
+    color: #000000;
+    width: 400px;
+    height: 350px;
+    left: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: none;
+}
+#front .cloud h2 {
+    font: 28pt bold FONTFAMILY;
+}
+#front .cloud p {
+    font: 20pt bold FONTFAMILY;
+}
+#front .cloud .yep {
+    text-align: right;
+    font: 16pt bold FONTFAMILY;
+}
+#front #curious .button {
+    width: 240px;
+    padding-top: 8px;
+    padding-bottom: 12px;
+    margin: 20px;
+    font: 20pt FONTFAMILY;
+}
+#front #curious .button #icon {
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 41px;
+    height: 41px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+#front #curious #tellmemore #icon {
+    background-image: url('goto-3333x3333.png');
+}
+/* Ubuntu orange per http://design.ubuntu.com/brand/colour-palette #dd4814; */
+#front #curious #ubuntu #icon {
+    /* Ubuntu logo http://design.ubuntu.com/downloads?metadata=element-logo+brand-ubuntu */
+    background-image: url('logo-ubuntu_cof-white_orange-hex.png');
+}
+#front #curious #download #icon {
+    background-image: url('download-3333x3333.png');
+}
+.button {
+    display: inline-block;
+    border: 1px solid #c0c0c0;
+    BORDER_RADIUS(4px);
+    BOX_SHADOW(inset 0 1px 0 rgba(255,255,255,.2));
+    padding: 5px 24px 7px;
+    text-decoration: none;
+    /* makes this element the origin of #icon's position */
+    position: relative;
+}
+.suggested_action {
+    color: #ffffff;
+    border-color: rgba(0,0,0,.4);
+    LINEAR_GRADIENT(background, #8aa138, #426c06);
+    background-color: #426c06;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+}
+.suggested_action:active {
+    LINEAR_GRADIENT(background, #426c06, #8aa138);
+    background-color: #9ab43f;
+}
+.suggested_action:hover {
+    color: #ffffff;
 }
 #footer {
     background: BACKCOLOR;

@@ -24,9 +24,13 @@ GALLERY_IMAGES= summarywin.gif filelistwin.gif funclistwin.gif \
 		callgraph2win.gif reportwin.gif legowin.gif
 IMAGES=		$(GALLERY_IMAGES) $(patsubst %.gif,%_t.gif,$(GALLERY_IMAGES)) \
 		favicon.ico icon32.png \
-		stock-photo-4529201-magnifying-glass.jpg
+		stock-photo-4529201-magnifying-glass.jpg \
+		firefox.png utilities-terminal.png gnome-logo.png \
+		logo-ubuntu_cof-white_orange-hex.png \
+		download-3333x3333.png goto-3333x3333.png
 SCRIPTS=	$(notdir $(wildcard $(MAGNIFIC_DIR)/*.min.js)) \
-		$(notdir $(wildcard $(JQUERY_DIR)/*.min.js))
+		$(notdir $(wildcard $(JQUERY_DIR)/*.min.js)) \
+		front.js
 OUR_CSS=	ggcov.css
 ADD_CSS=	$(notdir $(wildcard $(MAGNIFIC_DIR)/*.css))
 
