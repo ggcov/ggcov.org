@@ -13,6 +13,12 @@
 {{#scripts}}
   <script type="text/javascript" src="{{pathup}}{{.}}"></script>
 {{/scripts}}
+  <script type="text/javascript">
+    /* image preloads */
+{{#imgpreloads}}
+    new Image().src = "http://ggcov-test.sourceforge.net/{{.}}";
+{{/imgpreloads}}
+  </script>
 </head>
 <body>
 

@@ -27,7 +27,7 @@ IMAGES=		$(GALLERY_IMAGES) $(patsubst %.gif,%_t.gif,$(GALLERY_IMAGES)) \
 		stock-photo-4529201-magnifying-glass.jpg \
 		firefox.png utilities-terminal.png gnome-logo.png \
 		logo-ubuntu_cof-white_orange-hex.png \
-		download-3333x3333.png goto-3333x3333.png
+		download-333x333.png goto-333x333.png
 SCRIPTS=	$(notdir $(wildcard $(MAGNIFIC_DIR)/*.min.js)) \
 		$(notdir $(wildcard $(JQUERY_DIR)/*.min.js)) \
 		front.js
@@ -55,6 +55,15 @@ $(addprefix build/,$(PAGES)) : build/%.html : %.html head.html foot.html
 	@( \
 	    sed -n -e '1p' < $< ;\
 	    echo 'versions: $(_versions_yaml)' ;\
+	    echo -n 'imgpreloads: ' ;\
+	    ( \
+		./extract-img $< ;\
+		if [ -n "$(IMGPRELOADS_$*)" ]; then \
+		    for f in $(IMGPRELOADS_$*) ; do \
+			echo "$$f" ;\
+		    done ;\
+		fi \
+	    ) | sort -u | ./strs-to-yaml ;\
 	    sed -n -e '2,/^---/p' < $< ;\
 	    cat head.html ;\
 	    $(if $(PREPEND_$*),$(PREPEND_$*);) \
@@ -119,6 +128,11 @@ PREPEND_features = \
     echo '</script>'
 
 APPEND_changelog =  ./changes2html < $(RELEASEDIR)/ChangeLog
+
+IMGPRELOADS_index = \
+    goto-333x333.png \
+    logo-ubuntu_cof-white_orange-hex.png \
+    download-333x333.png
 
 clean::
 	$(RM) -r build
