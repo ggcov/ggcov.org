@@ -11,7 +11,7 @@ MAGNIFIC_DIR=	../js/dimsemenov-Magnific-Popup-2ff1692/dist
 
 # Pages which provide backwards compatibility for old URLs
 PAGES=		index.html features.html \
-		compatibility.html \
+		compatibility.html requirements.html \
 		credits.html changelog.html documents.html
 DOCS_text=	HOWTO.web
 DOCS_man=	ggcov-webdb.1 ggcov.1 ggcov-run.1
