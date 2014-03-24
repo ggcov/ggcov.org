@@ -32,7 +32,7 @@ body {
 }
 #header {
     background: BACKCOLOR;
-    height: 253px;
+    height: 126px;
     padding: 0px;
     margin: 0px;
     background-image: url("stock-photo-4529201-magnifying-glass.jpg");
@@ -108,31 +108,56 @@ body {
     background: #eeeeee;
     padding: 20px;
     color: #000000;
-    width: 400px;
-    height: 350px;
-    left: 200px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: none;
+    /* border: 2px solid #000000; */
+    BORDER_RADIUS(10px);
+    BOX_SHADOW(5px 5px 5px rgba(0,0,0,0.5));
+    margin: 10px;
 }
 #front .cloud h2 {
-    font: 28pt bold FONTFAMILY;
+    font: 28pt FONTFAMILY;
 }
 #front .cloud p {
-    font: 20pt bold FONTFAMILY;
+    font: 20pt FONTFAMILY;
 }
-#front .cloud .yep {
-    text-align: right;
-    font: 16pt bold FONTFAMILY;
+#front .cloud p b {
+    font: bold 20pt FONTFAMILY;
 }
-#front #curious .button {
+#front #gotcode {
+    width: 200px;
+    float: left;
+}
+#front #gotcode h2 {
+    font: 28pt FONTFAMILY;
+}
+#front #columns {
+    width: 100%;
+    margin: 10px 0 10px 0;
+    padding: 0;
+}
+#front #columns .columncont {
+    width: 33%;
+    margin: 0px;
+    padding: 0;
+    display: inline-block;
+}
+#front #gnomecont img {
+    /* vertically align the gnome logo with the other 2 columns */
+    margin: 26px 0 26px 0;
+}
+#front #gnome {
+    margin-left: 20px;
+}
+#front #term {
+    margin-right: 20px;
+}
+#front .button {
     width: 240px;
     padding-top: 9px;
     padding-bottom: 12px;
     margin: 20px;
     font: 20pt FONTFAMILY;
 }
-#front #curious .button #icon {
+#front .button #icon {
     display: inline-block;
     position: absolute;
     right: 5px;
@@ -142,18 +167,24 @@ body {
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
-#front #curious #tellmemore #icon {
+#front #seescreenshots #icon {
+    background-image: url('goto-333x333.png');
+}
+#front #tryitout #icon {
+    background-image: url('goto-333x333.png');
+}
+#front #tellmemore #icon {
     background-image: url('goto-333x333.png');
 }
 /* Ubuntu orange per http://design.ubuntu.com/brand/colour-palette #dd4814; */
-#front #curious #ubuntu #icon {
+#front #ubuntu #icon {
     /* Ubuntu logo http://design.ubuntu.com/downloads?metadata=element-logo+brand-ubuntu */
     background-image: url('logo-ubuntu_cof-white_orange-hex.png');
     /* This 1 pixel makes the scaled icon not have truncated sides */
     width: 41px;
     height: 41px;
 }
-#front #curious #download #icon {
+#front #download #icon {
     background-image: url('download-333x333.png');
 }
 .button {
@@ -165,6 +196,9 @@ body {
     text-decoration: none;
     /* makes this element the origin of #icon's position */
     position: relative;
+}
+.column .button:link, .column .button:visited {
+    color: #ffffff;
 }
 .suggested_action {
     color: #ffffff;
@@ -183,8 +217,8 @@ body {
 #footer {
     background: BACKCOLOR;
     border-top: 3px solid TOCCOLOR;
-    padding: 4px;
-    margin: 0px;
+    /*padding: 4px; */
+    margin: 0;
     width: 100%;
     clear: left;
 }

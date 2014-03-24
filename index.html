@@ -6,105 +6,96 @@ scripts: [ "jquery-1.7.2.min.js", "front.js" ]
 
 <div id="front" class="column">
 
-<div id="gotcode" class="cloud">
+<div id="toprow">
+
+<div id="gotcode">
 <h2>Got code?</h2>
-<p>
-Sure you do.<br><br>
-Lots and lots of code?<br><br>
-And tests...not so much?<br>Not <i>enough</i>?
-</p>
-<p class="yep"><a href="">Yep</a></p>
 </div>
 
-<div id="howdyaknow" class="cloud">
+<p>
+Sure you do.  Lots and lots of code.
+And tests...not so much? Not <i>enough</i>?
+</p>
+
 <p>
 So you know you need more tests, because <i>everyone</i> needs more tests...
 but how are you supposed to know which parts of your code
 to test next?
 </p>
-<p class="yep"><a href="">Yep</a></p>
-</div>
-
-<div id="enter" class="cloud">
-<h2>Enter...ggcov!</h2>
 <p>
-<b>ggcov</b> is a
-<a href="http://www.gnome.org/">Gnome GUI</a> for exploring test coverage
+Easy: <b>ggcov</b> tells you which parts of your software are well tested,
+and which parts...need a little lovin'.
+<b>ggcov</b> is a set of tools for exploring test coverage
 data produced by C and C++ programs compiled with
 <a href="http://www.gnu.org/software/gcc/gcc.html">gcc</a>
 <a href="http://gcc.gnu.org/onlinedocs/gcc-4.5.2/gcc/Debugging-Options.html#index-coverage-510">--coverage</a>.
-</p>
-<p class="yep"><a href="">Yep</a></p>
-</div>
-
-<div id="whatitdoes" class="cloud">
-<h2>What ggcov does</h2>
-<p>
-ggcov tells you which parts of your software are well tested,
-and which parts...need a little lovin'
-<br>
-All in a way that's convenient for your workflow.
-</p>
-<p class="yep"><a href="">Yep</a></p>
-</div>
-
-<!-- 
-<div id="details" class="cloud">
-<p>
 So it's basically a replacement for the
 <a href="http://gcc.gnu.org/onlinedocs/gcc-4.5.2/gcc/Gcov.html#Gcov">gcov</a>
 program that comes with <span class="program">gcc</span>.
-Please note: <span class="program">ggcov</span> is not a frontend for
-<span class="program">gcov</span>; instead it reads the same data
-files directly and does various extra processing on them.
 </p>
-<p class="yep"><a href="">Yep</a></p>
-</div>
--->
-
-<div id="webdb" class="cloud">
-<img src="gnome-logo.png"><h2>Got GUI?</h2>
 <p>
-ggcov has a <a href="http://www.gnome.org/">Gnome GUI</a> for exploring test coverage
-<a href="features.html">See some screenshots</a>.
-</p>
-<p class="yep"><a href="">Yep</a></p>
-</div>
-
-<div id="webdb" class="cloud">
-<img src="firefox.png"><h2>Got Web?</h2>
-<p>
-ggcov also has a web interface which provides a large fraction
-of the functionality of the Gnome GUI.  <a href="/example/">Try it out</a>.
-</p>
-<p class="yep"><a href="">Yep</a></p>
-</div>
-
-<div id="tggcov" class="cloud">
-<img src="utilities-terminal.png"><h2>Got Terminal?</h2>
-<p>
-ggcov also has a commandline interface which is useful for nightly
-builds and Continuous Integration servers.
-</p>
-<p class="yep"><a href="">Yep</a></p>
-</div>
-
-<div id="licence" class="cloud">
-<h2>Free as in Speech</h2>
-<p>
-ggcov is released under the
+<b>ggcov</b> is released under the
 <a href="http://www.gnu.org/">GNU</a> General Public License version 2
 <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">(GPLv2)</a>
 with <b>no warranty</b>.
 </p>
-<p class="yep"><a href="">Yep</a></p>
-</div>
+<p>
+<b>ggcov</b> has a tool that's convenient for your workflow.
+</p>
+<!--
+<p>
+Please note: <span class="program">ggcov</span> is not a frontend for
+<span class="program">gcov</span>; instead it reads the same data
+files directly and does various extra processing on them.
+</p>
+-->
 
-<div id="curious" class="cloud">
-<a id="tellmemore" class="button suggested_action" href="features.html"><span id="icon"></span>Tell me more</a>
-<a id="download" class="button suggested_action" href="http://sourceforge.net/project/showfiles.php?group_id=107843"><span id="icon"></span>Download</a>
-<a id="ubuntu" class="button suggested_action" href="apt://ggcov"><span id="icon"></span>Install</a>
-<p class="yep"><a href="">Yep</a></p>
-</div>
+</div><!-- toprow -->
 
-</div>
+<div id="columns">
+
+<div id="gnomecont" class="columncont">
+<div id="gnome" class="cloud">
+<img src="gnome-logo.png"><h2>Got Desktop?</h2>
+<p>
+<b>ggcov</b> has a <a href="http://www.gnome.org/">Gnome GUI</a> for
+exploring test coverage with visualisations and point and click.
+</p>
+<p><a id="seescreenshots" class="button suggested_action" href="features.html"><span id="icon"></span>See the pics</a></p>
+</div><!-- gnome -->
+</div><!-- gnomecont -->
+
+<div id="webcont" class="columncont">
+<div id="web" class="cloud">
+<img src="firefox.png"><h2>Got Web?</h2>
+<p>
+<b>ggcov</b> also has a web interface which provides much
+of the functionality of the Gnome GUI.
+</p>
+<p><a id="tryitout" class="button suggested_action" href="example/"><span id="icon"></span>Try it out</a></p>
+</div><!-- web -->
+</div><!-- webcont -->
+
+<div id="termcont" class="columncont">
+<div id="term" class="cloud">
+<img src="utilities-terminal.png"><h2>Got Terminal?</h2>
+<p>
+<b>ggcov</b> also has a commandline interface which is useful for nightly
+builds and Continuous Integration.
+</p>
+<p><a id="tellmemore" class="button suggested_action" href="features.html"><span id="icon"></span>Tell me more</a></p>
+</div><!-- term -->
+</div><!-- termcont -->
+
+</div><!-- columns -->
+
+<!--
+<div id="bottomrow" style="background:pink;">
+
+<p><a id="download" class="button suggested_action" href="http://sourceforge.net/project/showfiles.php?group_id=107843"><span id="icon"></span>Download</a></p>
+<p><a id="ubuntu" class="button suggested_action" href="apt://ggcov"><span id="icon"></span>Install</a></p>
+
+</div> --> <!-- bottomrow -->
+
+
+</div><!-- front -->
