@@ -25,7 +25,7 @@ GALLERY_IMAGES= summarywin.gif filelistwin.gif funclistwin.gif \
 		callgraph2win.gif reportwin.gif legowin.gif
 IMAGES=		$(GALLERY_IMAGES) $(patsubst %.gif,%_t.gif,$(GALLERY_IMAGES)) \
 		favicon.ico icon32.png \
-		stock-photo-4529201-magnifying-glass.jpg \
+		ncXL7RzcB_120x120.png \
 		firefox.png utilities-terminal.png gnome-logo.png \
 		logo-ubuntu_cof-white_orange-hex.png \
 		download-333x333.png goto-333x333.png
