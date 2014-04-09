@@ -239,6 +239,9 @@ body {
     font: 8pt FONTFAMILY;
     text-align: center;
 }
+#footer a:link, #footer a:visited {
+    color: #808080;
+}
 #gallery {
     margin: 20px;
 }
