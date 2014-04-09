@@ -63,10 +63,20 @@ body {
  * is surprisingly unobvious... */
 #nav li:hover a, #nav li a:hover {
     color: #ffffff;
-    text-shadow: #404040 1px 1px 1px;
+    text-shadow: #404040 2px 2px 2px;
+    text-decoration: none;
+    font-weight: bold;
 }
-#nav a:link { color: FORECOLOR; }
-#nav a:visited { color: FORECOLOR; }
+#nav a:link {
+    color: FORECOLOR;
+    text-decoration: none;
+    font-weight: bold;
+}
+#nav a:visited {
+    color: FORECOLOR;
+    text-decoration: none;
+    font-weight: bold;
+}
 .column {
     padding: 0px;
     font: 12pt FONTFAMILY;
