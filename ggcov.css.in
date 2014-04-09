@@ -187,6 +187,9 @@ body {
 #front #download #icon {
     background-image: url('download-333x333.png');
 }
+#front .gotblurb {
+    height: 5em;
+}
 .button {
     display: inline-block;
     border: 1px solid #c0c0c0;
