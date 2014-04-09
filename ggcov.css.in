@@ -167,7 +167,7 @@ body {
     margin: 20px;
     font: 20pt FONTFAMILY;
 }
-#front .button #icon {
+#front .button .icon {
     display: inline-block;
     position: absolute;
     right: 5px;
@@ -177,24 +177,24 @@ body {
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
-#front #seescreenshots #icon {
+#front #seescreenshots .icon {
     background-image: url('goto-333x333.png');
 }
-#front #tryitout #icon {
+#front #tryitout .icon {
     background-image: url('goto-333x333.png');
 }
-#front #tellmemore #icon {
+#front #tellmemore .icon {
     background-image: url('goto-333x333.png');
 }
 /* Ubuntu orange per http://design.ubuntu.com/brand/colour-palette #dd4814; */
-#front #ubuntu #icon {
+#front #ubuntu .icon {
     /* Ubuntu logo http://design.ubuntu.com/downloads?metadata=element-logo+brand-ubuntu */
     background-image: url('logo-ubuntu_cof-white_orange-hex.png');
     /* This 1 pixel makes the scaled icon not have truncated sides */
     width: 41px;
     height: 41px;
 }
-#front #download #icon {
+#front #download .icon {
     background-image: url('download-333x333.png');
 }
 #front .gotblurb {
@@ -207,7 +207,7 @@ body {
     BOX_SHADOW(inset 0 1px 0 rgba(255,255,255,.2));
     padding: 5px 24px 7px;
     text-decoration: none;
-    /* makes this element the origin of #icon's position */
+    /* makes this element the origin of .icon's position */
     position: relative;
 }
 .column .button:link, .column .button:visited {
@@ -262,7 +262,7 @@ body {
 .gallery-popup .h2 {
     color: FORECOLOR;
 }
-#features dt {
+.features dt {
     font: 16pt bold FONTFAMILY;
 }
 H1 { font: bold FONTSIZE4 FONTFAMILY; }

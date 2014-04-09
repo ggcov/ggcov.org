@@ -10,7 +10,8 @@ scripts: [ "jquery-1.7.2.min.js", "jquery.magnific-popup.min.js" ]
 <p>Here are some screenshots of <span class="program">ggcov</span> in action.
 Click on the thumbnail images to see larger images.</p>
 
-<ul id="gallery" width="100%"></ul>
+<!-- ul needs an li child -->
+<ul id="gallery"><li style="display:none;"></ul>
 
 
 </div>
@@ -18,7 +19,7 @@ Click on the thumbnail images to see larger images.</p>
 
 <div id="column1" class="column">
 
-<dl id="features">
+<dl class="features">
 
 <dt>Graphical</dt>
 <dd>
@@ -106,7 +107,7 @@ C++ function names are presented in readable demangled form.
 </div>
 <div id="column2" class="column">
 
-<dl id="features">
+<dl class="features">
 
 <dt>Non-local Control Transfer</dt>
 <dd>

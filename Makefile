@@ -123,10 +123,10 @@ $(patsubst %,$(docdir)/%.html,$(DOCS_man)) : $(docdir)/%.html : $(RELEASEDIR)/do
 	) | mustache > $@.new && mv -f $@.new $@ || (rm -f $@.new ; exit 1)
 
 PREPEND_features = \
-    echo '<script type="text/javascript">' ;\
-    ./mkgallery gallery_text.html $(GALLERY_IMAGES) ;\
-    cat gallery.js ;\
-    echo '</script>'
+    ( \
+	./mkgallery gallery_text.html $(GALLERY_IMAGES) ;\
+	cat gallery.js \
+    ) | ./htmlize-js.sh
 
 APPEND_changelog =  ./changes2html < $(RELEASEDIR)/ChangeLog
 
