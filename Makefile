@@ -1,13 +1,13 @@
 
 # relative path to release directory containing ChangeLog
-RELEASEDIR=	../ggcov
+RELEASEDIR=	../../Software/ggcov
 RELEASE=	$(shell sed -nr -e 's/^AM_INIT_AUTOMAKE\(.*, *([0-9.]+)\).*$$/\1/p' < $(RELEASEDIR)/configure.in)
 
 # where to find jQuery
-JQUERY_DIR=	../js/jQuery-1.7.2
+JQUERY_DIR=	../../Software/js/jQuery-1.7.2
 
 # where to find the Magnific Popup extension
-MAGNIFIC_DIR=	../js/dimsemenov-Magnific-Popup-2ff1692/dist
+MAGNIFIC_DIR=	../../Software/js/dimsemenov-Magnific-Popup-2ff1692/dist
 
 # Pages which provide backwards compatibility for old URLs
 PAGES=		index.html features.html \
