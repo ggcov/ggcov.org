@@ -194,8 +194,8 @@ body {
     width: 41px;
     height: 41px;
 }
-#front #download .icon {
-    background-image: url('download-333x333.png');
+#download {
+    padding: 10px;
 }
 #front .gotblurb {
     height: 5em;

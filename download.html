@@ -1,0 +1,53 @@
+---
+title: ggcov Download
+scripts: [ "jquery-1.7.2.min.js" ]
+installs:
+  - title: Ubuntu
+    is_ubuntu: yes
+  - title: Fedora 18
+    is_yum: yes
+    repository: Fedora_18
+  - title: Fedora 19
+    is_yum: yes
+    repository: Fedora_19
+  - title: Fedora 20
+    is_yum: yes
+    repository: Fedora_20
+---
+<!-- Copyright (c) 2001-2014 Greg Banks. All Rights Reserved. -->
+
+<div id="download" class="column">
+
+<h2>Install Binary Packages</h2>
+
+{{#installs}}
+
+{{#is_ubuntu}}
+<h3><a href="#ubuntu" name="ubuntu">Ubuntu from ubuntu.com</a></h3>
+<ol>
+<li><a href="apt://ggcov">Install in Software Center</a>
+</ol>
+{{/is_ubuntu}}
+
+{{#is_yum}}
+<h3><a href="#{{repository}}" name="{{repository}}">{{title}} from build.opensuse.org</a></h3>
+<ol>
+<li>Download <a
+href="http://download.opensuse.org/repositories/home:/gnb:/ggcov/{{repository}}/home:gnb:ggcov.repo">this .repo file</a>.
+<li>Become <code>root</code>.
+<li>Copy the <code>.repo</code> file into the <code>/etc/yum.repos.d/</code> directory.
+<li>Run <code>yum install ggcov</code>
+</ol>
+{{/is_yum}}
+
+{{/installs}}
+
+<h2>Install from Source</h2>
+
+<p>
+<a
+href="http://sourceforge.net/project/showfiles.php?group_id=107843">Download a release tarball</a>
+or <a href="http://sourceforge.net/p/ggcov/ggcov/ci/master/tree/">clone the git repo</a>
+</p>
+
+</div>

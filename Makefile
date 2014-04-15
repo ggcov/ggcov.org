@@ -13,7 +13,7 @@ MAGNIFIC_DIR=	../../Software/js/dimsemenov-Magnific-Popup-2ff1692/dist
 PAGES=		index.html features.html \
 		compatibility.html requirements.html \
 		credits.html changelog.html documents.html \
-		support.html
+		support.html download.html
 DOCS_text=	HOWTO.web
 DOCS_man=	ggcov-webdb.1 ggcov.1 ggcov-run.1
 DOCS_pdf=	docs/ggcov-osdc-200612-draft6.pdf \
@@ -127,6 +127,8 @@ PREPEND_features = \
 	./mkgallery gallery_text.html $(GALLERY_IMAGES) ;\
 	cat gallery.js \
     ) | ./htmlize-js.sh
+
+PREPEND_download = ./htmlize-js.sh < download-toggle.js
 
 APPEND_changelog =  ./changes2html < $(RELEASEDIR)/ChangeLog
 
