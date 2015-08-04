@@ -173,12 +173,32 @@ clean::
 
 ############################################################
 
-DESTINATION_install = gnb,ggcov@web.sourceforge.net:/home/project-web/ggcov/htdocs
 DESTINATION_rtest = $(DESTINATION_install)/test
 DESTINATION_ltest = /var/www-test/ggcov
 
 local-test: ltest
 remote-test: rtest
-install ltest rtest: all
+ltest rtest: all
 	rsync -v -r --delete --links --exclude=example -e ssh build/ $(DESTINATION_$@)
 
+DEPLOY_REPO_URL=       git@github.com:ggcov/ggcov.github.io.git
+
+install:
+	if [ ! -d deploy ] ; then \
+	    git clone $(DEPLOY_REPO_URL) deploy ;\
+	else \
+	    ( \
+		cd deploy || exit 1; \
+		git checkout master ;\
+		git ls-files -o -z | xargs -0 $(RM) ;\
+		git fetch $(DEPLOY_REPO_URL) master ;\
+		git reset --hard origin/master ;\
+	    ) ;\
+	fi
+	rsync -vad build/ deploy/
+	( \
+	    cd deploy || exit 1 ;\
+	    git ls-files -o -z | xargs -0 git add ;\
+	    git commit -a -m "Automatic commit by 'make install'" ;\
+	    git push origin master ;\
+	)

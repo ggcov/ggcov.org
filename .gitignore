@@ -2,3 +2,4 @@ ggcov-*.tar.gz
 ggcov-*.rpm
 *.xcf
 build
+deploy
