@@ -33,7 +33,7 @@ IMAGES=		$(GALLERY_IMAGES) $(patsubst %.gif,%_t.gif,$(GALLERY_IMAGES)) \
 		firefox.png utilities-terminal.png gnome-logo.png \
 		logo-ubuntu_cof-white_orange-hex.png \
 		download-333x333.png goto-333x333.png \
-		GitHub_Logo.png
+		GitHub_Logo.png GitHub-Mark-32px.png
 SCRIPTS=	$(notdir $(wildcard $(MAGNIFIC_DIR)/*.min.js)) \
 		$(notdir $(wildcard $(JQUERY_DIR)/*.min.js)) \
 		front.js
