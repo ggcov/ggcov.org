@@ -1,7 +1,11 @@
+UNAME_S=	$(shell uname -s)
 
 # relative path to release directory containing ChangeLog
 RELEASEDIR=	../../Software/ggcov
-RELEASE=	$(shell sed -nr -e 's/^AM_INIT_AUTOMAKE\(.*, *([0-9.]+)\).*$$/\1/p' < $(RELEASEDIR)/configure.in)
+SED_Darwin=	sed -E
+SED_Linux=	sed -r
+SED=		$(SED_$(UNAME_S))
+RELEASE=	$(shell $(SED) -n -e 's/^AM_INIT_AUTOMAKE\(.*, *([0-9.]+)\).*$$/\1/p' < $(RELEASEDIR)/configure.in)
 
 # where to find jQuery
 JQUERY_DIR=	../../Software/js/jQuery-1.7.2
@@ -50,28 +54,44 @@ all:: $(DELIVERABLES)
 
 _versions_yaml= [ "0.9" ]
 
+# Usage: $(call mustache, foo.yaml, bar.html) > baz.html
+ifeq ($(UNAME_S),Darwin)
+define mustache
+mustache $(1) $(2)
+endef
+else
+define mustache
+( echo "---" ; cat $(1) ; echo "---" ; cat $(2) ) | mustache
+endef
+endif
+
 $(addprefix build/,$(PAGES)) : build/%.html : %.html head.html foot.html
 	@echo '    [MUSTACHE] $<'
 	@mkdir -p $(@D)
 	@( \
-	    sed -n -e '1p' < $< ;\
 	    echo 'versions: $(_versions_yaml)' ;\
-	    echo -n 'imgpreloads: ' ;\
+	    echo 'imgpreloads: [' ;\
 	    ( \
-		./extract-img $< ;\
+		cat $< | $(SED) -n -e "s|.*<img[^>]* src=['\"]([^'\"]+)['\"].*|\1|p" ;\
 		if [ -n "$(IMGPRELOADS_$*)" ]; then \
 		    for f in $(IMGPRELOADS_$*) ; do \
 			echo "$$f" ;\
 		    done ;\
 		fi \
-	    ) | sort -u | ./strs-to-yaml ;\
-	    sed -n -e '2,/^---/p' < $< ;\
+	    ) | sort -u | sed -e 's/^/    "/' -e 's/$$/",/' ;\
+	    echo ']' ;\
+	    sed -e '1d' -e '/^---/,$$d' < $< ;\
+	) > $@.tmp.yaml
+	@( \
 	    cat head.html ;\
 	    $(if $(PREPEND_$*),$(PREPEND_$*);) \
 	    sed -e '1,/^---/d' < $< ;\
 	    $(if $(APPEND_$*),$(APPEND_$*);) \
 	    cat foot.html ;\
-	) | mustache > $@.new && mv -f $@.new $@ || (rm -f $@.new ; exit 1)
+	) > $@.tmp.html
+	@$(call mustache, $@.tmp.yaml, $@.tmp.html) > $@.new && mv -f $@.new $@ || (rm -f $@.new ; exit 1)
+	@$(RM) $@.tmp.yaml $@.tmp.html
+
 
 $(addprefix build/,$(IMAGES) $(ADD_CSS) $(SCRIPTS) $(DOCS_pdf)) : build/% : %
 	@echo '    [CP] $<'
@@ -87,28 +107,30 @@ $(patsubst %,$(docdir)/%.html,$(DOCS_text)) : $(docdir)/%.html : $(RELEASEDIR)/d
 	@echo '    [TEXT2HTML] $<'
 	@mkdir -p $(@D)
 	@( \
-	    echo '---' ;\
 	    echo 'versions: $(_versions_yaml)' ;\
 	    echo "title: $(basename $(@F) .html)" ;\
 	    echo 'pathup: '`echo $@ | sed -e 's|[^/][^/]*|..|g'`/ ;\
-	    echo '---' ;\
+	) > $@.tmp.yaml
+	@( \
 	    cat head.html ;\
 	    echo '<div id="columnpad" class="column">' ;\
 	    markdown_py $< | \
 		sed -e '/vim:/d' ;\
 	    echo '</div>' ;\
 	    cat foot.html ;\
-	) | mustache > $@.new && mv -f $@.new $@ || (rm -f $@.new ; exit 1)
+	) > $@.tmp.html
+	@$(call mustache, $@.tmp.yaml, $@.tmp.html) > $@.new && mv -f $@.new $@ || (rm -f $@.new ; exit 1)
+	@$(RM) $@.tmp.yaml $@.tmp.html
 
 $(patsubst %,$(docdir)/%.html,$(DOCS_man)) : $(docdir)/%.html : $(RELEASEDIR)/doc/%
 	@echo '    [MAN2HTML] $<'
 	@mkdir -p $(@D)
 	@( \
-	    echo '---' ;\
 	    echo 'versions: $(_versions_yaml)' ;\
 	    echo "title: $(basename $(@F) .html)" ;\
 	    echo 'pathup: '`echo $@ | sed -e 's|[^/][^/]*|..|g'`/ ;\
-	    echo '---' ;\
+	) > $@.tmp.yaml
+	@( \
 	    cat head.html ;\
 	    echo '<div id="columnpad" class="column">' ;\
 	    groff -man -Thtml $< | \
@@ -120,7 +142,9 @@ $(patsubst %,$(docdir)/%.html,$(DOCS_man)) : $(docdir)/%.html : $(RELEASEDIR)/do
 		    ;\
 	    echo '</div>' ;\
 	    cat foot.html ;\
-	) | mustache > $@.new && mv -f $@.new $@ || (rm -f $@.new ; exit 1)
+	) > $@.tmp.html
+	@$(call mustache, $@.tmp.yaml, $@.tmp.html) > $@.new && mv -f $@.new $@ || (rm -f $@.new ; exit 1)
+	@$(RM) $@.tmp.yaml $@.tmp.html
 
 PREPEND_features = \
     ( \
@@ -130,7 +154,7 @@ PREPEND_features = \
 
 PREPEND_download = ./htmlize-js.sh < download-toggle.js
 
-APPEND_changelog =  ./changes2html < $(RELEASEDIR)/ChangeLog
+APPEND_changelog =  ./changes2html.py < $(RELEASEDIR)/ChangeLog
 
 IMGPRELOADS_index = \
     goto-333x333.png \
