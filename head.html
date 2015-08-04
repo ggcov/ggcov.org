@@ -15,8 +15,10 @@
 {{/scripts}}
   <script type="text/javascript">
     /* image preloads */
+    loc = window.location
+    baseurl = loc.protocol + "//" + loc.hostname + loc.pathname.replace(/\/[^\/]+$/, "") + "/"
 {{#imgpreloads}}
-    new Image().src = "http://ggcov-test.sourceforge.net/{{.}}";
+    new Image().src = baseurl + "{{.}}";
 {{/imgpreloads}}
   </script>
 </head>
