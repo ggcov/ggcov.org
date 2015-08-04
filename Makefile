@@ -50,7 +50,14 @@ DELIVERABLES= \
 	$(addprefix build/,$(PAGES) $(IMAGES) $(SCRIPTS) $(OUR_CSS) $(ADD_CSS) $(DOCS_pdf)) \
 	$(patsubst %,build/docs/$(RELEASE)/en/%.html,$(DOCS_text) $(DOCS_man))
 
-all:: $(DELIVERABLES)
+all:: check_js $(DELIVERABLES)
+
+check_js:
+	@for dir in $(JQUERY_DIR) $(MAGNIFIC_DIR) ; do \
+	    if [ ! -d $$dir ] ; then \
+		echo "ERROR: $$dir is missing" ;\
+	    fi ;\
+	done
 
 _versions_yaml= [ "0.9" ]
 
