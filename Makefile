@@ -11,7 +11,7 @@ RELEASE=	$(shell $(SED) -n -e 's/^AM_INIT_AUTOMAKE\(.*, *([0-9.]+)\).*$$/\1/p' <
 JQUERY_DIR=	../../Software/js/jQuery-1.7.2
 
 # where to find the Magnific Popup extension
-MAGNIFIC_DIR=	../../Software/js/dimsemenov-Magnific-Popup-2ff1692/dist
+MAGNIFIC_DIR=	../../Software/js/Magnific-Popup-0.9.9/dist
 
 # Pages which provide backwards compatibility for old URLs
 PAGES=		index.html features.html \
