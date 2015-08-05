@@ -16,10 +16,22 @@
 {{/scripts}}
   <script type="text/javascript">
     /* image preloads */
-    loc = window.location
-    baseurl = loc.protocol + "//" + loc.hostname + loc.pathname.replace(/\/[^\/]+$/, "") + "/"
+    function _absolute_url(url)
+    {
+	if (!url.match(/^(http|https|file):\//))
+	{
+	    /* relative url */
+	    loc = window.location;
+	    url = loc.protocol + '://' + loc.hostname + loc.pathname.replace(/\/[^\/]+$/, '') + '/' + url;
+	}
+	return url;
+    }
+    function _preload(url)
+    {
+	new Image().src = _absolute_url(url);
+    }
 {{#imgpreloads}}
-    new Image().src = baseurl + "{{.}}";
+    _preload("{{.}}");
 {{/imgpreloads}}
   </script>
 </head>

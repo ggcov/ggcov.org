@@ -27,7 +27,8 @@ DOCS_pdf=	docs/ggcov-osdc-200612-draft6.pdf \
 GALLERY_IMAGES= summarywin.gif filelistwin.gif funclistwin.gif \
 		callslistwin.gif callgraphwin.gif sourcewin.gif \
 		callgraph2win.gif reportwin.gif legowin.gif
-IMAGES=		$(GALLERY_IMAGES) $(patsubst %.gif,%_t.gif,$(GALLERY_IMAGES)) \
+GALLERY_THUMBS=	$(patsubst %.gif,%_t.gif,$(GALLERY_IMAGES))
+IMAGES=		$(GALLERY_IMAGES) $(GALLERY_THUMBS) \
 		favicon.ico icon32.png \
 		ncXL7RzcB_120x120.png \
 		firefox.png utilities-terminal.png gnome-logo.png \
@@ -73,21 +74,12 @@ define mustache
 endef
 endif
 
-$(addprefix build/,$(PAGES)) : build/%.html : %.html head.html foot.html
+$(addprefix build/,$(PAGES)) : build/%.html : %.html head.html foot.html ggcov.css.in
 	@echo '    [MUSTACHE] $<'
 	@mkdir -p $(@D)
 	@( \
 	    echo 'versions: $(_versions_yaml)' ;\
-	    echo 'imgpreloads: [' ;\
-	    ( \
-		cat $< | $(SED) -n -e "s|.*<img[^>]* src=['\"]([^'\"]+)['\"].*|\1|p" ;\
-		if [ -n "$(IMGPRELOADS_$*)" ]; then \
-		    for f in $(IMGPRELOADS_$*) ; do \
-			echo "$$f" ;\
-		    done ;\
-		fi \
-	    ) | sort -u | sed -e 's/^/    "/' -e 's/$$/",/' ;\
-	    echo ']' ;\
+	    ./extract-image-preloads.py $^ $(IMGPRELOADS_$*) ;\
 	    sed -e '1d' -e '/^---/,$$d' < $< ;\
 	) > $@.tmp.yaml
 	@( \
@@ -164,10 +156,7 @@ PREPEND_download = ./htmlize-js.sh < download-toggle.js
 
 APPEND_changelog =  ./changes2html.py < $(RELEASEDIR)/ChangeLog
 
-IMGPRELOADS_index = \
-    goto-333x333.png \
-    logo-ubuntu_cof-white_orange-hex.png \
-    download-333x333.png
+IMGPRELOADS_features = $(GALLERY_THUMBS)
 
 clean::
 	$(RM) -r build

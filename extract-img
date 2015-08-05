@@ -1,5 +1,0 @@
-#!/bin/sh
-
-for file in "$@" ; do
-    sed -nr -e "s|.*<img[^>]* src=['\"]([^'\"]+)['\"].*|\1|p" < "$file"
-done
