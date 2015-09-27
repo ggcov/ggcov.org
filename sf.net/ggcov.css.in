@@ -1,0 +1,313 @@
+changecom(`/*',`*/')dnl
+define(BACKCOLOR,`#ffffff')dnl
+define(FORECOLOR,`#000000')dnl
+define(HILITECOLOR,`#d0d0f6')dnl
+define(TOCCOLOR,`#afafcf')dnl
+define(FONTFAMILY,`verdana,arial,helvetica,sans-serif')dnl
+define(FIXEDFAMILY,`lucidatypewriter,lucidasanstypewriter,courier,monospace')dnl
+define(FONTSIZE0,`8pt')dnl
+define(FONTSIZE1,`12pt')dnl
+define(FONTSIZE2,`14pt')dnl
+define(FONTSIZE3,`18pt')dnl
+define(FONTSIZE4,`24pt')dnl
+define(LINEAR_GRADIENT,
+    $1: -webkit-linear-gradient($2, $3);
+    $1: -moz-linear-gradient($2, $3);
+    $1: -ms-linear-gradient($2, $3);
+    $1: linear-gradient($2, $3))
+define(BOX_SHADOW,
+    -webkit-box-shadow: $1;
+    -moz-box-shadow: $1;
+    box-shadow: $1)
+define(BORDER_RADIUS,
+    -webkit-border-radius: $1;
+    -moz-border-radius: $1;
+    border-radius: $1)
+
+body {
+    color: FORECOLOR;
+    margin: 0px;
+    padding: 0px;
+    background: BACKCOLOR;
+}
+#header {
+    background: BACKCOLOR;
+    height: 120px;
+    padding: 0px;
+    margin: 0px;
+    background-image: url("ncXL7RzcB_120x120.png");
+    background-position: right;
+    background-repeat: no-repeat;
+}
+#header h1 {
+    text-align: left;
+    font: 72px FONTFAMILY;
+    margin: 0px;
+}
+#header p {
+    text-align: left;
+    margin-left: 30px;
+    font: italic 16px FONTFAMILY;
+}
+#nav {
+    background: TOCCOLOR;
+    color: FORECOLOR;
+}
+#nav li {
+    display: inline-block;
+    text-align: left;
+    padding: 5px 20px 5px 20px;
+    font: 12pt FONTFAMILY;
+}
+/* getting Webkit to actually display the hover property
+ * is surprisingly unobvious... */
+#nav li:hover a, #nav li a:hover {
+    color: #ffffff;
+    text-shadow: #404040 2px 2px 2px;
+    text-decoration: none;
+    font-weight: bold;
+}
+#nav a:link {
+    color: FORECOLOR;
+    text-decoration: none;
+    font-weight: bold;
+}
+#nav a:visited {
+    color: FORECOLOR;
+    text-decoration: none;
+    font-weight: bold;
+}
+.column {
+    padding: 0px;
+    font: 12pt FONTFAMILY;
+}
+.columnpad {
+    padding: 6px;
+    font: 12pt FONTFAMILY;
+}
+#column1 {
+    width: 50%;
+    margin: 0px;
+    float: left;
+}
+#column2 {
+    border-left: 1px solid TOCCOLOR;
+    width: 50%;
+    margin: 0px 0px 0px 50%;
+}
+.column p {
+    margin: 6px;
+}
+.column dl {
+    margin: 6px;
+}
+.column table {
+    margin: 6px;
+}
+.column li {
+    margin: 6px;
+}
+.column h2 {
+    margin: 6px;
+}
+.column a:link, .column a:visited {
+    color: #808080;
+}
+#front .cloud {
+    text-align: center;
+    background: #eeeeee;
+    padding: 20px;
+    color: #000000;
+    /* border: 2px solid #000000; */
+    BORDER_RADIUS(10px);
+    BOX_SHADOW(5px 5px 5px rgba(0,0,0,0.5));
+    margin: 10px;
+}
+#front .cloud h2 {
+    font: 28pt FONTFAMILY;
+}
+#front .cloud p {
+    font: 20pt FONTFAMILY;
+}
+#front .cloud p b {
+    font: bold 20pt FONTFAMILY;
+}
+#front #gotcode {
+    width: 200px;
+    float: left;
+}
+#front #gotcode h2 {
+    font: 28pt FONTFAMILY;
+}
+#front #columns {
+    width: 100%;
+    margin: 10px 0 10px 0;
+    padding: 0;
+}
+#front #columns .columncont {
+    width: 33%;
+    margin: 0px;
+    padding: 0;
+    display: inline-block;
+}
+#front #gnomecont img {
+    /* vertically align the gnome logo with the other 2 columns */
+    margin: 26px 0 26px 0;
+}
+#front #gnome {
+    margin-left: 20px;
+}
+#front #term {
+    margin-right: 20px;
+}
+#front .button {
+    width: 240px;
+    padding-top: 9px;
+    padding-bottom: 12px;
+    margin: 20px;
+    font: 20pt FONTFAMILY;
+}
+#front .button .icon {
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 42px;
+    height: 42px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+#front #seescreenshots .icon {
+    background-image: url('goto-333x333.png');
+}
+#front #tryitout .icon {
+    background-image: url('goto-333x333.png');
+}
+#front #tellmemore .icon {
+    background-image: url('goto-333x333.png');
+}
+/* Ubuntu orange per http://design.ubuntu.com/brand/colour-palette #dd4814; */
+#front #ubuntu .icon {
+    /* Ubuntu logo http://design.ubuntu.com/downloads?metadata=element-logo+brand-ubuntu */
+    background-image: url('logo-ubuntu_cof-white_orange-hex.png');
+    /* This 1 pixel makes the scaled icon not have truncated sides */
+    width: 41px;
+    height: 41px;
+}
+#download {
+    padding: 10px;
+}
+#front .gotblurb {
+    height: 5em;
+}
+.button {
+    display: inline-block;
+    border: 1px solid #c0c0c0;
+    BORDER_RADIUS(4px);
+    BOX_SHADOW(inset 0 1px 0 rgba(255,255,255,.2));
+    padding: 5px 24px 7px;
+    text-decoration: none;
+    /* makes this element the origin of .icon's position */
+    position: relative;
+}
+.column .button:link, .column .button:visited {
+    color: #ffffff;
+}
+.suggested_action {
+    color: #ffffff;
+    border-color: rgba(0,0,0,.4);
+    LINEAR_GRADIENT(background, #8aa138, #426c06);
+    background-color: #426c06;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+}
+.suggested_action:active {
+    LINEAR_GRADIENT(background, #426c06, #8aa138);
+    background-color: #9ab43f;
+}
+.suggested_action:hover {
+    color: #ffffff;
+}
+#footer {
+    background: BACKCOLOR;
+    border-top: 3px solid TOCCOLOR;
+    /*padding: 4px; */
+    margin: 0;
+    width: 100%;
+    clear: left;
+}
+#footer p {
+    font: 8pt FONTFAMILY;
+    text-align: center;
+}
+#footer a:link, #footer a:visited {
+    color: #808080;
+}
+#gallery {
+    margin: 20px;
+}
+.gallery-thumb {
+    display: inline-block;
+    text-align: left;
+    vertical-align: center;
+    width: 105;
+    height: 105;
+}
+.gallery-popup {
+    position: relative;
+    color: FORECOLOR;
+    background: BACKCOLOR;
+    padding: 20px;
+    width: auto;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+.gallery-popup .h2 {
+    color: FORECOLOR;
+}
+.features dt {
+    font: 16pt bold FONTFAMILY;
+}
+H1 { font: bold FONTSIZE4 FONTFAMILY; }
+H2 { font: bold FONTSIZE3 FONTFAMILY; }
+H3 { font: bold FONTSIZE2 FONTFAMILY; }
+UL { font: FONTSIZE1 FONTFAMILY; }
+P { font: FONTSIZE1 FONTFAMILY; }
+P.small { font: FONTSIZE0 FONTFAMILY; }
+P B { font: bold FONTSIZE1 FONTFAMILY; }
+P EM { font: italic FONTSIZE1 FONTFAMILY; }
+TD { font: FONTSIZE1 FONTFAMILY; }
+TD B { font: bold FONTSIZE1 FONTFAMILY; }
+PRE { font: FONTSIZE1 FIXEDFAMILY; }
+all.program { font: bold FONTSIZE1 FONTFAMILY; }
+all.option { font: bold FONTSIZE1 FONTFAMILY; }
+all.function { font: bold FONTSIZE1 FONTFAMILY; }
+PRE.example {
+  font: FONTSIZE1 FIXEDFAMILY;
+  color: FORECOLOR;
+  background-color: HILITECOLOR;
+  border-style: solid;
+  border-color: BACKCOLOR;
+  border-width: 1pt;
+  padding: FONTSIZE0;
+  white-space: pre;
+}
+PRE.source {
+  font: FONTSIZE1 FIXEDFAMILY;
+  color: FORECOLOR;
+  background-color: HILITECOLOR;
+  border-style: solid;
+  border-color: BACKCOLOR;
+  border-width: 1pt;
+  padding: FONTSIZE0;
+  white-space: pre;
+}
+TD.hilite {
+  color: FORECOLOR;
+  background-color: HILITECOLOR;
+}
+TR.hilite {
+  color: FORECOLOR;
+  background-color: HILITECOLOR;
+}
+/* vim:set ft=css: */
