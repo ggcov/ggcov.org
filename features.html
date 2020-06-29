@@ -66,13 +66,26 @@ directory.
 <dt>Suppress by Pre-processor Symbol</dt>
 <dd>
 <p>
-The <i>--suppress-ifdef</i> flag can be used to suppress source lines
+The <i>--suppress-ifdef WORD</i> flag can be used to suppress source lines
 inside <i>#ifdef</i> or <i>#if</i> blocks which depend on particular
 pre-processor symbols.  For example <i>--suppress-ifdef TEST,DEBUG</i>
 will suppress source lines inside <i>#if DEBUG</i> or inside
 <i>#ifdef TEST</i>.  Suppressed lines are not reported in summaries.
 This feature is useful to avoid having test infrastructure or debugging
 code spuriously reduce the reported coverage level.
+</p>
+</dd>
+
+<dt>Suppress by Comment</dt>
+<dd>
+<p>
+The <i>--suppress-comment WORD</i> flag can be used to suppress source
+lines which contain the given word in a comment.  For example
+<i>--suppress-comment nocover</i> suppresses any line containing
+the comment <i>/* nocover */</i>.  Similarly the
+<i>--suppress-comment-between STARTWORD,ENDWORD</i> flag suppresses
+source lines between a line containing <i>STARTWORD</i> in a comment
+and the next line containing <i>ENDWORD</i> in a comment.
 </p>
 </dd>
 
@@ -95,19 +108,19 @@ Source files can be specified by any combination of:
 </p>
 </dd>
 
-<dt>C++ Function Names Demangled</dt>
-<dd>
-C++ function names are presented in readable demangled form.
-<p>
-</p>
-</dd>
-
 </dl>
 
 </div>
 <div id="column2" class="column">
 
 <dl class="features">
+
+<dt>C++ Function Names Demangled</dt>
+<dd>
+C++ function names are presented in readable demangled form.
+<p>
+</p>
+</dd>
 
 <dt>Non-local Control Transfer</dt>
 <dd>
@@ -123,7 +136,7 @@ A <i>.desktop</i> file is provided so that ggcov appears
 in the GNOME menu structure.  New source files (or 
 object files, or executables) can be dragged-n-dropped
 onto <span class="program">ggcov</span> from Nautilus.
-In GNOME 2.x, configuration parameters are stored in
+Configuration parameters are stored in
 the <i>gconf</i> database.
 </p>
 </dd>
@@ -139,17 +152,19 @@ use, e.g. as part of a build process or test suite.
 </p>
 </dd>
 
-<dt>Jenkins Support</dt>
+<dt>CI Support</dt>
 <dd>
 <p>
 The text mode <span class="program">tggcov</span> program has an option to generate an XML report in
 the format used by the <a href="http://cobertura.sourceforge.net/">Cobertura</a>
-tool.  This makes it really easy to use in the
-<a href="http://jenkins-ci.org/">Jenkins</a> Continuous Integration server, with the
+tool.  This makes it really easy to use in Continuous Integration servers such as
+<a href="http://jenkins-ci.org/">Jenkins</a>, with the
 <a href="https://wiki.jenkins-ci.org/display/JENKINS/Cobertura+Plugin">Cobertura Plugin</a>.
 </p>
 <p>
-<span class="program">ggcov</span> also comes with a script git-history-coverage which correlates test
+<span class="program">ggcov</span> also comes with a program
+<a href="docs/0.10/en/git-history-coverage.1.html">git-history-coverage</a>
+which correlates test
 coverage data to git commits, printing a coverage summary which shows
 how well tested recent code changes have been.  This is useful for
 nightly builds and Continuous Integration systems such as Jenkins.
@@ -167,28 +182,24 @@ result is that you can <a href="callslistwin.gif">see</a> how many
 times a function was called from various other functions.
 The downside of call graph analysis is that <span class="program">ggcov</span>
 needs to read and pick apart object files to get the call data.  The
-code exists and works for i386 platforms with ELF format executables
-only.
+code exists and works for i386 and x86-64 platforms with ELF format
+executables only.
 </p>
 </dd>
 
-<dt>PHP Web Interface</dt>
+<dt>Static HTML Generator</dt>
 
 <dd>
 <p>
-New in version 0.6 is a PHP edition of ggcov, which allows you to
-provide code coverage information on the web.  The web edition
-has all the navigation and visualisation features of the GNOME
-program, but available in any graphical browser (no Java or
-Javascript required).
+New in version 0.10 is ggcov-html, which generates static HTML
+coverage reports.  It has many of the features of the GNOME
+program, including annotated source with flow diagrams, and
+works in any modern browser.
 </p>
 <p>
-An <a href="example/">online example</a> is available.
-</p>
-<p>
-To learn how to install the web edition and use it to provide
-coverage data, download the <span class="program">ggcov-web</span>
-package and read the <i>HOWTO.web</i> file.
+There's also an older server-side PHP app which has more
+functionality but requires more setup (see
+<a href="docs/0.10/en/HOWTO.web.html">HOWTO.web</a>)
 </p>
 </dd>
 
@@ -196,9 +207,9 @@ package and read the <i>HOWTO.web</i> file.
 
 
 <p>
-<span class="program">ggcov</span> isn't finished, but is already
-somewhat useful.  It is known to work on x86-64/Linux and i386/Linux; other platforms
-should work except that the call graph feature will not work.
+<span class="program">ggcov</span> is known to work on x86-64/Linux
+and i386/Linux; other platforms should work except for the call
+graph feature.
 </p>
 
 </div>

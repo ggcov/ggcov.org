@@ -58,10 +58,10 @@ vpath %.min.js $(JQUERY_DIR)
 
 ############################################################
 
-docdir=	$(DEPLOYABLE_DIR)/docs/$(GGCOV_VERSION)/en
+docdir=	$(DEPLOYABLE_DIR)/docs
 DELIVERABLES= \
 	$(addprefix $(DEPLOYABLE_DIR)/,$(PAGES) $(IMAGES) $(SCRIPTS) $(OUR_CSS) $(ADD_CSS) $(DOCS_pdf)) \
-	$(patsubst %,$(DEPLOYABLE_DIR)/docs/$(GGCOV_VERSION)/en/%.html,$(DOCS_text) $(DOCS_man))
+	$(patsubst %,$(DEPLOYABLE_DIR)/docs/%.html,$(DOCS_text) $(DOCS_man))
 
 all:: download_assets check_js $(DELIVERABLES)
 
@@ -73,8 +73,6 @@ check_js:
 		echo "ERROR: $$dir is missing" ;\
 	    fi ;\
 	done
-
-_versions_yaml= [ "0.9" ]
 
 # Usage: $(call mustache, foo.yaml, bar.html) > baz.html
 ifeq ($(UNAME_S),Darwin)
@@ -107,7 +105,6 @@ $(addprefix $(DEPLOYABLE_DIR)/,$(PAGES)) : $(DEPLOYABLE_DIR)/%.html : %.html hea
 	@echo '    [MUSTACHE] $<'
 	@mkdir -p $(@D)
 	@( \
-	    echo 'versions: $(_versions_yaml)' ;\
 	    ./extract-image-preloads.py $^ $(IMGPRELOADS_$*) ;\
 	    sed -e '1d' -e '/^---/,$$d' < $< ;\
 	) > $@.tmp.yaml
@@ -136,7 +133,6 @@ $(patsubst %,$(docdir)/%.html,$(DOCS_text)) : $(docdir)/%.html : $(GGCOV_DIR)/do
 	@echo '    [TEXT2HTML] $<'
 	@mkdir -p $(@D)
 	@( \
-	    echo 'versions: $(_versions_yaml)' ;\
 	    echo "title: $(basename $(@F) .html)" ;\
 	    echo 'pathup: '`echo $@ | sed -e 's|[^/][^/]*|..|g'`/ ;\
 	) > $@.tmp.yaml
@@ -155,7 +151,6 @@ $(patsubst %,$(docdir)/%.html,$(DOCS_man)) : $(docdir)/%.html : $(GGCOV_DIR)/doc
 	@echo '    [MAN2HTML] $<'
 	@mkdir -p $(@D)
 	@( \
-	    echo 'versions: $(_versions_yaml)' ;\
 	    echo "title: $(basename $(@F) .html)" ;\
 	    echo 'pathup: '`echo $@ | sed -e 's|[^/][^/]*|..|g'`/ ;\
 	) > $@.tmp.yaml
