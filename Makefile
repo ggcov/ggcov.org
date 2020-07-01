@@ -24,6 +24,8 @@ MAGNIFIC_VERSION=   0.9.9
 MAGNIFIC_DIR=	    $(CACHE_DIR)/Magnific-Popup-$(MAGNIFIC_VERSION)
 MAGNIFIC_URL=       https://github.com/dimsemenov/Magnific-Popup/archive/$(MAGNIFIC_VERSION).tar.gz
 
+EXAMPLE_TARBALL=    libgit2.ggcov-html.tar.bz2
+
 # Pages which provide backwards compatibility for old URLs
 PAGES=		index.html features.html \
 		compatibility.html requirements.html \
@@ -61,7 +63,8 @@ vpath %.min.js $(JQUERY_DIR)
 docdir=	$(DEPLOYABLE_DIR)/docs
 DELIVERABLES= \
 	$(addprefix $(DEPLOYABLE_DIR)/,$(PAGES) $(IMAGES) $(SCRIPTS) $(OUR_CSS) $(ADD_CSS) $(DOCS_pdf)) \
-	$(patsubst %,$(DEPLOYABLE_DIR)/docs/%.html,$(DOCS_text) $(DOCS_man))
+	$(patsubst %,$(DEPLOYABLE_DIR)/docs/%.html,$(DOCS_text) $(DOCS_man)) \
+        $(DEPLOYABLE_DIR)/examples/libgit2/index.html
 
 all:: download_assets check_js $(DELIVERABLES)
 
@@ -182,6 +185,11 @@ APPEND_changelog =  ./changes2html.py < $(GGCOV_DIR)/ChangeLog
 
 IMGPRELOADS_features = $(GALLERY_THUMBS)
 
+$(DEPLOYABLE_DIR)/examples/libgit2/index.html: $(EXAMPLE_TARBALL)
+	@echo '    [UNTAR] $<'
+	@mkdir -p $(DEPLOYABLE_DIR)/examples/libgit2
+	@tar -C $(DEPLOYABLE_DIR)/examples/libgit2 -xf $(EXAMPLE_TARBALL)
+
 clean::
 	$(RM) -r build
 
@@ -218,7 +226,7 @@ DESTINATION_ltest = /var/www-test/ggcov
 local-test: ltest
 remote-test: rtest
 ltest rtest: all
-	rsync -v -r --delete --links --exclude=example -e ssh $(DEPLOYABLE_DIR)/ $(DESTINATION_$@)
+	rsync -v -r --delete --links -e ssh $(DEPLOYABLE_DIR)/ $(DESTINATION_$@)
 
 DEPLOY_REPO_URL=       git@github.com:ggcov/ggcov.github.io.git
 
