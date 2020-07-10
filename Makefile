@@ -87,7 +87,7 @@ PYSTACHE=       $(VENV)/bin/pystache
 download_assets:: $(PYSTACHE)
 
 $(PYSTACHE):
-	mkdir -p $(dirname $(VENV))
+	mkdir -p `dirname $(VENV)`
 	$(PYTHON) -m venv $(VENV)
 	$(VENV)/bin/pip install pystache PyYAML
 
@@ -104,7 +104,7 @@ define mustache
 endef
 endif
 
-$(addprefix $(DEPLOYABLE_DIR)/,$(PAGES)) : $(DEPLOYABLE_DIR)/%.html : %.html head.html foot.html ggcov.css.in
+$(addprefix $(DEPLOYABLE_DIR)/,$(PAGES)) : $(DEPLOYABLE_DIR)/%.html : %.html head.html foot.html
 	@echo '    [MUSTACHE] $<'
 	@mkdir -p $(@D)
 	@( \
@@ -189,6 +189,7 @@ $(DEPLOYABLE_DIR)/examples/libgit2/index.html: $(EXAMPLE_TARBALL)
 	@echo '    [UNTAR] $<'
 	@mkdir -p $(DEPLOYABLE_DIR)/examples/libgit2
 	@tar -C $(DEPLOYABLE_DIR)/examples/libgit2 -xf $(EXAMPLE_TARBALL)
+	@[ -f "$@" ] && touch "$@"
 
 clean::
 	$(RM) -r build
@@ -209,7 +210,7 @@ $(GGCOV_DIR)/.stamp:
 
 $(JQUERY_DIR)/.stamp:
 	mkdir -p $(@D)
-	curl -L -s "$(JQUERY_URL)" > $(@D)/jquery.min.js
+	curl -L -s "$(JQUERY_URL)" > $(@D)/jquery-$(JQUERY_VERSION).min.js
 	touch $@
 
 $(MAGNIFIC_DIR)/.stamp:
