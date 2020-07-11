@@ -47,7 +47,10 @@ IMAGES=		$(GALLERY_IMAGES) $(GALLERY_THUMBS) \
 		firefox.png utilities-terminal.png gnome-logo.png \
 		logo-ubuntu_cof-white_orange-hex.png \
 		download-333x333.png goto-333x333.png \
-		GitHub_Logo.png GitHub-Mark-32px.png
+		GitHub_Logo.png GitHub-Mark-32px.png \
+                htmlreport.png htmlreport-splash.png \
+                sourcewin-splash.gif \
+                cobertura.png cobertura-splash.png
 SCRIPTS=	$(notdir $(wildcard $(MAGNIFIC_DIR)/dist/*.min.js)) \
 		$(notdir $(wildcard $(JQUERY_DIR)/*.min.js)) \
 		front.js

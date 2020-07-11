@@ -10,19 +10,6 @@ define(FONTSIZE1,`12pt')dnl
 define(FONTSIZE2,`14pt')dnl
 define(FONTSIZE3,`18pt')dnl
 define(FONTSIZE4,`24pt')dnl
-define(LINEAR_GRADIENT,
-    $1: -webkit-linear-gradient($2, $3);
-    $1: -moz-linear-gradient($2, $3);
-    $1: -ms-linear-gradient($2, $3);
-    $1: linear-gradient($2, $3))
-define(BOX_SHADOW,
-    -webkit-box-shadow: $1;
-    -moz-box-shadow: $1;
-    box-shadow: $1)
-define(BORDER_RADIUS,
-    -webkit-border-radius: $1;
-    -moz-border-radius: $1;
-    border-radius: $1)
 
 body {
     color: FORECOLOR;
@@ -113,16 +100,6 @@ body {
 .column a:link, .column a:visited {
     color: #808080;
 }
-#front .cloud {
-    text-align: center;
-    background: #eeeeee;
-    padding: 20px;
-    color: #000000;
-    /* border: 2px solid #000000; */
-    BORDER_RADIUS(10px);
-    BOX_SHADOW(5px 5px 5px rgba(0,0,0,0.5));
-    margin: 10px;
-}
 #front .cloud h2 {
     font: 28pt FONTFAMILY;
 }
@@ -139,53 +116,29 @@ body {
 #front #gotcode h2 {
     font: 28pt FONTFAMILY;
 }
-#front #columns {
+#front .blurbrow {
     width: 100%;
     margin: 10px 0 10px 0;
     padding: 0;
+    display: inline-block;
 }
-#front #columns .columncont {
-    width: 33%;
+#front .blurbrow .blurb {
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+}
+#front .blurbrow .splash {
     margin: 0px;
-    padding: 0;
-    display: inline-block;
+    padding: 0px;
 }
-#front #gnomecont img {
-    /* vertically align the gnome logo with the other 2 columns */
-    margin: 26px 0 26px 0;
+#front .leftblurbrow .splash {
+    float: left;
 }
-#front #gnome {
-    margin-left: 20px;
+#front .rightblurbrow .splash {
+    float: right;
 }
-#front #term {
-    margin-right: 20px;
-}
-#front .button {
-    width: 240px;
-    padding-top: 9px;
-    padding-bottom: 12px;
-    margin: 20px;
-    font: 20pt FONTFAMILY;
-}
-#front .button .icon {
-    display: inline-block;
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    width: 42px;
-    height: 42px;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-#front #seescreenshots .icon {
-    background-image: url('goto-333x333.png');
-}
-#front #tryitout .icon {
-    background-image: url('goto-333x333.png');
-}
-#front #tellmemore .icon {
-    background-image: url('goto-333x333.png');
-}
+
+
 /* Ubuntu orange per http://design.ubuntu.com/brand/colour-palette #dd4814; */
 #front #ubuntu .icon {
     /* Ubuntu logo http://design.ubuntu.com/downloads?metadata=element-logo+brand-ubuntu */
@@ -197,40 +150,16 @@ body {
 #download {
     padding: 10px;
 }
-#front .gotblurb {
-    height: 5em;
+.column .blurbrow .suggested_action {
+    color: #000000;
+    font-size: 35px;
 }
-.button {
-    display: inline-block;
-    border: 1px solid #c0c0c0;
-    BORDER_RADIUS(4px);
-    BOX_SHADOW(inset 0 1px 0 rgba(255,255,255,.2));
-    padding: 5px 24px 7px;
-    text-decoration: none;
-    /* makes this element the origin of .icon's position */
-    position: relative;
-}
-.column .button:link, .column .button:visited {
-    color: #ffffff;
-}
-.suggested_action {
-    color: #ffffff;
-    border-color: rgba(0,0,0,.4);
-    LINEAR_GRADIENT(background, #8aa138, #426c06);
-    background-color: #426c06;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.5);
-}
-.suggested_action:active {
-    LINEAR_GRADIENT(background, #426c06, #8aa138);
-    background-color: #9ab43f;
-}
-.suggested_action:hover {
-    color: #ffffff;
+.column .blurbrow .suggested_action:visited {
+    color: #000000;
 }
 #footer {
     background: BACKCOLOR;
     border-top: 3px solid TOCCOLOR;
-    /*padding: 4px; */
     margin: 0;
     width: 100%;
     clear: left;
