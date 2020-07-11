@@ -22,7 +22,7 @@
 	{
 	    /* relative url */
 	    loc = window.location;
-	    url = loc.protocol + '://' + loc.hostname + loc.pathname.replace(/\/[^\/]+$/, '') + '/' + url;
+	    url = loc.protocol.replace(/:*$/, "://") + loc.hostname + loc.pathname.replace(/\/[^\/]+$/, '') + '/' + url;
 	}
 	return url;
     }
